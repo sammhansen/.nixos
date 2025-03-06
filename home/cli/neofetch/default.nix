@@ -1,0 +1,5 @@
+{
+	imports = [
+		./neofetch.nix
+	];
+}

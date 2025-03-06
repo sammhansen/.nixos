@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
   ...
 }: {
   imports = [inputs.ags.homeManagerModules.default];
@@ -12,6 +11,7 @@
     hyprshade
     sass
     zenity
+    material-icons
   ];
 
   programs.ags = {
@@ -37,29 +37,15 @@
         "tray"
         "notifd"
         "wireplumber"
+        # sash
+        "cava"
+        "greet"
+        "apps"
+        "river"
+        "powerprofiles"
+        "auth"
+        "astal4"
+        "astal3"
       ]);
-  };
-
-  xdg.configFile."stylix/ags-colors.scss" = with config.lib.stylix.colors; {
-    source = pkgs.writeText "ags-colors" ''
-      $base:    #${base00};
-      $crust:   #${base00};
-      $color00: #${base01};
-      $color01: #${base07};
-      $color02: #${base07};
-      $color03: #${base0D};
-      $color04: #${base08};
-      $color05: #${base0B};
-      $color06: #${base09};
-      $color07: #${base0A};
-      $color08: #${base00};
-      $color09: #${base05};
-      $color10: #${base0E};
-      $color11: #${base0C};
-
-      $bg-alt: transparentize(#${base01}, 0.5);
-      $text: #${base07};
-      $text-dimmed: transparentize(#${base07}, 0.4);
-    '';
   };
 }

@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./fonts.nix
-
-    ./stylix/default.nix
+    ./matugen.nix
+    # ./stylix/default.nix
   ];
 }

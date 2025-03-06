@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   stylix = {
     enable = true;
-    image = ../../../../.config/wallpapers/gta5sunset.png;
+    image = ../../../../.config/wallpapers/bunny.png;
     base16Scheme = ./themes/catppuccin-mocha/catppuccin-mocha.yaml;
     polarity = "dark";
     targets = {
@@ -17,6 +17,7 @@
       vesktop.enable = true;
       vscode.enable = false;
       wezterm.enable = true;
+      kitty.enable = true;
     };
     opacity.terminal = 0.8;
     fonts = {

@@ -6,8 +6,18 @@
 
     easyeffects
     mousai
+    swww
 
     bitwarden-desktop
+    gnome-control-center
+    amnezia-vpn
+    kronosnet
+    openvpn
+
+    papirus-icon-theme
+    bibata-cursors
+
+    wlsunset
 
     nix-prefetch-git
 
@@ -46,8 +56,11 @@
     spotdl
 
     telegram-desktop
-    discord
     element-desktop
+    (discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
 
     youtube-music
 

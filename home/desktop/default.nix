@@ -4,6 +4,6 @@
     ./screenlock/default.nix
     ./bars/default.nix
     ./launchers/default.nix
-    ./theming/default.nix
+    # ./theming/default.nix
   ];
 }

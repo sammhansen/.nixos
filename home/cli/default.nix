@@ -8,6 +8,7 @@
     ./packages.nix
     ./direnv.nix
     ./hyfetch.nix
+    ./neofetch/default.nix
     ./zoxide.nix
 
     ./shell/default.nix

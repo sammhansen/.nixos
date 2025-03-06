@@ -1,5 +1,6 @@
 {
   imports = [
-    ./rofi/rofi.nix
+    # ./rofi/rofi.nix
+    ./anyrun.nix
   ];
 }

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  username,
-  ...
-}: let
+{pkgs, ...}: let
   inherit (import ./variables.nix) gitUsername;
 in {
   users = {
@@ -10,7 +6,7 @@ in {
       homeMode = "755";
       isNormalUser = true;
       description = "${gitUsername}";
-      shell = pkgs.bash;
+      shell = pkgs.zsh;
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -47,6 +43,7 @@ in {
   environment.shells = with pkgs; [
     bash
     fish
+    zsh
     nushell
   ];
 

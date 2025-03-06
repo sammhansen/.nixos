@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  neovim_config = ../../../../.config/nvim;
+  neovim_config = ./nvim;
 in {
   programs.neovim = {
     enable = true;
@@ -10,6 +10,12 @@ in {
     withRuby = true;
 
     extraPackages = with pkgs; [
+			# snacks.image
+			imagemagick # required to render images
+			mermaid-cli
+			tectonic
+      ghostscript_headless
+
       gnumake
       fd
 
@@ -23,6 +29,8 @@ in {
       lua-language-server
       markdownlint-cli
       nixd
+
+			prettierd
       nodePackages.bash-language-server
       nodePackages.prettier
       nodePackages.typescript
@@ -39,10 +47,10 @@ in {
     ];
   };
 
-  # xdg.configFile = {
-  # "nvim" = {
-  # source = "${neovim_config}";
-  # recursive = true;
-  # };
-  # };
+  xdg.configFile = {
+    "nvim" = {
+      source = "${neovim_config}";
+      recursive = true;
+    };
+  };
 }

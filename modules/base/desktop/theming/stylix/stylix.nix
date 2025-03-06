@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   stylix = {
     enable = true;
-    image = ../../../../../.config/wallpapers/gta5sunset.png;
+    image = ../../../../../.config/wallpapers/bunny.png;
     base16Scheme = ./themes/catppuccin-mocha/catppuccin-mocha.yaml;
     polarity = "dark";
     opacity.terminal = 0.8;

@@ -8,7 +8,7 @@ in {
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     enableFishIntegration = true;
 
     defaultCommand = "${getExe pkgs.fd} --type=f --hidden --exclude=.git";

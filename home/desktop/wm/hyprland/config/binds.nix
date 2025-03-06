@@ -104,7 +104,7 @@ in {
       ",XF86Search, exec, blueberry"
 
       # Apps
-      "SUPER, TAB, exec, uwsm app -- wezterm"
+      "SUPER, TAB, exec, uwsm app -- kitty"
       "SUPER, T, exec, uwsm app -- foot"
       "SUPER , E, exec, uwsm app -- nautilus --new-window"
       "SUPER, D, exec, ~/.config/hypr/dmenu.sh"
@@ -114,7 +114,7 @@ in {
       "ALT, F, exec, hints"
 
       # Rofi
-      "SUPER, A , exec,  rofi -show drun -show-icons -run-command 'uwsm app -- {cmd}' -theme ~/.config/rofi/themes/default.rasi"
+      "SUPER, A , exec,  uwsm app -- anyrun"
       "SUPER, V, exec, ${clipboard}/bin/rofi-clipboard.sh"
       "SUPER, W , exec, ${pkgs.rofi-power-menu}/bin/rofi-powermenu"
 

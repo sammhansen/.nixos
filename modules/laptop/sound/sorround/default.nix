@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./sorround.nix
+  ];
+}

@@ -3,11 +3,12 @@
     rounding = 10;
 
     blur = {
-      enabled = false;
-      xray = true;
+      enabled = true;
+      xray = false;
       special = false;
       new_optimizations = true;
-      size = 5;
+			popups = true;
+      size = 0;
       passes = 4;
       brightness = 1;
       noise = 1.0e-2;

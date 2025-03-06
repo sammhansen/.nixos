@@ -5,6 +5,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    #mysql-workbench
+    # mysql-workbench
   ];
 }

@@ -1,6 +1,7 @@
 {
   imports = [
     ./packages.nix
-		./nix-index.nix
+    ./nix-index.nix
+    ./shell.nix
   ];
 }

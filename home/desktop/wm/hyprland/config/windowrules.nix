@@ -1,8 +1,7 @@
 {
   wayland.windowManager.hyprland.settings = {
     windowrule = [
-      "noblur,.*" # Disables blur for windows. Substantially improves performance.
-      # "opacity 0.92 override 0.93 override, .*" # Applies transparency to EVERY WINDOW
+      "opacity 0.92 override 0.93 override, .*" # Applies transparency to EVERY WINDOW
       "float, ^(steam)$"
       "float, polkit-gnome-authentication-agent-1"
       "size 300 300, polkit-gnome-authentication-agent-1"
@@ -21,19 +20,8 @@
 
     layerrule = [
       "xray 1, .*"
-      "noanim, selection"
-      "noanim, overview"
-      "noanim, anyrun"
       "blur, swaylock"
-      "noanim, noanim"
-      "blur, noanim"
-      "blur, gtk-layer-shell"
-      "ignorezero, gtk-layer-shell"
-      "blur, launcher"
-      "ignorealpha 0.5, launcher"
-      "blur, notifications"
-      "ignorealpha 0.69, notifications"
-      "blur, session"
+      "ignorealpha 1, gtk-layer-shell"
     ];
   };
 }

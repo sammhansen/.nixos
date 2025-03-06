@@ -7,7 +7,7 @@
     dconf-editor
     qt5.qtimageformats
 
-    protonvpn-gui
+    # protonvpn-gui
 
     acpi
     ffmpeg

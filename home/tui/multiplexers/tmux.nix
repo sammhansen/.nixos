@@ -74,7 +74,7 @@ in {
     escapeTime = 0;
     keyMode = "vi";
     mouse = true;
-    shell = "${pkgs.fish}/bin/fish";
+    shell = "/run/current-system/sw/bin/zsh";
     extraConfig = ''
       set-option -sa terminal-overrides ",xterm*:Tc"
       bind c copy-mode

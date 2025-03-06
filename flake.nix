@@ -39,6 +39,13 @@
     ags = {
       url = "github:Aylur/ags";
     };
+
+    matugen = {
+      type = "github";
+      owner = "InioX";
+      repo = "Matugen";
+      ref = "v2.4.1";
+    };
   };
 
   outputs = {

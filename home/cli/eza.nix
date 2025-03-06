@@ -5,8 +5,8 @@
 
     enableBashIntegration = true;
     enableFishIntegration = true;
-    enableZshIntegration = false;
-    # enableNushellIntegration = config.programs.nushell.enable;
+    enableZshIntegration = true;
+    enableNushellIntegration = false;
 
     extraOptions = [
       "--group"

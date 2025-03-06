@@ -19,11 +19,16 @@
       # vaapiIntel
       # vaapiVdpau
       # libvdpau-va-gl
+			vulkan-loader
+			vulkan-tools
+			vulkan-validation-layers
+			libGL
+
       intel-media-driver
       intel-vaapi-driver
       libvdpau-va-gl
       # mesa.opencl
-      # mesa
+      mesa
       # libGL
       # libGLU
       intel-media-sdk

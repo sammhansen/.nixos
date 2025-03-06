@@ -1,5 +1,5 @@
 {
   imports = [
-    ./zen-browser.nix
+    # ./zen-browser.nix
   ];
 }

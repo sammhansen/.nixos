@@ -15,7 +15,7 @@ in {
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     enableNushellIntegration = true;
 
     settings = {

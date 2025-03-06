@@ -4,8 +4,10 @@
     ../../modules/default.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  #nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config = {
+    input-fonts.acceptLicense = true;
+    allowUnfree = true;
+  };
 
   users = {
     mutableUsers = true;

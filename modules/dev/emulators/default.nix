@@ -1,0 +1,5 @@
+{
+	imports = [
+		./emulator.nix
+	];
+}
