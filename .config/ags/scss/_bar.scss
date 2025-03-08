@@ -1,33 +1,25 @@
 @use "sass:color";
 
-$bg: #212223;
-$fg: #f1f1f1;
-$accent: #378DF7;
-$radius: 7px;
-$rounded-md: 10px;
+$radius: 10px;
+$batt-radius: 10px;
 
-$base: #1d2021;
-$crust: #1d2021;
-$color00: #3c3836;
-$color01: #fbf1c7;
-$color02: #fbf1c7;
-$color03: #83a598;
-$color04: #fb4934;
-$color05: #b8bb26;
-$color06: #fe8019;
-$color07: #fabd2f;
-$color08: #1d2021;
-$color09: #d5c4a1;
-$color10: #d3869b;
-$color11: #8ec07c;
-
-$bg-alt: color.adjust(#3c3836, $alpha: -0.5);
-$text: #fbf1c7;
-$text-dimmed: color.adjust(#fbf1c7, $alpha: -0.5);
-
-@mixin fluent_decel_long {
-  transition: 1000ms cubic-bezier(0.1, 1, 0, 1);
-}
+$base00transparent: color.adjust(#1e1e2e, $alpha: -0.1);
+$base00: #1e1e2e; // Background
+$base01: #313244; // Surface0
+$base02: #45475a; // Surface1
+$base03: #585b70; // Surface2
+$base04: #6c7086; // Overlay0
+$base05: #cdd6f4; // Text
+$base06: #f5e0dc; // Rosewater
+$base07: #bac2de; // Subtext1
+$base08: #f38ba8; // Red
+$base09: #fab387; // Peach
+$base0A: #f9e2af; // Yellow
+$base0B: #a6e3a1; // Green
+$base0C: #94e2d5; // Teal
+$base0D: #89b4fa; // Blue
+$base0E: #cba6f7; // Mauve
+$base0F: #eba0ac; // Maroon
 
 window.Bar {
   label {
@@ -35,11 +27,11 @@ window.Bar {
   }
 
   .box_bg {
-    margin: 3px 6px 3px 6px;
-    border-radius: 10px;
+    margin: 5px 0px 5px 3px;
+    border-radius: $radius;
     padding: 2px;
-    background-color: $color08;
-    color: $fg;
+    background-color: $base00transparent;
+    color: $base05;
     font-weight: normal;
     min-height: 2rem;
     font-size: 1.1em;
@@ -47,22 +39,21 @@ window.Bar {
     box-shadow: none;
 
     .workspaces {
-      background: $bg;
-      padding: 5px 5px;
+      background: transparent;
+      padding: 2px;
 
-      /* * { */
-      /* all: unset; */
-      /* } */
+      .focused-circ-prog {
+        min-width: 25px;
+        min-height: 25px;
+        background-color: $base0E;
+        // color: $base0E;
+        border-radius: 50%;
+      }
 
       button {
         all: unset;
-        border: 1px solid $color02;
-        background-color: $color02;
-        background: $color02;
-        min-width: 5px;
-        min-height: 5px;
-        border-radius: 50%;
-        margin: 10px 7px;
+        border: none;
+        color: $base03;
 
         &:nth-child(1) {
           margin-left: 0;
@@ -75,77 +66,131 @@ window.Bar {
 
       .focused {
         all: unset;
-        background: #FF69B4;
-        border-color: #FF69B4;
-        border-radius: 7px;
-        min-width: 30px;
-        min-height: 10px;
+        color: $base00;
+        background-color: $base0E;
+        border-radius: 50%;
         opacity: 1;
-        margin: 3px 3px;
+        margin: 5px;
       }
 
       .occupied {
         all: unset;
-        border: 2px solid #FF69B4;
-        background-color: #FF69B4;
-        min-width: 6px;
-        min-height: 6px;
-        border-radius: 50%;
-        margin: 7px 7px;
+        color: $base06;
         padding: 1px;
       }
     }
 
-    .launcher_button {
-      padding: 1px;
-      background-color: transparent;
-    }
+    .launcher-parent-box {
+      // background-color: $base0E;
+      // min-width: 5px;
+      // border-radius: $radius;
+      // margin: 5px;
 
-    .launcher_button label {
-      /* min-width: 24px; */
-      /* min-height: 24px; */
-      padding: 0px;
-      color: #FF69B4;
+      .weird {
+        background-color: $base0E;
+        // min-width: 5px;
+        // border-radius: $radius;
+
+        .launcher-button {
+          // padding: 1px;
+          // margin: 10px;
+          // border-radius: $radius;
+          // background-color: $base0E;
+
+          label {
+            padding: 0px;
+            // font-size: 25px;
+            // color: #000000;
+          }
+        }
+      }
     }
 
     .SysTray {
-      margin-right: 8px;
-
       button {
         padding: 0 4px;
         background-color: transparent;
       }
+
+      menu {
+        background-color: $base00transparent;
+        padding: 0px;
+        font-size: 14px;
+
+        label {
+          color: $base05;
+        }
+        separator {
+          background-color: $base00transparent;
+        }
+      }
     }
 
     .FocusedClient {
-      color: $accent;
+      color: $base0C;
     }
 
-    .Media .Cover {
-      padding: 0px;
-      min-height: 1.2em;
-      min-width: .2em;
-      border-radius: $radius;
-      background-position: center;
-      background-size: contain;
+    .Media {
       background-color: transparent;
+
+      .Cover {
+        padding: 0px;
+        min-height: 1.2em;
+        min-width: 0.2em;
+        border-radius: $radius;
+        background-position: center;
+        background-size: contain;
+        background-color: transparent;
+      }
     }
 
-    .Battery label {
-      padding-left: 0;
-      margin-left: 0;
+    .Battery {
+      all: unset;
+      /* padding: 3px; */
+      /* margin: 4px; */
+
+      .batt-container {
+        all: unset;
+        margin: 6px;
+        background-color: $base04; /* Background color */
+        min-width: 1px; /* Fixed width */
+        // min-height: 90px;            /* Fixed height */
+        border-radius: $batt-radius; /* Rounded corners */
+        border: 2px solid $base04;
+
+        .batt-bar {
+          all: unset;
+          background-color: $base0C; /* Color of battery level */
+          border-top-left-radius: $batt-radius;
+          border-bottom-left-radius: $batt-radius;
+          border-radius: inherit;
+          // min-width: ;
+          transition: width 0.3s ease-in-out;
+        }
+      }
+
+      /* Round the left side only if battery is not empty */
+      /* .batt-bar:not(:empty) { */
+      /* border-top-left-radius: $batt-radius; */
+      /* border-bottom-left-radius: $batt-radius; */
+      /* } */
+
+      /* Round the right side only if battery is full */
+      /* .batt-bar[style*="width: 90px"] { */
+      /* border-top-right-radius: $batt-radius; */
+      /* border-bottom-right-radius: $batt-radius; */
+      /* } */
+
+      .batt-percentage-text {
+        margin-bottom: 1px; /* Spacing from battery bar */
+      }
     }
 
-    .Battery circularprogress {
-      @include fluent_decel_long;
-      min-width: 0.136rem; // line width
-      min-height: 1.636rem;
-      padding: 0rem;
-      background-color: #FFFFFF;
-      color: $color04;
-      background-color: #FFDDBB;
-      color: $color09;
-      margin-left: 20px;
+    .CircleIndicator {
+      color: $base0E;
+      background-color: $base04;
+      font-size: 0.15em;
+      min-width: 10px;
     }
   }
 }

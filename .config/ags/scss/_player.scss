@@ -1,21 +1,123 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #{"@theme_fg_color"};
-$bg-color: #{"@theme_bg_color"};
+// @use "vars" as *;
+@use "sass:color";
 
-window {
-  all: unset;
+$radius: 10px;
+$batt-radius: 10px;
+
+$base00transparent: color.adjust(#1e1e2e, $alpha: -0.1);
+$base00: #1e1e2e; // Background
+$base01: #313244; // Surface0
+$base02: #45475a; // Surface1
+$base03: #585b70; // Surface2
+$base04: #6c7086; // Overlay0
+$base05: #cdd6f4; // Text
+$base06: #f5e0dc; // Rosewater
+$base07: #bac2de; // Subtext1
+$base08: #f38ba8; // Red
+$base09: #fab387; // Peach
+$base0A: #f9e2af; // Yellow
+$base0B: #a6e3a1; // Green
+$base0C: #94e2d5; // Teal
+$base0D: #89b4fa; // Blue
+$base0E: #cba6f7; // Mauve
+$base0F: #eba0ac; // Maroon
+
+.media-players-container {
+  margin: 0 20px 0 20px;
+  padding: 4px;
+  background-color: $base00transparent;
+
+  .player-parent-box {
+    min-height: 170px;
+
+    .mediactrl-parent-box {
+      background-color: transparent;
+      margin: 4px 4px 4px 10px;
+
+      .player-control-prev {
+        background-color: transparent;
+        color: $base0E;
+        padding: 4px 4px 4px 2px;
+        border: none;
+        min-height: 25px;
+        min-width: 30px;
+        border-radius: 8px;
+      }
+
+      .player-control-pause {
+        background-color: transparent;
+        color: $base0E;
+        padding: 4px 4px 4px 2px;
+        border: none;
+        min-height: 25px;
+        min-width: 30px;
+        border-radius: 8px;
+      }
+
+      .player-control-next {
+        background-color: transparent;
+        color: $base0E;
+        padding: 4px 4px 4px 2px;
+        border: none;
+        min-height: 25px;
+        min-width: 30px;
+        border-radius: 8px;
+      }
+    }
+  }
 }
 
+.media-bg-box {
+  background-color: $base0B;
+  border: 2px solid $base0D;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.player-overlay {
+  padding: 0.4rem;
+  background-color: color.adjust($base09, $alpha: -0.8);
+  border: $base0D;
+
+  .controlButton:hover {
+    background-color: $base05;
+  }
+
+  .seek-parent-box {
+    margin: 10px 0 10px 0;
+  }
+
+  .seek-slider {
+    margin: 0 20px 0 20px;
+
+    trough {
+      background: $base02;
+      min-height: 4px;
+      border-radius: 8px;
+
+      slider {
+        color: $base0B;
+        background: $base0F;
+      }
+
+      highlight {
+        background: $base05;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+// Old Media Player (currently unused, but you never know)
 box.MediaPlayer {
-  padding: .6rem;
-  border-radius: 9px;
-  background-color: $bg-color;
+  padding: 0.6rem;
+  background-color: $base0B;
 
   box.cover-art {
     min-width: 120px;
     min-height: 120px;
     border-radius: 9px;
-    margin-right: .6rem;
+    margin-right: 0.6rem;
     background-size: contain;
     background-position: center;
   }
@@ -29,14 +131,14 @@ box.MediaPlayer {
 
   scale {
     padding: 0;
-    margin: .4rem 0;
+    margin: 0.4rem 0;
 
     trough {
       min-height: 8px;
     }
 
     highlight {
-      background-color: $fg-color;
+      background-color: $base0B;
     }
 
     slider {
@@ -50,8 +152,8 @@ box.MediaPlayer {
     button {
       min-width: 0;
       min-height: 0;
-      padding: .4rem;
-      margin: 0 .2rem;
+      padding: 0.4rem;
+      margin: 0 0.2rem;
     }
   }
 }

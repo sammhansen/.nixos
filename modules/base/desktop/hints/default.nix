@@ -1,5 +1,0 @@
-{
-  imports = [
-    #./hints.nix
-  ];
-}

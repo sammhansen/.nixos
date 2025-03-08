@@ -14,50 +14,47 @@ window.NotificationPopups {
 }
 
 eventbox.Notification {
-
-  &:first-child>box {
+  &:first-child > box {
     margin-top: 1rem;
   }
 
-  &:last-child>box {
+  &:last-child > box {
     margin-bottom: 1rem;
   }
 
   // eventboxes can not take margins so we style its inner box instead
-  >box {
-    min-width: 400px;
+  > box {
+    min-width: 300px;
     min-height: 20px;
     border-radius: 13px;
     background-color: $bg-color;
-    margin: .5rem 1rem .5rem 1rem;
-    box-shadow: 2px 3px 8px 0 gtkalpha(black, .4);
-    border: 1pt solid gtkalpha($fg-color, .03);
+    margin: 0.5rem 1rem 0.5rem 1rem;
+    box-shadow: 2px 3px 8px 0 gtkalpha(black, 0.4);
+    border: 1pt solid gtkalpha($fg-color, 0.03);
   }
 
-  &.critical>box {
-    border: 1pt solid gtkalpha($error, .4);
+  &.critical > box {
+    border: 1pt solid gtkalpha($error, 0.4);
 
     .header {
-
       .app-name {
-        color: gtkalpha($error, .8);
-
+        color: gtkalpha($error, 0.8);
       }
 
       .app-icon {
-        color: gtkalpha($error, .6);
+        color: gtkalpha($error, 0.6);
       }
     }
   }
 
   separator {
-    margin: 0 .4rem;
-    background-color: gtkalpha($fg-color, .1);
+    margin: 0 0.4rem;
+    background-color: gtkalpha($fg-color, 0.1);
   }
 
   .content {
     margin: 1rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 
     .summary {
       font-size: 1.2em;
@@ -69,8 +66,8 @@ eventbox.Notification {
     }
 
     .image {
-      border: 1px solid gtkalpha($fg-color, .02);
-      margin-right: .5rem;
+      border: 1px solid gtkalpha($fg-color, 0.02);
+      margin-right: 0.5rem;
       border-radius: 50%;
       min-width: 70px;
       min-height: 70px;
@@ -84,7 +81,7 @@ eventbox.Notification {
     margin-top: 0;
 
     button {
-      margin: 0 .3rem;
+      margin: 0 0.3rem;
 
       &:first-child {
         margin-left: 0;

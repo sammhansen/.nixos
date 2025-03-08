@@ -1,0 +1,69 @@
+@use "sass:color";
+
+$radius: 10px;
+$batt-radius: 10px;
+
+$base00transparent: color.adjust(#1e1e2e, $alpha: -0.1);
+$base00: #1e1e2e; // Background
+$base01: #313244; // Surface0
+$base02: #45475a; // Surface1
+$base03: #585b70; // Surface2
+$base04: #6c7086; // Overlay0
+$base05: #cdd6f4; // Text
+$base06: #f5e0dc; // Rosewater
+$base07: #bac2de; // Subtext1
+$base08: #f38ba8; // Red
+$base09: #fab387; // Peach
+$base0A: #f9e2af; // Yellow
+$base0B: #a6e3a1; // Green
+$base0C: #94e2d5; // Teal
+$base0D: #89b4fa; // Blue
+$base0E: #cba6f7; // Mauve
+$base0F: #eba0ac; // Maroon
+
+.dashboard-window {
+  background-color: $base00transparent;
+  border-radius: $radius;
+}
+
+.quick-toggle-box {
+  margin: 20px 3px 0px 3px;
+  // min-width: 200px;
+  // min-height: 200px;
+  background-color: transparent;
+  border-radius: 25px;
+
+  .quick-toggle-button {
+    margin: 5px 0px 0px 0px;
+    padding: 10px;
+    background-color: $base0E;
+    border-radius: 50%;
+    font-size: 40px;
+  }
+}
+
+.quick-button-box {
+  margin-top: 20px;
+  background-color: transparent;
+  border-radius: 25px;
+}
+
+.quick-button {
+  margin: 5px 0px 0px 0px;
+  padding: 10px;
+  background-color: $base03;
+  border-radius: 50%;
+  font-size: 40px;
+}
+
+.notifhistory-parent-box {
+  margin: 0px 0px 2px 0px;
+  min-width: 350px;
+
+  .notification-scrollable {
+    background-color: transparent;
+  }
+
+  .material-notifs-cleared {
+  }
+}

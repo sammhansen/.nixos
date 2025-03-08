@@ -10,8 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    stylix.url = "github:danth/stylix";
-
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       # inputs.nixpkgs.follows = "hyprland";
@@ -40,6 +38,13 @@
       url = "github:Aylur/ags";
     };
 
+    catppuccin = {
+      type = "github";
+      owner = "catppuccin";
+      repo = "nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     matugen = {
       type = "github";
       owner = "InioX";
@@ -51,13 +56,14 @@
   outputs = {
     nixpkgs,
     nixpkgs-stable,
-    stylix,
+    catppuccin,
     home-manager,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    host = "atlantis";
-    username = "lilith";
+    inherit (import ./bifrost.nix) bifrost;
+    system = bifrost.sysconf.system;
+    host = bifrost.sysconf.host;
+    username = bifrost.userconf.username;
 
     pkgs = import nixpkgs {
       inherit system;
@@ -81,10 +87,11 @@
           inherit inputs;
           inherit username;
           inherit host;
+          inherit bifrost;
         };
 
         modules = [
-          ./nodes/orion/config.nix
+          ./nodes/asgard
 
           {
             nixpkgs.config = {
@@ -93,7 +100,7 @@
             };
           }
 
-          stylix.nixosModules.stylix
+          catppuccin.nixosModules.catppuccin
 
           inputs.distro-grub-themes.nixosModules.${system}.default
 
@@ -107,13 +114,19 @@
             home-manager = {
               # useGlobalPkgs = true;
               useUserPackages = true;
-              users."${username}" = import ./home/home.nix;
+              users."${username}" = {
+                imports = [
+                  ./user
+                  catppuccin.homeManagerModules.catppuccin
+                ];
+              };
               backupFileExtension = "backup";
 
               extraSpecialArgs = {
                 inherit pkgs;
                 inherit inputs;
                 inherit username;
+                inherit bifrost;
               };
             };
           }

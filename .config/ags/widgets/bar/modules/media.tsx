@@ -16,16 +16,16 @@ export default function Media() {
       {bind(mpris, "players").as((ps) =>
         ps[0] ? (
           <box className="mpris_onbar">
-            <button className="Cover" valign={Gtk.Align.CENTER} label="♪" />
             <label
               label={bind(ps[0], "title").as(() => {
                 const title = ps[0]?.title || "Unknown Track";
                 return title;
               })}
             />
+            <button className="Cover" valign={Gtk.Align.CENTER} label="♪" />
           </box>
         ) : (
-          "No Media"
+          ""
         )
       )}
     </eventbox>
