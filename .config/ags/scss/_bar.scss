@@ -26,6 +26,18 @@ window.Bar {
     margin: 0 8px;
   }
 
+  .launcher_button {
+    padding: 1px;
+    background-color: transparent;
+
+    .launcher_label {
+      margin: 0px;
+      color: $base0E;
+      min-width: 20px;
+      min-height: 20px;
+    }
+  }
+
   .box_bg {
     margin: 5px 0px 5px 3px;
     border-radius: $radius;
@@ -77,32 +89,6 @@ window.Bar {
         all: unset;
         color: $base06;
         padding: 1px;
-      }
-    }
-
-    .launcher-parent-box {
-      // background-color: $base0E;
-      // min-width: 5px;
-      // border-radius: $radius;
-      // margin: 5px;
-
-      .weird {
-        background-color: $base0E;
-        // min-width: 5px;
-        // border-radius: $radius;
-
-        .launcher-button {
-          // padding: 1px;
-          // margin: 10px;
-          // border-radius: $radius;
-          // background-color: $base0E;
-
-          label {
-            padding: 0px;
-            // font-size: 25px;
-            // color: #000000;
-          }
-        }
       }
     }
 
