@@ -25,9 +25,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:whoslucifer/zen-browser-flake";
+    zen-browser = {
+      type = "github";
+      owner = "sammhansen";
+      repo = "zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+
+    #NUR
+    flake-utils.url = "github:numtide/flake-utils";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -58,6 +70,7 @@
     nixpkgs-stable,
     catppuccin,
     home-manager,
+    nur,
     ...
   } @ inputs: let
     inherit (import ./bifrost.nix) bifrost;
@@ -99,6 +112,8 @@
               # allowBroken = true;
             };
           }
+          nur.modules.nixos.default
+          nur.legacyPackages."${system}".repos.iopq.modules.xraya
 
           catppuccin.nixosModules.catppuccin
 
@@ -124,6 +139,7 @@
 
               extraSpecialArgs = {
                 inherit pkgs;
+                inherit system;
                 inherit inputs;
                 inherit username;
                 inherit bifrost;
