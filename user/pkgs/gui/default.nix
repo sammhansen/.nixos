@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./browsers/default.nix
     ./terminals/default.nix
@@ -7,5 +7,9 @@
 
     ./launchers/default.nix
     ./senpwai.nix
+  ];
+
+  home.packages = with pkgs; [
+    (callPackage ./burpsuite-pro.nix {})
   ];
 }
