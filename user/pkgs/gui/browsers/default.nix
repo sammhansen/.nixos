@@ -1,7 +1,8 @@
 {
   imports = [
     ./chromium.nix
-    ./firefox/default.nix
-    ./packages.nix
+    ./firefox
+    ./zen-twilight.nix
+    ./pkgs.nix
   ];
 }
