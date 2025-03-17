@@ -90,6 +90,12 @@ lazy.setup({
 		end,
 	},
 	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("plugs.utils.nvim-ts-autotag")
+		end,
+	},
+	{
 		"echasnovski/mini.comment",
 		version = false,
 		config = function()

@@ -24,7 +24,7 @@
       gnome.enable = true;
       hyprland.enable = true;
       xwayland.enable = true;
-      niri.enable = false; # niri conflicts with xwayland..disable xwayland first
+      niri.enable = false; # niri conflicts with xwayland..disable xwayland above
     };
 
     themes = {
@@ -42,6 +42,12 @@
       kitty.enable = true;
       foot.enable = true;
       wezterm.enable = false;
+    };
+
+    browsers = {
+      browser = "chromium";
+      firefox.enable = true;
+      chromium.enable = true;
     };
 
     dev = {

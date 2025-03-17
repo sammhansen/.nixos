@@ -26,8 +26,8 @@ in {
       ];
 
       character = {
-        success_symbol = "[  ](bold fg:purple)";
-        error_symbol = "[ 󰅙 ](bold fg:red)";
+        success_symbol = "[☁︎](bold fg:cyan)";
+        error_symbol = "[☁︎](bold fg:red)";
       };
 
       username = {
@@ -40,9 +40,9 @@ in {
       directory = {
         truncation_length = 3;
         truncation_symbol = "…/";
-        home_symbol = "󰋞 ";
+        home_symbol = "🗽";
         read_only_style = "197";
-        read_only = "  ";
+        read_only = "🗝️";
         format = "at [$path]($style)[$read_only]($read_only_style) ";
 
         substitutions = {
@@ -51,11 +51,7 @@ in {
           "Music" = " ";
           "Pictures" = " ";
           "Videos" = " ";
-          "Projects" = "󱌢 ";
-          "School" = "󰑴 ";
           "GitHub" = "";
-          ".config" = " ";
-          "Vault" = "󱉽 ";
         };
       };
 

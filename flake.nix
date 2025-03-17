@@ -47,7 +47,10 @@
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      type = "github";
+      owner = "Aylur";
+      repo = "ags";
+      ref = "v2.3.0";
     };
 
     catppuccin = {

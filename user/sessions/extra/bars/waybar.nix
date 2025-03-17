@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    swaynotificationcenter
+  ];
+
   programs.waybar = {
     enable = true;
 

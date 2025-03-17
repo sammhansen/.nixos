@@ -1,22 +1,14 @@
-{pkgs}: let
-  imgLink = "https://img.freepik.com/free-photo/morskie-oko-tatry_1204-510.jpg";
-  image = pkgs.fetchurl {
-    url = imgLink;
-    sha256 = "05g7zk10li2d2qfzxlrp16cvh5lbi0vs7lz9wwsvp9li35i21w6n";
+{pkgs}:
+pkgs.stdenv.mkDerivation {
+  name = "sddm-theme";
+  src = pkgs.fetchFromGitHub {
+    owner = "whoslucifer";
+    repo = "SDDM-NIX";
+    rev = "f1943c2247244b1328a406f818dec1285c4366d1";
+    sha256 = "125lvlcldfvr09fi5gaanjjz4m5270syrs6k4gf4ch06wzcqf842";
   };
-
-  theme_path = "$out/";
-in
-  pkgs.stdenv.mkDerivation {
-    name = "sddm-astronaut-theme";
-    src = pkgs.fetchFromGitHub {
-      owner = "sammhansen";
-      repo = "sddm-nixos";
-      rev = "5e39e0841d4942757079779b4f0087f921288af6";
-      sha256 = "09vi9dr0n0bhq8cj4jq1h17jw2ssi79zi9lhn0j6kgbxrqk2g8vf";
-    };
-    installPhase = ''
-      mkdir -p ${theme_path}
-      cp -R ./* ${theme_path}/
-    '';
-  }
+  installPhase = ''
+    mkdir -p $out
+    cp -R ./* $out/
+  '';
+}

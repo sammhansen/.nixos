@@ -5,8 +5,10 @@
     ./zoom.nix
     ./pkgs.nix
 
-    ./launchers/default.nix
+    ./launchers
+    ./bars
     ./senpwai.nix
+    # ./swaync.nix
   ];
 
   home.packages = with pkgs; [

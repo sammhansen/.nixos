@@ -1,8 +1,12 @@
 {
+  bifrost,
+  lib,
   username,
   pkgs,
   ...
 }: let
+  browser = bifrost.browsers.browser;
+
   screenshot_path = "/home/${username}/Pictures/Screenshots";
   hyprshot = pkgs.writeShellScriptBin "hyprshot.sh" ''
     if [[ ! -d ${screenshot_path} ]];then
@@ -114,11 +118,11 @@ in {
       "ALT, F, exec, hints"
 
       # Rofi
-      "SUPER, A , exec,  uwsm app -- fuzzel"
+      "SUPER, A , exec,  uwsm app -- rofi -show drun -theme ~/.config/rofi/launcher.rasi"
       "SUPER, V, exec, ${clipboard}/bin/rofi-clipboard.sh"
       "SUPER, W , exec, ${pkgs.rofi-power-menu}/bin/rofi-powermenu"
 
-      "Super, B, exec, firefox"
+      "Super, B, exec, ${browser}"
       "Alt, C, exec, chromium --app='https://chatgpt.com'"
       "Alt, G, exec, chromium --app='https://gemini.google.com/app'"
 
