@@ -5,6 +5,7 @@
 
     # IFD, easy to vendor
     tty.enable = false;
+    sddm.assertQt6Sddm = false;
   };
 
   console.colors = [

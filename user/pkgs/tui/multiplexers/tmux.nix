@@ -74,7 +74,7 @@ in {
     escapeTime = 0;
     keyMode = "vi";
     mouse = true;
-    shell = "/run/current-system/sw/bin/zsh";
+    shell = "${pkgs.zsh}/bin/zsh";
     extraConfig = ''
       set-option -sa terminal-overrides ",xterm*:Tc"
       bind c copy-mode
@@ -94,9 +94,9 @@ in {
 
       set-option -g default-terminal "screen-256color"
       set-option -g status-right-length 100
-      set-option -g @indicator_color "yellow"
+      set-option -g @indicator_color "#f38ba8"
       set-option -g @window_color "magenta"
-      set-option -g @main_accent "blue"
+      set-option -g @main_accent "#89b4fa"
       set-option -g pane-active-border fg=black
       set-option -g pane-border-style fg=black
       set-option -g status-style "bg=${bg} fg=${fg}"

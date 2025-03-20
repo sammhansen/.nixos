@@ -69,6 +69,13 @@ lazy.setup({
 	},
 
 	{
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("nvim-highlight-colors").setup({})
+		end,
+	},
+
+	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()

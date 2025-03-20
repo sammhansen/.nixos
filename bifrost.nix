@@ -20,7 +20,16 @@
       islaptop = true;
     };
 
+    monitors = {
+      inbuilt = "eDP-1";
+      thinkvision = {
+        enable = true;
+        name = "HDMI-A-2";
+      };
+    };
+
     sessions = {
+      dm = "sddm"; #tui-greet
       gnome.enable = true;
       hyprland.enable = true;
       xwayland.enable = true;
@@ -39,13 +48,14 @@
     };
 
     terminals = {
+      default = "foot";
       kitty.enable = true;
       foot.enable = true;
       wezterm.enable = false;
     };
 
     browsers = {
-      browser = "chromium";
+      default = "chromium";
       firefox.enable = true;
       chromium.enable = true;
     };

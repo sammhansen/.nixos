@@ -26,8 +26,8 @@ in {
       ];
 
       character = {
-        success_symbol = "[☁︎](bold fg:cyan)";
-        error_symbol = "[☁︎](bold fg:red)";
+        success_symbol = "[  ](bold fg:cyan)";
+        error_symbol = "[ 󰅙 ](bold fg:red)";
       };
 
       username = {

@@ -3,5 +3,7 @@
     tor-browser
     ladybird
     amberol
+    floorp
+    google-chrome
   ];
 }

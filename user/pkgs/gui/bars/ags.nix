@@ -23,6 +23,7 @@
       pkgs.webkitgtk_4_1
       pkgs.gst_all_1.gstreamer
       inputs.ags.packages.${pkgs.system}.apps
+      inputs.ags.packages.${pkgs.system}.powerprofiles
       inputs.ags.packages.${pkgs.system}.battery
       inputs.ags.packages.${pkgs.system}.hyprland
       inputs.ags.packages.${pkgs.system}.wireplumber

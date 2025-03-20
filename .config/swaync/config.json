@@ -26,8 +26,8 @@
 		"dnd",
 		"notifications",
 		"backlight",
-		"volume",
-		"mpris"
+		"mpris",
+		"buttons-grid"
 	],
 	"widget-config": {
 		"title": {
@@ -38,16 +38,9 @@
 		"dnd": {
 			"text": "Do Not Disturb"
 		},
-		"label": {
-			"max-lines": 1,
-			"text": "Notification Center"
-		},
 		"mpris": {
 			"image-size": 96,
 			"image-radius": 12
-		},
-		"volume": {
-			"label": "󰕾 "
 		},
 		"backlight": {
 			"label": "󰃟 "
