@@ -8,7 +8,8 @@
 </div>
 
 > [!NOTE]
-> - HOST : Lenovo ThinkPad t460s
-> - GPU: SkyLake Intel HD Graphics 520
+> - Everything is subject to change
+> - Host : Lenovo ThinkPad T460s
 
-![image](https://github.com/user-attachments/assets/80c34d83-3a02-44f0-ae9a-efb4d8543933)
+![image](https://github.com/user-attachments/assets/066311f2-4af9-4a0d-a5d0-c286094ffa26)
+
