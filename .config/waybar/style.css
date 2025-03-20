@@ -1,0 +1,138 @@
+@define-color base #11111b;
+@define-color pink #f5c2e7;
+@define-color blue #89b4fa;
+@define-color mauve #cba6f7;
+@define-color green #a6e3a1;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext #bac2de;
+
+* {
+  font-family: "Iosevka Nerd Font";
+  font-weight: bold;
+  min-height: 0;
+  font-size: 97%;
+}
+
+window#waybar {
+  background: @base;
+  border-radius: 7px;
+}
+
+tooltip {
+  color: @subtext;
+  background: @base;
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: @subtext;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+#custom-menu {
+  color: #5277c3;
+  font-size: 20px;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#cpu {
+  color: @mauve;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#memory {
+  color: @blue;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#temperature {
+  color: @pink;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#disk {
+  color: @green;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#workspaces button {
+  color: @blue;
+  font-size: 18px;
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 9px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#workspaces button.active {
+  color: @mauve;
+  border-radius: 15px 15px 15px 15px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#workspaces button.focused {
+  color: @green;
+}
+
+#workspaces button.urgent {
+  color: @pink;
+  border-radius: 10px;
+}
+
+#battery,
+#clock,
+#cpu,
+#disk,
+#memory,
+#temperature,
+#tray,
+#custom-swaync {
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#temperature.critical {
+  background-color: #ff0000;
+}
+
+@keyframes blink {
+  to {
+    color: #000000;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

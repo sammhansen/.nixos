@@ -6,7 +6,7 @@ in {
     settings = {
       background = {
         monitor = "${monitor}";
-        path = lib.mkForce "~/nix/.config/wallpapers/Messy-Room.jpg";
+        path = lib.mkForce "../../../.config/wallpapers/bunny.png";
         blur_passes = 0;
         contrast = 0.8916;
         brightness = 0.8172;

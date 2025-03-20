@@ -1,16 +1,12 @@
-{
-  lib,
-  ... 
-}:
-{
-	programs.foot = {
-		enable = true;
-		settings = {
-			main = {
-				shell = "tmux";
-        font = lib.mkForce "SpaceMono Nerd Font:size=12.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga,termicons:size=12";
+{lib, ...}: {
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        shell = "tmux";
+        font = lib.mkForce "Iosevka Nerd Font:size=12.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga,termicons:size=12";
         line-height = 13.5;
-				letter-spacing = 0;
+        letter-spacing = 1;
         term = "xterm-256color";
         selection-target = "clipboard";
         dpi-aware = "no";
@@ -30,22 +26,22 @@
         notify = "yes";
         urgent = "yes";
       };
-			
-			colors = {
-				alpha = lib.mkForce 0.7;
-			};
 
-			key-bindings = {
-				clipboard-copy = "Control+c";
-				clipboard-paste= "Control+v";
-				search-start = "Control+f";
-			};
+      colors = {
+        alpha = lib.mkForce 0.7;
+      };
 
-			search-bindings = {
-				cancel= "Escape";
-				find-prev= "Shift+F3";
-				find-next= "F3 Control+G";
-			};
-		};
-	};
+      key-bindings = {
+        clipboard-copy = "Control+c";
+        clipboard-paste = "Control+v";
+        search-start = "Control+f";
+      };
+
+      search-bindings = {
+        cancel = "Escape";
+        find-prev = "Shift+F3";
+        find-next = "F3 Control+G";
+      };
+    };
+  };
 }

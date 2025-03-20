@@ -6,6 +6,7 @@
       nerd-fonts.space-mono
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
+      rubik
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji

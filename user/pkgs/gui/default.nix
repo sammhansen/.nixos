@@ -1,11 +1,12 @@
 {pkgs, ...}: {
   imports = [
-    ./browsers/default.nix
-    ./terminals/default.nix
+    ./browsers
+    ./terminals
     ./zoom.nix
     ./pkgs.nix
 
-    ./launchers/default.nix
+    ./launchers
+    ./bars
     ./senpwai.nix
   ];
 

@@ -69,6 +69,13 @@ lazy.setup({
 	},
 
 	{
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("nvim-highlight-colors").setup({})
+		end,
+	},
+
+	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
@@ -87,6 +94,12 @@ lazy.setup({
 		version = false,
 		config = function()
 			require("plugs.utils.mini-pairs")
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("plugs.utils.nvim-ts-autotag")
 		end,
 	},
 	{

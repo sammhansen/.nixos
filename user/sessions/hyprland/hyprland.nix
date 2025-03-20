@@ -7,7 +7,8 @@
   inherit (lib.modules) mkIf;
 in {
   imports = [
-    ./hypr
+    ./settings.nix
+    ./binds.nix
   ];
 
   wayland.windowManager.hyprland = mkIf bifrost.sessions.hyprland.enable {
@@ -20,6 +21,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    hyprshade
     uwsm
   ];
 }

@@ -35,6 +35,7 @@ in {
       lua-language-server
       markdownlint-cli
       nixd
+      emmet-language-server
 
       prettierd
       nodePackages.bash-language-server

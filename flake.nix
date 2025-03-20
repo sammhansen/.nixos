@@ -47,7 +47,10 @@
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      type = "github";
+      owner = "Aylur";
+      repo = "ags";
+      ref = "v2.3.0";
     };
 
     catppuccin = {
@@ -94,7 +97,7 @@
     };
   in {
     nixosConfigurations = {
-      "${host}" = nixpkgs.lib.nixosSystem rec {
+      "${host}" = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit system;
           inherit inputs;
