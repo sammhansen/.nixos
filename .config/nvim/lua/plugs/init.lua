@@ -56,6 +56,9 @@ lazy.setup({
 			require("plugs.utils.treesitter")
 		end,
 	},
+	{
+		"ranjithshegde/ccls.nvim",
+	},
 
 	{
 		"saghen/blink.cmp",

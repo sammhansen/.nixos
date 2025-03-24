@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 
 local servers = {
 	bashls = {},
+	clangd = {},
 	gopls = {
 		settings = {
 			gopls = {
