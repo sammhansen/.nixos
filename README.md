@@ -8,8 +8,8 @@
 </div>
 
 > [!NOTE]
-> - Nvidia?? We dont do that here
-> - Host : Lenovo ThinkPad T460s
+> - Lenovo ThinkPad T460s
+> - Nvidia?? we dont do that here
 
 ![image](https://github.com/user-attachments/assets/0f74ed4a-8be4-4dfe-8e7a-e27473b49fe1)
 
