@@ -11,5 +11,6 @@
 > - Everything is subject to change
 > - Host : Lenovo ThinkPad T460s
 
-![image](https://github.com/user-attachments/assets/066311f2-4af9-4a0d-a5d0-c286094ffa26)
+![image](https://github.com/user-attachments/assets/0f74ed4a-8be4-4dfe-8e7a-e27473b49fe1)
+
 
