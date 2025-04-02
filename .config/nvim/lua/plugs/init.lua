@@ -56,6 +56,9 @@ lazy.setup({
 			require("plugs.utils.treesitter")
 		end,
 	},
+	{
+		"ranjithshegde/ccls.nvim",
+	},
 
 	{
 		"saghen/blink.cmp",
@@ -80,6 +83,13 @@ lazy.setup({
 		lazy = false,
 		config = function()
 			require("plugs.lsp.lsp-config") -- Load your LSP config
+		end,
+	},
+	{
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("plugs.mason")
 		end,
 	},
 	{

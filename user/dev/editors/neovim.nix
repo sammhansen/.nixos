@@ -35,6 +35,7 @@ in {
       lua-language-server
       markdownlint-cli
       nixd
+      clang-tools
       emmet-language-server
 
       prettierd
