@@ -8,7 +8,7 @@
 </div>
 
 > [!NOTE]
-> - Everything is subject to change
+> - Nvidia?? We dont do that here
 > - Host : Lenovo ThinkPad T460s
 
 ![image](https://github.com/user-attachments/assets/0f74ed4a-8be4-4dfe-8e7a-e27473b49fe1)
