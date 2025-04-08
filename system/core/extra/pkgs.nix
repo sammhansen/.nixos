@@ -10,11 +10,13 @@
     ffmpeg
     libnotify
     gobject-introspection
+    procps
 
     curl
     wget
     glib
     killall
+    inetutils
     pciutils
     usbutils
 

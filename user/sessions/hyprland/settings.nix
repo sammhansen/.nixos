@@ -1,4 +1,10 @@
-{lib, ...}: {
+{
+  bifrost,
+  lib,
+  ...
+}: let
+  monitor = bifrost.monitors.default;
+in {
   wayland.windowManager.hyprland.settings = {
     general = {
       gaps_in = 4;
@@ -13,8 +19,18 @@
 
     monitor = [
       ",preferred,auto,1"
-      "eDP-1, 1920x1080@60.00, 0x1080, 1"
+      "eDP-1, 1920x1080@60.00, 1920x540, 1"
       "HDMI-A-2, 1920x1080@60.00, 0x0, 1"
+    ];
+
+    workspace = [
+      "1, monitor:${monitor}"
+      "2, monitor:${monitor}"
+      "3, monitor:${monitor}"
+      "4, monitor:${monitor}"
+      "5, monitor:${monitor}"
+      "6, monitor:eDP-1"
+      "7, monitor:eDP-1"
     ];
 
     decoration = {
@@ -49,6 +65,7 @@
       "uwsm app -- discord &"
       "uwsm app -- wlsunset &"
       "uwsm app -- swww-daemon --format xrgb"
+      "walker --gapplication-service"
       # "hyprctl setcursor Bibata-Modern-Classic 24"
     ];
 
@@ -75,26 +92,39 @@
     animations = {
       enabled = true;
       bezier = [
-        "md3_decel, 0.05, 0.7, 0.1, 1"
-        "md3_accel, 0.3, 0, 0.8, 0.15"
-        "overshot, 0.05, 0.9, 0.1, 1.1"
-        "crazyshot, 0.1, 1.5, 0.76, 0.92"
-        "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
-        "fluent_decel, 0.1, 1, 0, 1"
-        "easeInOutCirc, 0.85, 0, 0.15, 1"
-        "easeOutCirc, 0, 0.55, 0.45, 1"
-        "easeOutExpo, 0.16, 1, 0.3, 1"
+        "myBezier, 0.05, 0.9, 0.1, 1.05"
       ];
       animation = [
-        "windows, 1, 3, md3_decel, popin 60%"
+        "windows, 1, 7, myBezier"
+        "windowsIn, 1, 7, myBezier, slide"
+        "windowsOut, 1, 7, default, slide"
         "border, 1, 10, default"
-        "fade, 1, 2.5, md3_decel"
-        # "workspaces, 1, 3.5, md3_decel, slide"
-        "workspaces, 1, 7, fluent_decel, slide"
-        # "workspaces, 1, 7, fluent_decel, slidefade 15%"
-        # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
-        "specialWorkspace, 1, 3, md3_decel, slidevert"
+        "borderangle, 1, 8, default"
+        "fade, 1, 7, default"
+        "workspaces, 1, 6, default, slidefade 20%"
       ];
+
+      # bezier = [
+      #   "md3_decel, 0.05, 0.7, 0.1, 1"
+      #   "md3_accel, 0.3, 0, 0.8, 0.15"
+      #   "overshot, 0.05, 0.9, 0.1, 1.1"
+      #   "crazyshot, 0.1, 1.5, 0.76, 0.92"
+      #   "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+      #   "fluent_decel, 0.1, 1, 0, 1"
+      #   "easeInOutCirc, 0.85, 0, 0.15, 1"
+      #   "easeOutCirc, 0, 0.55, 0.45, 1"
+      #   "easeOutExpo, 0.16, 1, 0.3, 1"
+      # ];
+      # animation = [
+      #   "windows, 1, 3, md3_decel, popin 60%"
+      #   "border, 1, 10, default"
+      #   "fade, 1, 2.5, md3_decel"
+      #   # "workspaces, 1, 3.5, md3_decel, slide"
+      #   "workspaces, 1, 7, fluent_decel, slide"
+      #   # "workspaces, 1, 7, fluent_decel, slidefade 15%"
+      #   # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
+      #   "specialWorkspace, 1, 3, md3_decel, slidevert"
+      # ];
     };
 
     dwindle = {
@@ -143,14 +173,18 @@
 
     windowrule = [
       # "opacity 0.89 override 0.93 override, .*"
-      "float, ^(steam)$"
-      "float, polkit-gnome-authentication-agent-1"
-      "size 300 300, polkit-gnome-authentication-agent-1"
-      "float, Genymotion Player"
-      "float, Volume Control"
+
+      "workspace 6, class:^(spotify)$"
+      "workspace 7, class:^(discord)$"
+
+      "float, title:^(steam)$"
+      "float, title:polkit-gnome-authentication-agent-1"
+      "size 300 300, title:polkit-gnome-authentication-agent-1"
+      "float, title:Genymotion Player"
+      "float, title:Volume Control"
       "float, title:^(Smile)$"
-      "float, ^(blueberry.py)$"
-      "pin, ^(showmethekey-gtk)$"
+      "float, class:^(blueberry.py)$"
+      "pin, title:^(showmethekey-gtk)$"
       "float,title:^(Open File)(.*)$"
       "float,title:^(Select a File)(.*)$"
       "float,title:^(Choose wallpaper)(.*)$"

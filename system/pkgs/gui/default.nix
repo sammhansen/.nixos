@@ -1,6 +1,6 @@
 {
   imports = [
-    ./browsers/default.nix
-    ./music/default.nix
+    ./browsers
+    # ./end4.nix
   ];
 }

@@ -5,13 +5,14 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
+  cfg = bifrost.sessions.hyprland;
 in {
   imports = [
     ./settings.nix
     ./binds.nix
   ];
 
-  wayland.windowManager.hyprland = mkIf bifrost.sessions.hyprland.enable {
+  wayland.windowManager.hyprland = mkIf cfg.enable {
     enable = true;
     xwayland.enable = true;
     systemd = {

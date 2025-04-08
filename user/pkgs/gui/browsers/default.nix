@@ -1,9 +1,10 @@
 {
   imports = [
     ./chromium.nix
-    ./firefox
-    ./zen-twilight.nix
-    # ./qute.nix
-    ./pkgs.nix
+    ./chrome.nix
+    ./firefox.nix
+    ./zen.nix
+    ./tor-browser.nix
+    ./qute.nix
   ];
 }

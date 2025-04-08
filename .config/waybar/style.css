@@ -79,28 +79,24 @@ tooltip label {
 
 #workspaces button {
   color: @blue;
-  font-size: 18px;
-  box-shadow: none;
-  text-shadow: none;
-  border-radius: 9px;
-  padding-left: 8px;
-  padding-right: 8px;
+  font-size: 13px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 #workspaces button.active {
   color: @mauve;
-  border-radius: 15px 15px 15px 15px;
-  padding-left: 8px;
-  padding-right: 8px;
+  font-size: 13px;
 }
 
 #workspaces button.focused {
   color: @green;
+  font-size: 13px;
 }
 
 #workspaces button.urgent {
   color: @pink;
-  border-radius: 10px;
+  font-size: 13px;
 }
 
 #battery,

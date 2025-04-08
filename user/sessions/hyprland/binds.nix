@@ -16,6 +16,20 @@
 
     ${pkgs.hyprshot}/bin/hyprshot -m region -o ${screenshot_path}
   '';
+
+  clipboard = pkgs.writeShellScriptBin "rofi-clipboard.sh" ''
+    config="
+    configuration{dmenu{display-name:\" \";}}
+    window{width:440px; height:271px;}
+    listview{scrollbar:false;}
+    "
+    themeDir="~/.config/rofi/launcher.rasi"
+
+    cliphist list |
+        rofi -dmenu -theme-str "''${config}" -theme "''${themeDir}" |
+        cliphist decode |
+        wl-copy
+  '';
 in {
   wayland.windowManager.hyprland.settings = {
     bindm = [
@@ -81,10 +95,14 @@ in {
       "SUPER , E, exec, uwsm app -- thunar"
       "ALT, S, exec, ${hyprshot}/bin/hyprshot.sh"
 
-      "SUPER, A , exec, fuzzel"
-      "Super, V, exec, pkill fuzzel || cliphist list | fuzzel  --match-mode fzf --dmenu | cliphist decode | wl-copy"
+      # "SUPER, A , exec, ${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.config/rofi/launcher.rasi"
+
+      "SUPER, A , exec, ${pkgs.walker}/bin/walker"
+      "SUPER, W , exec, ${pkgs.rofi-wayland}/bin/rofi -show window -theme ~/.config/rofi/window.rasi"
+      "Super, V, exec, ${clipboard}/bin/rofi-clipboard.sh"
       "Super, Period, exec, pkill fuzzel || ~/${dotsdir}/user/pkgs/gui/launchers/fuzzel/fuzzel-emoji"
 
+      "CTRL SUPER ALT, SPACE, exec, rofi -show menu -theme ~/.config/rofi/powermenu.rasi -modi 'menu:rofi-power-menu --choices=shutdown/reboot/logout/hibernate'"
       "Super, B, exec, ${browser}"
       "Alt, C, exec, chromium --app='https://chatgpt.com'"
       "Alt, G, exec, chromium --app='https://gemini.google.com/app'"

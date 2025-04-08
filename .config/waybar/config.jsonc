@@ -42,40 +42,20 @@
 		"tooltip": false
 	},
 	"hyprland/workspaces": {
-		"format": "<sub>{icon}</sub>{windows}",
-		"format-window-separator": "  ",
-		"window-rewrite-default": "",
-		"window-rewrite": {
-			"title<.*[Yy]ou[Tt]ube.*>": "",
-			"class<firefox>": " ",
-			"class<firefox> title<.*github.*>": " ",
-			"foot": "",
-			"code": "󰨞",
-			"title<.*amazon.*>": " ",
-			"title<.*reddit.*>": "",
-			"title<.*Picture-in-Picture.*>": " ",
-			"class<firefox|org.mozilla.firefox>": " ",
-			"class<kitty|konsole>": " ",
-			"class<kitty-dropterm>": "",
-			"class<chromium-browser>": " ",
-			"class<org.telegram.desktop|io.github.tdesktop_x64.TDesktop>": " ",
-			"class<[Ss]potify>": "",
-			"class<VSCode|code-url-handler|code-oss|codium|codium-url-handler|VSCodium>": "󰨞 ",
-			"class<thunar>": "󰝰 ",
-			"class<[Tt]hunderbird|[Tt]hunderbird-esr>": " ",
-			"class<discord|[Ww]ebcord>": " ",
-			"class<subl>": "󰅳 ",
-			"class<mpv>": "",
-			"class<celluloid>": " ",
-			"class<Cider>": "󰎆 ",
-			"class<virt-manager>": " ",
-			"class<codeblocks>": "󰅩 ",
-			"class<mousepad>": " ",
-			"class<libreoffice-writer>": " ",
-			"class<libreoffice-startcenter>": "󰏆 ",
-			"class<com.obsproject.Studio>": " ",
-			"class<polkit-gnome-authentication-agent-1>": "󰒃 ",
-			"class<nwg-look>": " "
+		"format": "{icon}",
+		"on-click": "activate",
+		"persistent-workspaces": {
+			"HDMI-A-2": [
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"eDP-1": [
+				6,
+				7
+			]
 		}
 	},
 	"bluetooth": {

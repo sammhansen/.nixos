@@ -21,8 +21,9 @@
     };
 
     monitors = {
+      default = "HDMI-A-2";
       inbuilt = "eDP-1";
-      thinkvision = {
+      external = {
         enable = true;
         name = "HDMI-A-2";
       };
@@ -30,9 +31,11 @@
 
     sessions = {
       dm = "sddm"; #tui-greet
-      gnome.enable = true;
+      gnome.enable = false;
       hyprland.enable = true;
       xwayland.enable = true;
+      qtile.enable = false;
+      sway.enable = false;
       niri.enable = false; # niri conflicts with xwayland..disable xwayland above
     };
 
@@ -49,15 +52,20 @@
 
     terminals = {
       default = "foot";
-      kitty.enable = true;
+      kitty.enable = false;
       foot.enable = true;
+      ghostty.enable = false;
       wezterm.enable = false;
     };
 
     browsers = {
       default = "chromium";
       firefox.enable = true;
+      zen.enable = true;
+      tor-browser.enable = true;
+      chrome.enable = true;
       chromium.enable = true;
+      qute.enable = false;
     };
 
     dev = {
@@ -73,6 +81,17 @@
       langs = {
         nodejs.enable = false;
       };
+    };
+
+    virtualisation = {
+      distrobox = {
+        kali.hostname = "kali";
+      };
+      podman.enable = false;
+      docker.enable = false;
+      ollama.enable = false;
+      waydroid.enable = false;
+      emulator.enable = false;
     };
 
     pentester = {
@@ -91,7 +110,7 @@
     };
 
     extra = {
-      flatpak.enable = true;
+      flatpak.enable = false;
       printing.enable = true;
     };
   };

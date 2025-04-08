@@ -6,6 +6,15 @@
       nerd-fonts.space-mono
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
+
+      nerd-fonts.ubuntu
+      nerd-fonts.ubuntu-mono
+      nerd-fonts.fantasque-sans-mono
+      nerd-fonts.fira-code
+      nerd-fonts.mononoki
+      google-fonts
+      morewaita-icon-theme
+
       rubik
       noto-fonts
       noto-fonts-cjk-sans

@@ -2,6 +2,7 @@
   imports = [
     ./hyprland.nix
     ./sway.nix
+		./qtile.nix
     ./niri.nix
     ./gnome.nix
     ./xserver.nix

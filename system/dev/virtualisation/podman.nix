@@ -5,9 +5,5 @@
       dockerCompat = false;
       defaultNetwork.settings.dns_enabled = false;
     };
-
-    docker = {
-      enable = true;
-    };
   };
 }
