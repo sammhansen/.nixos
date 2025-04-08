@@ -8,6 +8,8 @@
     ./launchers
     ./bars
     ./senpwai.nix
+    ./spotify.nix
+		./obs-studio.nix
   ];
 
   home.packages = with pkgs; [

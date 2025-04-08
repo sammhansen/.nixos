@@ -1,17 +1,14 @@
 {
   bifrost,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.sway;
+  cfg = bifrost.sessions.qtile;
 in {
   config = mkIf cfg.enable {
-    programs.sway = {
+    services.xserver.windowManager.qtile = {
       enable = true;
-      package = pkgs.swayfx;
-      xwayland.enable = true;
     };
   };
 }

@@ -4,39 +4,42 @@
     package = pkgs.vscode;
 
     mutableExtensionsDir = true;
-    extensions = with pkgs.vscode-extensions; [
-      # THEMEING
-      catppuccin.catppuccin-vsc
-      catppuccin.catppuccin-vsc-icons
+    profiles = {
+      default = {
+        extensions = with pkgs.vscode-extensions; [
+          catppuccin.catppuccin-vsc
+          catppuccin.catppuccin-vsc-icons
 
-      # GIT
-      github.copilot
-      github.copilot-chat
-      github.vscode-pull-request-github
-      github.vscode-github-actions
-      eamodio.gitlens
+          # GIT
+          github.copilot
+          github.copilot-chat
+          github.vscode-pull-request-github
+          github.vscode-github-actions
+          eamodio.gitlens
 
-      # UTILITIES
-      ms-vscode-remote.remote-ssh
-      esbenp.prettier-vscode
-      ms-vscode.live-server
-      vscodevim.vim # yes i hate myself
-      wakatime.vscode-wakatime
-      formulahendry.code-runner
-      leonardssh.vscord
+          # UTILITIES
+          ms-vscode-remote.remote-ssh
+          esbenp.prettier-vscode
+          ms-vscode.live-server
+          vscodevim.vim # yes i hate myself
+          wakatime.vscode-wakatime
+          formulahendry.code-runner
+          leonardssh.vscord
 
-      # flutter
-      dart-code.dart-code
-      dart-code.flutter
+          # flutter
+          dart-code.dart-code
+          dart-code.flutter
 
-      #python
-      ms-python.python
-      ms-python.debugpy
+          #python
+          ms-python.python
+          ms-python.debugpy
 
-      # LANGUAGES BASED EXTENSIONS
-      ## NIX
-      jnoortheen.nix-ide
-      kamadorueda.alejandra
-    ];
+          # LANGUAGES BASED EXTENSIONS
+          ## NIX
+          jnoortheen.nix-ide
+          kamadorueda.alejandra
+        ];
+      };
+    };
   };
 }

@@ -50,7 +50,14 @@
       type = "github";
       owner = "Aylur";
       repo = "ags";
-      ref = "v2.3.0";
+      ref = "v1.9.0";
+    };
+
+    walker = {
+      type = "github";
+      owner = "abenz1267";
+      repo = "walker";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin = {
@@ -135,7 +142,8 @@
               users."${username}" = {
                 imports = [
                   ./user
-                  catppuccin.homeManagerModules.catppuccin
+                  catppuccin.homeModules.catppuccin
+                  inputs.walker.homeManagerModules.default
                 ];
               };
               backupFileExtension = "backup";

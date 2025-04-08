@@ -43,7 +43,7 @@ in {
     };
 
   config.programs.nushell = {
-    shellAliases = aliases // config.shellAliases;
+    # shellAliases = aliases // config.shellAliases;
     enable = true;
     environmentVariables = {
       PROMPT_INDICATOR_VI_INSERT = "  ";

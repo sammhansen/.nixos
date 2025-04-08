@@ -4,5 +4,6 @@
     wakatime-cli
     jq #json parser
     yq #yaml parser
+		logkeys
   ];
 }

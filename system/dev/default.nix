@@ -1,11 +1,11 @@
 {
   imports = [
-    ./databases/default.nix
-    ./ides.nix
+    # ./databases/default.nix
+    # ./ides.nix
     ./langs.nix
-    ./deps.nix
+    # ./deps.nix
     ./nix-ld.nix
-    ./virtualization
+    ./virtualisation
     # ./emulators/default.nix
   ];
 }

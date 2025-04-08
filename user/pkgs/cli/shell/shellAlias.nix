@@ -1,8 +1,11 @@
-let
+{bifrost, ...}: let
   nixprofile_path = "/nix/var/nix/profiles/system";
+  username = bifrost.userconf.username;
+  kali-host = bifrost.virtualisation.distrobox.kali.hostname;
 in {
   home.shellAliases = {
     x = "clear";
+    space = "du -sh * | sort -h";
     cat = "bat";
     q = "exit";
     ":q" = "exit";
@@ -19,8 +22,8 @@ in {
     "xcb" = "export QT_QPA_PLATFORM=xcb";
 
     db = "distrobox";
-    kali = "distrobox enter kalignome -- /snap/bin/nu";
-    dbinit = "distrobox create --name atlantis -i docker.io/kalilinux/kali-rolling:latest --init";
+    kali = "distrobox enter ${kali-host} -- /usr/bin/fish";
+    dbinit = "distrobox create --name ${kali-host} -i docker.io/kalilinux/kali-rolling:latest --home /home/${username}/distrobox/kali --init";
 
     "gs" = "git status";
     "gd" = "git diff";
@@ -48,5 +51,13 @@ in {
 
     font-list = "fc-list : family | fzf | tr -d '\\n'";
     "mkdir" = "mkdir -pv";
+
+    #sessions
+    "slock" = "loginctl lock-session";
+    "slogout" = "hyprctl dispatch exit";
+    "ssleep" = "loginctl suspend";
+    "shibernate" = "loginctl hibernate";
+    "spoweroff" = "systemctl poweroff";
+    "sreboot" = "systemctl reboot";
   };
 }

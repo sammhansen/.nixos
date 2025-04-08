@@ -5,7 +5,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    bottles
+    # bottles
     distrobox
   ];
 }

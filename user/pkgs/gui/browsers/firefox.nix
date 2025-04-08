@@ -1,17 +1,18 @@
 {
   bifrost,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.sway;
+  cfg = bifrost.browsers.firefox;
 in {
   config = mkIf cfg.enable {
-    programs.sway = {
+    programs.firefox = {
       enable = true;
-      package = pkgs.swayfx;
-      xwayland.enable = true;
+
+      profiles.default = {
+        isDefault = true;
+      };
     };
   };
 }

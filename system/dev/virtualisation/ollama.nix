@@ -5,13 +5,13 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.sway;
+  cfg = bifrost.virtualisation.ollama;
 in {
   config = mkIf cfg.enable {
-    programs.sway = {
+    services.ollama = {
       enable = true;
-      package = pkgs.swayfx;
-      xwayland.enable = true;
+      package = pkgs.ollama;
+      # acceleration = "cuda";
     };
   };
 }
