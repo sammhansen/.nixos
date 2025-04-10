@@ -4,7 +4,7 @@
     ./settings.nix
     ./intel.nix
     ./sound.nix
-    ./touchpad.nix
+    # ./touchpad.nix
     ./pkgs.nix
   ];
 }

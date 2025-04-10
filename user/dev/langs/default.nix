@@ -1,7 +1,8 @@
 {
   imports = [
     ./go.nix
-    # ./nodejs.nix
+    ./nodejs.nix
+    ./flutter.nix
     ./pkgs.nix
   ];
 }

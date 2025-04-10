@@ -2,7 +2,7 @@
   bifrost = {
     userconf = {
       name = "Hansen";
-      username = "lilith";
+      username = "tamara";
       editor = "neovim";
       dotsdir = "atlantis";
     };
@@ -22,7 +22,10 @@
 
     monitors = {
       default = "HDMI-A-2";
-      inbuilt = "eDP-1";
+      inbuilt = {
+        name = "eDP-1";
+        position = "0x1080";
+      };
       external = {
         enable = true;
         name = "HDMI-A-2";
@@ -34,8 +37,6 @@
       gnome.enable = false;
       hyprland.enable = true;
       xwayland.enable = true;
-      qtile.enable = false;
-      sway.enable = false;
       niri.enable = false; # niri conflicts with xwayland..disable xwayland above
     };
 
@@ -76,17 +77,25 @@
         zeditor.enable = false;
       };
       ides = {
-        android_studio.enable = false;
+        androidstd.enable = false;
       };
       langs = {
         nodejs.enable = false;
+        flutter.enable = false;
+      };
+      dbs = {
+        mysql.enable = false;
+        postgresql.enable = false;
       };
     };
 
     virtualisation = {
+      enable = false;
+
       distrobox = {
         kali.hostname = "kali";
       };
+      bottles.enable = false;
       podman.enable = false;
       docker.enable = false;
       ollama.enable = false;
@@ -111,7 +120,7 @@
 
     extra = {
       flatpak.enable = false;
-      printing.enable = true;
+      printing.enable = false;
     };
   };
 }

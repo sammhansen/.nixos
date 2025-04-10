@@ -5,16 +5,16 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.virtualisation;
+  cfg = bifrost.dev.dbs.mysql;
 in {
   config = mkIf cfg.enable {
-    virtualisation = {
-      libvirtd.enable = true;
-      lxd.enable = true;
+    services.mysql = {
+      enable = false;
+      package = pkgs.mariadb;
     };
 
     environment.systemPackages = with pkgs; [
-      distrobox
+      # mysql-workbench
     ];
   };
 }

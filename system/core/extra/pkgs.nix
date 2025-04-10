@@ -23,5 +23,11 @@
     gjs
     bun
     cargo
+    gcc
+    clang
+    cmake
+    gnumake
+
+    yarn
   ];
 }
