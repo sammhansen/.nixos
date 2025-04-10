@@ -44,30 +44,6 @@
 		},
 		"backlight": {
 			"label": "󰃟 "
-		},
-		"buttons-grid": {
-			"actions": [
-				{
-					"label": "󰔏",
-					"command": "hyprshade toggle redshift"
-				},
-				{
-					"label": "󰌵",
-					"command": "hyprshade toggle dim"
-				},
-				{
-					"label": "󰊠",
-					"command": "hyprshade toggle grayscale"
-				},
-				{
-					"label": "󰏘",
-					"command": "hyprshade toggle vibrance"
-				},
-				{
-					"label": "󰌁",
-					"command": "hyprshade toggle invert"
-				}
-			]
 		}
 	}
 }
