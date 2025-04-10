@@ -5,13 +5,11 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.dev.langs.nodejs;
+  cfg = bifrost.virtualisation.bottles;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs;
-    with nodePackages; [
-      ts-node
-      nodejs
+    environment.systemPackages = with pkgs; [
+      bottles
     ];
   };
 }

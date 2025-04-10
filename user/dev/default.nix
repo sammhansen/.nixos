@@ -1,8 +1,7 @@
 {...}: {
   imports = [
     ./editors
-    ./flutter
-    ./ides
+    ./android-studio.nix
     ./langs
     ./git
     ./pkgs.nix

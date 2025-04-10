@@ -4,7 +4,7 @@
     ./pkgs
     ./sessions
     ./dev
-    ./user
+    ./xdg.nix
   ];
 
   home.username = bifrost.userconf.username;

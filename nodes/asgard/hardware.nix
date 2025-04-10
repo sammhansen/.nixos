@@ -8,40 +8,24 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/c7aae85f-1a33-40d5-836b-2ee60a4802a4";
+    { device = "/dev/disk/by-uuid/6379134f-cfcd-470b-baa8-f9d251cd7818";
       fsType = "ext4";
     };
 
-  fileSystems."/bin" =
-    { device = "/usr/bin";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E939-0A6F";
+    { device = "/dev/disk/by-uuid/0F6E-6BFC";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/var/lib/lxd/shmounts" =
-    { device = "tmpfs";
-      fsType = "tmpfs";
-    };
-
-  fileSystems."/var/lib/lxd/devlxd" =
-    { device = "tmpfs";
-      fsType = "tmpfs";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a4dfee41-f0eb-4e31-ab5b-5fe5fd353209"; }
+    [ { device = "/dev/disk/by-uuid/f74b4c38-51a7-4584-9d7e-4898c62d9aa7"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -49,8 +33,6 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.CloudflareWARP.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 

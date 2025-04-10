@@ -4,6 +4,7 @@
   ...
 }: let
   monitor = bifrost.monitors.default;
+  position = bifrost.monitors.inbuilt.position;
 in {
   wayland.windowManager.hyprland.settings = {
     general = {
@@ -19,7 +20,7 @@ in {
 
     monitor = [
       ",preferred,auto,1"
-      "eDP-1, 1920x1080@60.00, 1920x540, 1"
+      "eDP-1, 1920x1080@60.00, ${position}, 1"
       "HDMI-A-2, 1920x1080@60.00, 0x0, 1"
     ];
 
