@@ -173,8 +173,6 @@ in {
     };
 
     windowrule = [
-      # "opacity 0.89 override 0.93 override, .*"
-
       "workspace 6, class:^(spotify)$"
       "workspace 7, class:^(discord)$"
 
@@ -192,6 +190,10 @@ in {
       "float,title:^(Open Folder)(.*)$"
       "float,title:^(Save As)(.*)$"
       "float,title:^(Library)(.*)$ "
+    ];
+
+    windowrulev2 = [
+      "opacity 0.93 0.93, class:^(.*)$"
     ];
 
     layerrule = [
