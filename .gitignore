@@ -1,2 +1,4 @@
 node_modules/
 @girs/
+venv
+.venv
