@@ -20,11 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       type = "github";
       owner = "sammhansen";
@@ -46,32 +41,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags = {
-      type = "github";
-      owner = "Aylur";
-      repo = "ags";
-      ref = "v1.9.0";
-    };
-
-    walker = {
-      type = "github";
-      owner = "abenz1267";
-      repo = "walker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     catppuccin = {
       type = "github";
       owner = "catppuccin";
       repo = "nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    matugen = {
-      type = "github";
-      owner = "InioX";
-      repo = "Matugen";
-      ref = "v2.4.1";
     };
   };
 
@@ -143,7 +117,6 @@
                 imports = [
                   ./user
                   catppuccin.homeModules.catppuccin
-                  inputs.walker.homeManagerModules.default
                 ];
               };
               backupFileExtension = "backup";

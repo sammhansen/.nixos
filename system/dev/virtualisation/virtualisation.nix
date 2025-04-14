@@ -9,8 +9,8 @@
 in {
   config = mkIf cfg.enable {
     virtualisation = {
-      libvirtd.enable = true;
-      lxd.enable = true;
+      libvirtd.enable = false;
+      lxd.enable = false;
     };
 
     environment.systemPackages = with pkgs; [

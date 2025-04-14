@@ -61,7 +61,7 @@
 
     browsers = {
       default = "chromium";
-      firefox.enable = true;
+      firefox.enable = false;
       zen.enable = true;
       tor-browser.enable = true;
       chrome.enable = true;
@@ -90,14 +90,14 @@
     };
 
     virtualisation = {
-      enable = false;
+      enable = true;
 
       distrobox = {
         kali.hostname = "kali";
       };
       bottles.enable = false;
-      podman.enable = false;
-      docker.enable = false;
+      podman.enable = true;
+      docker.enable = true;
       ollama.enable = false;
       waydroid.enable = false;
       emulator.enable = false;

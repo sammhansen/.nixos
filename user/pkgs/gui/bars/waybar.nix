@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  waybar_config = ../../../../.config/waybar;
+  config = ../../../../.config/waybar;
 in {
   programs.waybar = {
     enable = true;
@@ -12,7 +12,7 @@ in {
   xdg.configFile = {
     "waybar" = {
       recursive = true;
-      source = "${waybar_config}";
+      source = "${config}";
     };
   };
 }

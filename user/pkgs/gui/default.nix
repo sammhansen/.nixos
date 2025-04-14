@@ -5,6 +5,7 @@
     ./zoom.nix
     ./pkgs.nix
     ./discord.nix
+    ./zathura.nix
 
     ./launchers
     ./bars

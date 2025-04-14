@@ -4,7 +4,9 @@
     # hakuneko
     walker
     blender
-    davinci-resolve
+    kdePackages.kdenlive
+    activitywatch
+    hours
 
     git
     gh-dash
@@ -16,11 +18,6 @@
     bitwarden-desktop
     gnome-control-center
     openvpn
-
-    # papirus-icon-theme
-    # bibata-cursors
-
-    wlsunset
 
     nix-prefetch-git
 
@@ -64,6 +61,7 @@
     youtube-music
 
     (mpv.override {scripts = [mpvScripts.mpris];})
+    vlc
 
     nautilus
     yad
