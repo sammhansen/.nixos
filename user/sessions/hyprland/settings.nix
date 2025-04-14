@@ -198,6 +198,7 @@ in {
       "opacity 1.0 1.0, class:^(org.kde.kdenlive)$"
       "opacity 1.0 1.0, class:^(mpv)$"
       "opacity 1.0 1.0, class:^(vlc)$"
+      "opacity 1.0 1.0, class:^(eog)$"
       "opacity 1.0 1.0, class:^(org.pwmt.zathura)$"
       "opacity 1.0 1.0, class:^(libreoffice.*)$"
       "opacity 1.0 1.0,class:^(zen-twilight)$,title:.*[Yy]ou[Tt]ube.*"

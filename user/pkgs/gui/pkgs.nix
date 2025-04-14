@@ -1,12 +1,11 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     xfce.thunar
-    # hakuneko
-    walker
     blender
     kdePackages.kdenlive
     activitywatch
     hours
+    eog
 
     git
     gh-dash
@@ -31,8 +30,8 @@
     hyprshot
 
     #screenrecord script
-    slurp
-    wf-recorder
+    # slurp
+    # wf-recorder
 
     # btop
     eza
