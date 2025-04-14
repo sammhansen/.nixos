@@ -23,7 +23,7 @@
     window{width:440px; height:271px;}
     listview{scrollbar:false;}
     "
-    themeDir="~/.config/rofi/launcher.rasi"
+    themeDir="~/.config/rofi/config.rasi"
 
     cliphist list |
         rofi -dmenu -theme-str "''${config}" -theme "''${themeDir}" |
@@ -97,8 +97,8 @@ in {
 
       # "SUPER, A , exec, ${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.config/rofi/launcher.rasi"
 
-      "SUPER, A , exec, ${pkgs.walker}/bin/walker"
-      "SUPER, W , exec, ${pkgs.rofi-wayland}/bin/rofi -show window -theme ~/.config/rofi/window.rasi"
+      "SUPER, A , exec, ${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.config/rofi/launcher.rasi"
+      "SUPER, W , exec, ${pkgs.rofi-wayland}/bin/rofi -show window -theme ~/.config/rofi/launcher.rasi"
       "Super, V, exec, ${clipboard}/bin/rofi-clipboard.sh"
       "Super, Period, exec, pkill fuzzel || ~/${dotsdir}/user/pkgs/gui/launchers/fuzzel/fuzzel-emoji"
 

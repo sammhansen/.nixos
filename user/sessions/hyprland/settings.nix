@@ -194,6 +194,15 @@ in {
 
     windowrulev2 = [
       "opacity 0.93 0.93, class:^(.*)$"
+      "opacity 1.0 1.0, class:^(blender)$"
+      "opacity 1.0 1.0, class:^(org.kde.kdenlive)$"
+      "opacity 1.0 1.0, class:^(mpv)$"
+      "opacity 1.0 1.0, class:^(vlc)$"
+      "opacity 1.0 1.0, class:^(org.pwmt.zathura)$"
+      "opacity 1.0 1.0, class:^(libreoffice.*)$"
+      "opacity 1.0 1.0,class:^(zen-twilight)$,title:.*[Yy]ou[Tt]ube.*"
+      "opacity 1.0 1.0,class:^(chrome-youtube\\.com__-Default)$,title:.*[Yy]ou[Tt]ube.*"
+      "opacity 1.0 1.0,class:^(chrome-tradingview\\.com__-Default)$,title:.*[Yy]ou[Tt]ube.*"
     ];
 
     layerrule = [
