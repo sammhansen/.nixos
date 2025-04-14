@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=intigriti
-Exec=chromium --profile-directory=Default --app=https://app.intigriti.com/researcher/programs/overview
-Icon=/home/lilith/.local/share/applications/icons/intigriti.png
-

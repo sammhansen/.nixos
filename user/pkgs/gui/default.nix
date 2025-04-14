@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./desktop.nix
     ./browsers
     ./terminals
     ./zoom.nix

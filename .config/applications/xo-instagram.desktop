@@ -1,8 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Instagram
-Exec=chromium --profile-directory=Default --app=https://instagram.com
-Icon=/home/lilith/.local/share/applications/icons/instagram.png
