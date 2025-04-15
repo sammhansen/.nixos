@@ -17,7 +17,7 @@ in {
     programs.chromium = {
       enable = true;
       extensions = [
-        "epcnnfbjfcgphgdmggkamkmgojdagdnn" # ublock
+        "ddkjiahejlhfcafbddmgiahcphecmpfh" # ublock origin lite
         "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
         "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
         "emffkefkbkpkgpdeeooapgaicgmcbolj" # Wikiwand
