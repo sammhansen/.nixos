@@ -1,9 +1,12 @@
 {
+  bifrost,
   inputs,
   system,
   lib,
   ...
-}: {
+}: let
+  cfg = bifrost.sysconf.osprober;
+in {
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
@@ -14,7 +17,7 @@
       devices = ["nodev"];
       efiSupport = true;
       enable = true;
-      useOSProber = true;
+      useOSProber = cfg;
       theme = lib.mkForce inputs.distro-grub-themes.packages.${system}.thinkpad-grub-theme;
     };
   };

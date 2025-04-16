@@ -11,7 +11,7 @@
       host = "atlantis";
       locale = "en_US.UTF-8";
       timezone = "Africa/Nairobi";
-      osprober = false;
+      osprober = true;
       hardwareclock = true;
       keyboardlayout = "us";
     };
