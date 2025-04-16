@@ -6,6 +6,8 @@
     activitywatch
     hours
     eog
+    brave
+    caido
 
     git
     gh-dash
