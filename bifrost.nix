@@ -11,6 +11,7 @@
       host = "atlantis";
       locale = "en_US.UTF-8";
       timezone = "Africa/Nairobi";
+      osprober = false;
       hardwareclock = true;
       keyboardlayout = "us";
     };
@@ -61,7 +62,7 @@
 
     browsers = {
       default = "chromium";
-      firefox.enable = false;
+      firefox.enable = true;
       zen.enable = true;
       tor-browser.enable = true;
       chrome.enable = true;
