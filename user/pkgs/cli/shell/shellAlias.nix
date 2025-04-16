@@ -7,6 +7,7 @@ in {
     x = "clear";
     space = "du -sh * | sort -h";
     cat = "bat";
+    car = "bat";
     q = "exit";
     ":q" = "exit";
     la = "ls -la";
