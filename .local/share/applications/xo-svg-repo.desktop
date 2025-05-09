@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=SVG Repo
 Exec=chromium --profile-directory=Default --app=https://www.svgrepo.com
-Icon=/home/tamara/.local/share/applications/icons/svg-repo.png
+Icon=/home/t4m4r4/.local/share/applications/icons/svg-repo.png
 

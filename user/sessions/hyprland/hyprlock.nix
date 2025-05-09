@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  username,
+  lib,
+  ...
+}: let
   monitor = "";
 in {
   programs.hyprlock = {
@@ -6,7 +10,7 @@ in {
     settings = {
       background = {
         monitor = "${monitor}";
-        path = lib.mkForce "../../../.config/wallpapers/bunny.png";
+        path = "/home/${username}/Pictures/wals/haiiiii.jpeg";
         blur_passes = 0;
         contrast = 0.8916;
         brightness = 0.8172;

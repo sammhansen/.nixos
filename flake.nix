@@ -47,11 +47,19 @@
       repo = "nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    matugen = {
+      type = "github";
+      owner = "InioX";
+      repo = "Matugen";
+      # ref = v2.4.1;
+      # rev = "v2.4.1";
+    };
   };
 
   outputs = {
     nixpkgs,
     nixpkgs-stable,
+    matugen,
     catppuccin,
     home-manager,
     nur,
@@ -89,6 +97,12 @@
 
         modules = [
           ./nodes/asgard
+
+          {
+            environment.systemPackages = [
+              inputs.matugen.packages.${system}.default
+            ];
+          }
 
           {
             nixpkgs.config = {

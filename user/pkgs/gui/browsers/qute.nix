@@ -1,14 +1,16 @@
 {
   bifrost,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
   cfg = bifrost.browsers.qute;
+  colors = import ../../../../.local/state/matugen/colors.nix;
 
   palette = {
-    background = "#191c25";
-    background-alt = "#191c25";
+    background = "${colors.background}";
+    background-alt = "${colors.background}";
     background-attention = "#191724";
     border = "#77adb1";
     current-line = "#525566";
@@ -26,16 +28,20 @@
   };
 in {
   config = mkIf cfg.enable {
-    xdg.configFile."qutebrowser/greasemonkey".source = ./greasemonkey;
     programs.qutebrowser = {
       enable = true;
       keyBindings = {
         normal = {
-          "t" = "cmd-set-text -s :open -t";
-          "yf" = "hint links yank";
-          "yd" = "hint links download";
-          ";p" = "spawn --userscript qute-bitwarden --auto-lock 0";
-          ";t" = "spawn --userscript qute-bitwarden --auto-lock 0 -T";
+          # "t" = "cmd-set-text -s :open -t";
+          # "yf" = "hint links yank";
+          # "yd" = "hint links download";
+          # ";p" = "spawn --userscript qute-bitwarden --auto-lock 0";
+          # ";t" = "spawn --userscript qute-bitwarden --auto-lock 0 -T";
+          "M" = "hint links spawn ${pkgs.mpv}/bin/mpv {hint-url}";
+          "D" = "hint links spawn ${pkgs.foot}/bin/foot -e ${pkgs.yt-dlp}/bin/yt-dlp -f bestaudio+bestformat {hint-url}";
+          "xb" = "config-cycle statusbar.show always never";
+          "xt" = "config-cycle tabs.show always never";
+          "xx" = "config-cycle statusbar.show always never;; config-cycle tabs.show always never";
         };
         insert = {};
       };
@@ -50,7 +56,7 @@ in {
           start_pages = ["https://google.com/?hl=ja"];
         };
         editor.command = [
-          "kitty"
+          "foot"
           "-e"
           "nvim"
           "{file}"
@@ -58,7 +64,7 @@ in {
         content.javascript.clipboard = "access-paste";
         fonts = {
           default_family = [
-            "Fira Code Nerd Font"
+            "SpaceMono Nerd Font"
             "PlemolJP35 Console HS"
           ];
           default_size = "13px";
@@ -74,12 +80,15 @@ in {
           "https://raw.githubusercontent.com/tofukko/filter/master/Adblock_Plus_list.txt"
         ];
         zoom.default = "100%";
-        scrolling.smooth = false;
+        scrolling.smooth = true;
         scrolling.bar = "never";
-        auto_save.session = true;
+        auto_save.session = false;
         qt.highdpi = true;
         colors = {
-          webpage.preferred_color_scheme = "dark";
+          # webpage.preferred_color_scheme = "dark";
+          webpage.darkmode = {
+            enabled = true;
+          };
           completion = {
             category = {
               bg = palette.background;

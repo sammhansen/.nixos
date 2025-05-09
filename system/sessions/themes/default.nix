@@ -2,6 +2,6 @@
   imports = [
     ./fonts.nix
     # ./stylix/default.nix
-    ./catppuccin.nix
+    # ./catppuccin.nix
   ];
 }

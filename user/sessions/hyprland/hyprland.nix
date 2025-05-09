@@ -10,6 +10,7 @@ in {
   imports = [
     ./settings.nix
     ./binds.nix
+    # ./colors.nix
   ];
 
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -22,7 +23,7 @@ in {
   };
 
   home.packages = with pkgs; [
-    hyprshade
+    hyprsunset
     uwsm
   ];
 }

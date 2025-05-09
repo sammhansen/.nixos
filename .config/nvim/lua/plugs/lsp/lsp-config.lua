@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local servers = {
 	bashls = {},
@@ -48,9 +49,10 @@ local servers = {
 	tflint = {},
 	yamlls = { settings = { yaml = { keyOrdering = false } } },
 	ts_ls = { settings = { completions = { completeFunctionCalls = true } } },
+	rust_analyzer = {},
 }
 
--- Loop through the servers and set them up
 for server, config in pairs(servers) do
+	config.capabilities = capabilities
 	lspconfig[server].setup(config)
 end

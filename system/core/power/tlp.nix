@@ -19,8 +19,5 @@
         STOP_CHARGE_THRESH_BAT0 = 80;
       };
     };
-    power-profiles-daemon = {
-      enable = false;
-    };
   };
 }

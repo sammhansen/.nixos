@@ -9,6 +9,8 @@
     brave
     caido
 
+    waypaper
+
     git
     gh-dash
     jq

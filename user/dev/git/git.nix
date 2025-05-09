@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
     userName = "Hansen";
-    userEmail = "sammhansen" + "@" + "gmail" + "." + "com"; # obsfuscate email to prevent webscrapper spam
+    userEmail = "samhansen" + "." + "dev" + "@" + "gmail" + "." + "com"; # obsfuscate email to prevent webscrapper spam
 
     # includes = [
     # {

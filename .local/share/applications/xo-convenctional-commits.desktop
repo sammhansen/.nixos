@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Commits
 Exec=chromium --profile-directory=Default --app=https://www.conventionalcommits.org/en/v1.0.0/
-Icon=/home/tamara/.local/share/applications/icons/commits.svg
+Icon=/home/t4m4r4/.local/share/applications/icons/commits.svg
 

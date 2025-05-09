@@ -7,7 +7,7 @@
   inherit (lib.modules) mkIf;
 in {
   config = mkIf bifrost.hardware.intel.enable {
-    services.xserver.videoDrivers = ["modesetting"];
+    services.xserver.videoDrivers = ["intel"];
     hardware.cpu.intel.updateMicrocode = true;
     hardware.enableRedistributableFirmware = true;
 

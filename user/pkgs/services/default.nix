@@ -1,5 +1,6 @@
 {
   imports = [
     ./kdeconnect.nix
+    ./swaync
   ];
 }

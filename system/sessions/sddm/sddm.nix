@@ -10,13 +10,12 @@ in {
   config = mkIf (cfg == "sddm") {
     services = {
       displayManager = {
-        # sessionPackages = [
-        # pkgs.hyprland
-        # ];
+        sessionPackages = [
+          pkgs.river
+        ];
         sddm = {
           enable = true;
           # package = pkgs.kdePackages.sddm;
-          # catppuccin.assertQt6Sddm = false;
           theme = lib.mkForce "${import ./theme.nix {inherit pkgs;}}";
         };
       };

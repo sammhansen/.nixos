@@ -60,6 +60,7 @@ in {
       "SUPER, T, exec, hyprctl dispatch togglesplit"
       "SUPER, P, pin, active"
       "ALT, L, exec, hyprlock"
+      "ALT, P, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
 
       # Focus Window
       "SUPER, H, movefocus, l"
@@ -101,6 +102,8 @@ in {
       "SUPER, W , exec, ${pkgs.rofi-wayland}/bin/rofi -show window -theme ~/.config/rofi/launcher.rasi"
       "Super, V, exec, ${clipboard}/bin/rofi-clipboard.sh"
       "Super, Period, exec, pkill fuzzel || ~/${dotsdir}/user/pkgs/gui/launchers/fuzzel/fuzzel-emoji"
+      "SHIFT+CTRL, S, exec, wlogout"
+      "SUPER+CTRL, T, exec, ${pkgs.waypaper}/bin/waypaper"
 
       "CTRL SUPER ALT, SPACE, exec, rofi -show menu -theme ~/.config/rofi/powermenu.rasi -modi 'menu:rofi-power-menu --choices=shutdown/reboot/logout/hibernate'"
       "Super, B, exec, ${browser}"

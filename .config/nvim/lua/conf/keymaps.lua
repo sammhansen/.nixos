@@ -1,6 +1,7 @@
 -- telescope
--- local builtin = require("telescope.builtin")
--- vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+--local builtin = require("telescope.builtin")
+--vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>ff", "<CMD>Telescope<CR>", { desc = "Toggle Telescope" })
 
 vim.keymap.set("n", "<leader>b", "<CMD>Telescope buffers<CR>", { desc = "Show Open Buffers" })
 

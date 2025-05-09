@@ -7,7 +7,7 @@ in {
   # you have no clue how annoying it is when I have to update this on nixpkgs
   # if you cannot figgure out what is happening here its worth reading the example
   # <https://github.com/AdnanHodzic/auto-cpufreq/#example-config-file-contents>
-  services.power-profiles-daemon.enable = false;
+  # services.power-profiles-daemon.enable = false;
 
   services.auto-cpufreq = {
     enable = false;

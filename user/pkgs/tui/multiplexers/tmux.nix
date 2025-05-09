@@ -1,82 +1,33 @@
-{pkgs, ...}: let
-  bg = "default";
-  fg = "default";
-  bg2 = "brightblack";
-  fg2 = "white";
-  color = c: "#{@${c}}";
-
-  indicator = let
-    accent = color "indicator_color";
-    content = "  ";
-  in "#[reverse,fg=${accent}]#{?client_prefix,${content},}";
-
-  current_window = let
-    accent = color "main_accent";
-    index = "#[reverse,fg=${accent},bg=${fg}] #I ";
-    name = "#[fg=${bg2},bg=${fg2}] #W ";
-    # flags = "#{?window_flags,#{window_flags}, }";
-  in "${index}${name}";
-
-  window_status = let
-    accent = color "window_color";
-    index = "#[reverse,fg=${accent},bg=${fg}] #I ";
-    name = "#[fg=${bg2},bg=${fg2}] #W ";
-    # flags = "#{?window_flags,#{window_flags}, }";
-  in "${index}${name}";
-
-  time = let
-    accent = color "main_accent";
-    format = "%H:%M";
-    icon = pkgs.writeShellScript "icon" ''
-      hour=$(date +%H)
-      if   [ "$hour" == "00" ] || [ "$hour" == "12" ]; then printf "󱑖"
-      elif [ "$hour" == "01" ] || [ "$hour" == "13" ]; then printf "󱑋"
-      elif [ "$hour" == "02" ] || [ "$hour" == "14" ]; then printf "󱑌"
-      elif [ "$hour" == "03" ] || [ "$hour" == "15" ]; then printf "󱑍"
-      elif [ "$hour" == "04" ] || [ "$hour" == "16" ]; then printf "󱑎"
-      elif [ "$hour" == "05" ] || [ "$hour" == "17" ]; then printf "󱑏"
-      elif [ "$hour" == "06" ] || [ "$hour" == "18" ]; then printf "󱑐"
-      elif [ "$hour" == "07" ] || [ "$hour" == "19" ]; then printf "󱑑"
-      elif [ "$hour" == "08" ] || [ "$hour" == "20" ]; then printf "󱑒"
-      elif [ "$hour" == "09" ] || [ "$hour" == "21" ]; then printf "󱑓"
-      elif [ "$hour" == "10" ] || [ "$hour" == "22" ]; then printf "󱑔"
-      elif [ "$hour" == "11" ] || [ "$hour" == "23" ]; then printf "󱑕"
-      fi
-    '';
-  in "#[reverse,fg=${accent}] ${format} #(${icon}) ";
-
-  pwd = let
-    accent = color "main_accent";
-    icon = "#[fg=${accent}] ";
-    format = "#[fg=${fg}]#{b:pane_current_path}";
-  in "${icon}${format}";
-
-  git = let
-    icon = pkgs.writeShellScript "branch" ''
-      git -C "$1" branch && echo "#[fg=white]  on #[fg=magenta]󰘬 "
-    '';
-    branch = pkgs.writeShellScript "branch" ''
-      git -C "$1" rev-parse --abbrev-ref HEAD
-    '';
-  in "#[fg=magenta]#(${icon} #{pane_current_path})#[fg=magenta]#(${branch}  #{pane_current_path})";
-
-  separator = "#[fg=${fg}]|";
+{...}: let
+  colors = import ../../../../.local/state/matugen/colors.nix;
 in {
   programs.tmux = {
     enable = true;
-    plugins = with pkgs.tmuxPlugins; [
-      vim-tmux-navigator
-      yank
-      tmux-floax
-    ];
-    prefix = "M-t";
+    terminal = "screen-256color";
+    shell = "/usr/bin/fish";
+    clock24 = false;
     baseIndex = 1;
-    escapeTime = 0;
-    keyMode = "vi";
     mouse = true;
-    shell = "${pkgs.zsh}/bin/zsh";
+    escapeTime = 0;
+    historyLimit = 2000;
+    keyMode = "vi";
+    prefix = "M-t";
     extraConfig = ''
+      set-option -g status-position top
+      bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+
+      unbind C-b
+      bind -N "Send the prefix key through to the application" M-t send-prefix
+
+      set -gq allow-passthrough on
+      set -g visual-activity off
+      setw -g aggressive-resize off
+      setw -g clock-mode-style 12
+
+      # setw -g pane-background-index 1
+
       set-option -sa terminal-overrides ",xterm*:Tc"
+
       bind c copy-mode
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
@@ -85,26 +36,37 @@ in {
       bind v split-window -v -c "#{pane_current_path}"
       bind h split-window -h -c "#{pane_current_path}"
 
-      set -g @floax-width '80%'
-      set -g @floax-height '80%'
-      set -g @floax-border-color 'magenta'
-      set -g @floax-text-color 'blue'
-      set -g @floax-bind 'p'
-      set -g @floax-change-path 'true'
+      set-option -g @primary "${colors.primary}"
+      set-option -g @on_primary "${colors.on_primary}"
+      set-option -g @primary_container "${colors.primary_container}"
+      set-option -g @on_primary_container "${colors.on_primary_container}"
+      set-option -g @tertiary_container "${colors.tertiary_container}"
+      set-option -g @on_tertiary_container "${colors.on_tertiary_container}"
+      set-option -g @on_surface "${colors.on_surface}"
+      set-option -g @inverse_on_surface "${colors.inverse_on_surface}"
+      set-option -g @secondary "#454559"
+      set-option -g @secondary_on_tertiary "#e2e0f9"
+      set-option -g @background "${colors.background}"
+      # set-option -g @tertiary_container_on_tertiary "#ffd8eb"
+      set-option -g @window_color "#39383f"
+      set-option -g @indicator_color "#e9b9d2"
+      set-option -g @on_tertiary_fixed "${colors.on_tertiary_fixed}"
 
-      set-option -g default-terminal "screen-256color"
-      set-option -g status-right-length 100
-      set-option -g @indicator_color "#f38ba8"
-      set-option -g @window_color "magenta"
-      set-option -g @main_accent "#89b4fa"
       set-option -g pane-active-border fg=black
       set-option -g pane-border-style fg=black
-      set-option -g status-style "bg=${bg} fg=${fg}"
-      set-option -g status-left "${indicator}"
-      set-option -g status-right "${git} ${pwd} ${separator} ${time}"
-      set-option -g window-status-current-format "${current_window}"
-      set-option -g window-status-format "${window_status}"
-      set-option -g window-status-separator ""
+      set-option -g status-style "bg=default fg=default"
+
+      set-option -g status-left-style none
+      set -g status-left-length 60
+      set-option -g status-left "#[bg=#{@primary_container},fg=#{@on_primary_container}]#{?client_prefix, , } #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] #S "
+
+      set-option -g status-right-style none
+      set -g status-right-length 120
+      set -g status-right '#[fg=white]#(if git -C "#{pane_current_path}" rev-parse --is-inside-work-tree 2>/dev/null; then echo "  on #[fg=#{@on_surface}]$(git -C "#{pane_current_path}" rev-parse --abbrev-ref HEAD)"; fi) #[fg=#{@primary}] #[fg=#{@on_primary_container},bg=#{@primary_container}]  #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] #W #[fg=#{@on_primary_container},bg=#{@primary_container}]  #[fg=#{@on_surface},bg=default] #{p:pane_current_path} #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] %H #[fg=#{@on_primary_container},bg=#{@primary_container}] %M '
+
+      set -g window-status-separator "#[bg=default] "
+      set -g window-status-current-format "#[fg=color15,bg=color8] #W #[fg=color0,bg=color2] #I "
+      set -g window-status-format "#[fg=color15,bg=color8] #W #[fg=color0,bg=color3] #I "
     '';
   };
 }

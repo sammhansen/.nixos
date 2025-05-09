@@ -1,5 +1,6 @@
 {
   bifrost,
+  pkgs,
   lib,
   ...
 }: let
@@ -8,14 +9,14 @@
 in {
   wayland.windowManager.hyprland.settings = {
     general = {
-      gaps_in = 4;
-      gaps_out = 4;
+      gaps_in = 3;
+      gaps_out = 5;
       gaps_workspaces = 50;
       border_size = 0;
       layout = "dwindle";
       resize_on_border = true;
-      "col.active_border" = lib.mkForce "rgba(4f4256CC)";
-      "col.inactive_border" = lib.mkForce "rgba(4f4256CC)";
+      # "col.active_border" = lib.mkForce "rgba(4f4256CC)";
+      # "col.inactive_border" = lib.mkForce "rgba(4f4256CC)";
     };
 
     monitor = [
@@ -35,7 +36,7 @@ in {
     ];
 
     decoration = {
-      rounding = 7;
+      rounding = 2;
 
       blur = {
         enabled = false;
@@ -64,9 +65,8 @@ in {
       "uwsm app -- wl-paste --type text --watch cliphist store &"
       "uwsm app -- wl-paste --type image --watch cliphist store &"
       "uwsm app -- discord &"
-      "uwsm app -- wlsunset &"
       "uwsm app -- swww-daemon --format xrgb"
-      "walker --gapplication-service"
+      "uwsm app -- ${pkgs.powermode-indicator}/bin/powermode-indicator"
       # "hyprctl setcursor Bibata-Modern-Classic 24"
     ];
 
@@ -193,7 +193,7 @@ in {
     ];
 
     windowrulev2 = [
-      "opacity 0.93 0.93, class:^(.*)$"
+      # "opacity 0.93 0.93, class:^(.*)$"
       "opacity 1.0 1.0, class:^(blender)$"
       "opacity 1.0 1.0, class:^(org.kde.kdenlive)$"
       "opacity 1.0 1.0, class:^(mpv)$"

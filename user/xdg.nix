@@ -1,5 +1,5 @@
 {...}: let
-  browser = "io.github.zen_browser.zen.desktop";
+  browser = "chromium.desktop";
 in {
   xdg = {
     enable = true;

@@ -2,7 +2,7 @@
   bifrost = {
     userconf = {
       name = "Hansen";
-      username = "tamara";
+      username = "t4m4r4";
       editor = "neovim";
       dotsdir = "atlantis";
     };
@@ -11,8 +11,8 @@
       host = "atlantis";
       locale = "en_US.UTF-8";
       timezone = "Africa/Nairobi";
-      osprober = true;
-      hardwareclock = true;
+      osprober = false;
+      hardwareclock = false;
       keyboardlayout = "us";
     };
 
@@ -35,7 +35,7 @@
 
     sessions = {
       dm = "sddm"; #tui-greet
-      gnome.enable = false;
+      gnome.enable = true;
       hyprland.enable = true;
       xwayland.enable = true;
       niri.enable = false; # niri conflicts with xwayland..disable xwayland above
@@ -44,7 +44,16 @@
     themes = {
       font = {
         name = "SpaceMono Nerd Font";
-        size = "17";
+        monospace = {
+          name = "SpaceMono Nerd Font";
+          variant = "Regular";
+        };
+        sansSerif = {
+          name = "Noto Sans";
+          variant = "Regular";
+        };
+
+        size = 11;
       };
       catppuccin = {
         flavor = "mocha";
@@ -61,13 +70,13 @@
     };
 
     browsers = {
-      default = "chromium";
+      default = "qutebrowser";
       firefox.enable = true;
       zen.enable = true;
       tor-browser.enable = true;
       chrome.enable = true;
       chromium.enable = true;
-      qute.enable = false;
+      qute.enable = true;
     };
 
     dev = {
@@ -81,7 +90,7 @@
         androidstd.enable = false;
       };
       langs = {
-        nodejs.enable = false;
+        nodejs.enable = true;
         flutter.enable = false;
       };
       dbs = {
@@ -100,7 +109,7 @@
       podman.enable = true;
       docker.enable = true;
       ollama.enable = false;
-      waydroid.enable = false;
+      waydroid.enable = true;
       emulator.enable = false;
     };
 
@@ -120,7 +129,7 @@
     };
 
     extra = {
-      flatpak.enable = false;
+      flatpak.enable = true;
       printing.enable = false;
     };
   };

@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=zuPortal
 Exec=chromium --profile-directory=Default --app=https://portal.zetech.ac.ke/
-Icon=/home/tamara/.local/share/applications/icons/zuni.png
+Icon=/home/t4m4r4/.local/share/applications/icons/zuni.png
 

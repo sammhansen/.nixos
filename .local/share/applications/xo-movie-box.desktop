@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Movie Box
 Exec=chromium --profile-directory=Default --app=https:moviebox.ng
-Icon=/home/tamara/.local/share/applications/icons/moviebox.svg
+Icon=/home/t4m4r4/.local/share/applications/icons/moviebox.svg
 

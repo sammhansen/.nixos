@@ -1,8 +1,8 @@
 {
   imports = [
     ./waybar.nix
-    ./swaync.nix
+    # ./swaync.nix
+    # ./sway.nix
     # ./ags.nix
-    # ./end4.nix
   ];
 }

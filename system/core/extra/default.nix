@@ -6,5 +6,6 @@
     ./sound.nix
     # ./touchpad.nix
     ./pkgs.nix
+    ./zram.nix
   ];
 }

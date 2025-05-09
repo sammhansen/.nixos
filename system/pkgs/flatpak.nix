@@ -1,6 +1,7 @@
 {
   bifrost,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -18,5 +19,8 @@ in {
       };
       */
     };
+    environment.systemPackages = with pkgs; [
+      steam-devices-udev-rules
+    ];
   };
 }

@@ -8,24 +8,24 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a50e1b73-1b06-4b9d-be8d-2dd31b20097b";
+    { device = "/dev/disk/by-uuid/ffd70cf1-4743-4c12-b128-af955ccff634";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3A4B-5D6A";
+    { device = "/dev/disk/by-uuid/E171-E72D";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/c8f555d8-c722-4cd9-8edc-178d61cbdbd6"; }
+    [ { device = "/dev/disk/by-uuid/b0cfea7e-200d-465e-886b-a6b35b21d8fe"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

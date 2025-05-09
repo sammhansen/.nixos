@@ -7,6 +7,7 @@
     ./pkgs.nix
     ./discord.nix
     ./zathura.nix
+    ./waypaper.nix
 
     ./launchers
     ./bars

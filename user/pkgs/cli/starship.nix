@@ -1,6 +1,8 @@
 {lib, ...}: let
   inherit (lib.strings) concatStrings;
 
+  colors = import ../../../.local/state/matugen/colors.nix;
+
   # TODO: come back and change this a bit
   ss = symbol: style: {
     inherit symbol;
@@ -16,41 +18,49 @@ in {
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
-    enableNushellIntegration = true;
+    enableNushellIntegration = false;
 
     settings = {
       add_newline = true;
       format = concatStrings [
-        "$os"
-        "$all$character"
+        "$os $hostname $username $directory\n"
+        "$character"
       ];
 
+      hostname = {
+        ssh_only = true;
+        format = "[•$hostname](bg:default fg:${colors.on_secondary_container})";
+        trim_at = ".companyname.com";
+        disabled = false;
+      };
+
       character = {
-        success_symbol = "[  ](bold fg:cyan)";
-        error_symbol = "[ 󰅙 ](bold fg:red)";
+        success_symbol = "[  ](bold fg:${colors.primary})";
+        error_symbol = "[ 󰅙 ](bold fg:${colors.error})";
       };
 
       username = {
-        style_user = "white";
-        style_root = "black";
+        style_user = "bg:default fg:${colors.primary}";
+        style_root = "bg:default fg:${colors.error}";
         format = "[   $user]($style) ";
         show_always = true;
       };
 
       directory = {
-        truncation_length = 3;
-        truncation_symbol = "…/";
-        home_symbol = "🗽";
-        read_only_style = "197";
-        read_only = "🗝️";
-        format = "at [$path]($style)[$read_only]($read_only_style) ";
+        home_symbol = "  ";
+        read_only = "  ";
+        style = "bg:default fg:default";
+        truncation_length = 6;
+        truncation_symbol = "••/";
+        format = "([ @ ](bg:default fg:${colors.error_container}) [$path ]($style))";
 
         substitutions = {
-          "Documents" = "󰈙 ";
-          "Downloads" = " ";
-          "Music" = " ";
-          "Pictures" = " ";
-          "Videos" = " ";
+          "Desktop" = "  ";
+          "Documents" = "  ";
+          "Downloads" = "  ";
+          "Music" = " 󰎈 ";
+          "Pictures" = "  ";
+          "Videos" = "  ";
           "GitHub" = "";
         };
       };
@@ -63,7 +73,7 @@ in {
           Arch = "";
           Artix = "";
           Debian = "";
-          # Kali = "󰠥";
+          Kali = "󰠥";
           EndeavourOS = "";
           Fedora = "";
           NixOS = "";
@@ -102,29 +112,29 @@ in {
 
       nix_shell = ssv " " "blue";
 
-      git_branch = {
-        symbol = "󰘬";
-        format = "[[   on](fg:white) $symbol $branch ](fg:purple)(:$remote_branch)";
-        truncation_length = 4;
-        truncation_symbol = "…/";
-        style = "bold green";
-      };
-      git_status = {
-        format = "[$all_status$ahead_behind]($style) ";
-        style = "bold green";
-        conflicted = "🏳";
-        up_to_date = " ";
-        untracked = " ";
-        ahead = "⇡\${count}";
-        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-        behind = "⇣\${count}";
-        stashed = "󰏗 ";
-        modified = " ";
-        staged = "[++\\($count\\)](green)";
-        renamed = "󰖷 ";
-        deleted = " ";
-      };
-
+      # git_branch = {
+      #   symbol = "󰘬";
+      #   format = "[[   on](fg:white) $symbol $branch ](fg:purple)(:$remote_branch)";
+      #   truncation_length = 4;
+      #   truncation_symbol = "…/";
+      #   style = "bold green";
+      # };
+      # git_status = {
+      #   format = "[$all_status$ahead_behind]($style) ";
+      #   style = "bold green";
+      #   conflicted = "🏳";
+      #   up_to_date = " ";
+      #   untracked = " ";
+      #   ahead = "⇡\${count}";
+      #   diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+      #   behind = "⇣\${count}";
+      #   stashed = "󰏗 ";
+      #   modified = " ";
+      #   staged = "[++\\($count\\)](green)";
+      #   renamed = "󰖷 ";
+      #   deleted = " ";
+      # };
+      #
       battery.disabled = true;
     };
   };

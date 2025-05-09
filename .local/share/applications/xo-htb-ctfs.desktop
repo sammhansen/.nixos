@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=HTB  CTFs
 Exec=chromium --profile-directory=Default --app=https://ctf.hackthebox.com/
-Icon=/home/tamara/.local/share/applications/icons/htb.png
+Icon=/home/t4m4r4/.local/share/applications/icons/htb.png
 
