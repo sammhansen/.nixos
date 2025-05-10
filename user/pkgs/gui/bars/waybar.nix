@@ -84,6 +84,22 @@ in {
             "eDP-1" = [6 7 8 9];
           };
         };
+        "river/tags" = {
+          num-tags = 9;
+          tag-labels = [
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+          ];
+          disable-click = false;
+          hide-vacant = false;
+        };
 
         bluetooth = {
           format = "";
@@ -162,7 +178,7 @@ in {
         };
         "custom/batt-warn" = {
           exec = "/home/${username}/.config/waybar/scripts/batt-warn.sh";
-          interval = "7";
+          interval = 7;
         };
 
         modules-left = [
@@ -173,7 +189,10 @@ in {
           "disk"
           "clock"
         ];
-        modules-center = ["hyprland/workspaces"];
+        modules-center = [
+          "hyprland/workspaces"
+          "river/tags"
+        ];
         modules-right = [
           "custom/swaync"
           "bluetooth"

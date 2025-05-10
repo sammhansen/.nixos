@@ -25,7 +25,10 @@
       default = "HDMI-A-2";
       inbuilt = {
         name = "eDP-1";
-        position = "0x1080";
+        position = {
+          x = 0;
+          y = 1080;
+        };
       };
       external = {
         enable = true;
