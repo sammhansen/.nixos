@@ -5,11 +5,13 @@
 }: {
   imports = [
     ./env.nix
+    ./xdg.nix
+    ./applications.nix
+
     ./programs
     ./services
     ./desktop
     ./dev
-    ./xdg.nix
   ];
 
   programs.home-manager.enable = true;

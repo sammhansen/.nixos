@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # spotify-player
+    (callPackage ./burpsuite-pro.nix {})
   ];
 }

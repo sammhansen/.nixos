@@ -1,9 +1,9 @@
 {...}: {
   programs.zellij = {
-    enable = true;
+    enable = false;
     enableBashIntegration = true;
     enableFishIntegration = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
 
     settings = {
       default_shell = "fish";

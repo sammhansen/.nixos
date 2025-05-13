@@ -61,6 +61,7 @@ in {
       focus-follows-cursor = "normal";
 
       background-color = argbify colors.background;
+      border-width = "0";
       border-color-focused = argbify colors.primary_container;
       border-color-unfocused = argbify colors.secondary_container;
 

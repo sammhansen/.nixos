@@ -3,7 +3,7 @@
   bifrost,
   ...
 }: let
-  colors = import ../../../../.local/state/matugen/colors.nix;
+  colors = import ../../../.local/state/matugen/colors.nix;
   dotsdir = bifrost.userconf.dotsdir;
 in {
   programs.waybar = {
@@ -208,7 +208,8 @@ in {
 
       window#waybar {
         background: @background;
-        border-radius: 3px;
+        border-radius: 0px;
+        border: 1px solid ${colors.outline_variant};
       }
 
       tooltip {

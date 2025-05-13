@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  colors = import ../../../.local/state/matugen/colors.nix;
+  colors = import ../../../../.local/state/matugen/colors.nix;
 
   stripHash = hex: builtins.substring 1 (builtins.stringLength hex) hex;
 
@@ -43,23 +43,5 @@ in {
       "notification-error" = stripHash colors.error; # Red
       "misc" = stripHash colors.surface_variant; # Surface1
     };
-    # customColorScheme = {
-    #   "text" = "${colors.on_surface}"; # Text
-    #   "subtext" = "${colors.on_surface_variant}"; # Subtext1
-    #   "sidebar-text" = "${colors.on_surface}"; # Text
-    #   "main" = "${colors.background}"; # Base
-    #   "sidebar" = "${colors.surface_container}"; # Mantle
-    #   "player" = "${colors.surface}"; # Base
-    #   "card" = "${colors.surface}"; # Base
-    #   "shadow" = "${colors.shadow}"; # Mantle
-    #   "selected-row" = "${colors.secondary}"; # Overlay2
-    #   "button" = "${colors.outline}"; # Overlay1
-    #   "button-active" = "${colors.primary}"; # Overlay2
-    #   "button-disabled" = "${colors.outline_variant}"; # Overlay0
-    #   "tab-active" = "${colors.surface_container_high}"; # Surface0
-    #   "notification" = "${colors.surface_container_high}"; # Surface0
-    #   "notification-error" = "${colors.error}"; # Red
-    #   "misc" = "${colors.surface_variant}"; # Surface1
-    # };
   };
 }

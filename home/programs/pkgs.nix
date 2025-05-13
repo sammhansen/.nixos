@@ -6,7 +6,6 @@
     activitywatch
     hours
     eog
-    brave
     caido
 
     waypaper
@@ -60,9 +59,6 @@
     telegram-desktop
     element-desktop
 
-    youtube-music
-
-    (mpv.override {scripts = [mpvScripts.mpris];})
     vlc
 
     nautilus

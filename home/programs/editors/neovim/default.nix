@@ -1,11 +1,5 @@
-{
-  config,
-  bifrost,
-  pkgs,
-  ...
-}: let
-  # neovim_config = "${config.home.homeDirectory}/${bifrost.userconf.dotsdir}/.config/nvim";
-  neovim_config = ../../../.config/nvim;
+{pkgs, ...}: let
+  neovim_config = ../../../../.config/nvim;
 in {
   programs.neovim = {
     enable = true;

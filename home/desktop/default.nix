@@ -1,7 +1,8 @@
 {
   imports = [
+    ./default
+
     ./hyprland
     ./river
-    ./default
   ];
 }

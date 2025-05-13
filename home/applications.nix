@@ -1,5 +1,5 @@
 {...}: let
-  config = ../../../.local/share/applications;
+  config = ../.local/share/applications;
 in {
   xdg.dataFile = {
     "applications" = {
