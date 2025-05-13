@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=W3Schools
-Exec=chromium --profile-directory=Default --app=https://pathfinder.w3schools.com/
+Exec=chromium --app=https://pathfinder.w3schools.com/
 Icon=/home/t4m4r4/.local/share/applications/icons/w3schools.png
 

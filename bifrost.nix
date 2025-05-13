@@ -26,8 +26,8 @@
       inbuilt = {
         name = "eDP-1";
         position = {
-          x = 0;
-          y = 1080;
+          x = "0";
+          y = "1080";
         };
       };
       external = {
@@ -38,8 +38,9 @@
 
     sessions = {
       dm = "sddm"; #tui-greet
-      gnome.enable = true;
+      gnome.enable = false;
       hyprland.enable = true;
+      river.enable = true;
       xwayland.enable = true;
       niri.enable = false; # niri conflicts with xwayland..disable xwayland above
     };
@@ -66,20 +67,21 @@
 
     terminals = {
       default = "foot";
-      kitty.enable = false;
       foot.enable = true;
+      kitty.enable = false;
       ghostty.enable = false;
       wezterm.enable = false;
     };
 
     browsers = {
-      default = "qutebrowser";
-      firefox.enable = true;
-      zen.enable = true;
+      default = "chromium";
+      firefox.enable = false;
+      floorp.enable = true;
+      zen.enable = false;
       tor-browser.enable = true;
-      chrome.enable = true;
+      chrome.enable = false;
       chromium.enable = true;
-      qute.enable = true;
+      qute.enable = false;
     };
 
     dev = {
@@ -126,12 +128,13 @@
     };
 
     shells = {
-      default = "zsh";
+      default = "fish";
       zsh.enable = true;
       fish.enable = true;
     };
 
     extra = {
+      filemanager = "thunar";
       flatpak.enable = true;
       printing.enable = false;
     };

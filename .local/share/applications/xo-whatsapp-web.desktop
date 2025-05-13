@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=WhatsApp
-Exec=chromium --profile-directory=Default --app=https://web.whatsapp.com
+Exec=chromium --app=https://web.whatsapp.com
 Icon=/home/t4m4r4/.local/share/applications/icons/whatsapp.png
 

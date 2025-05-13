@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Canva
-Exec=chromium --profile-directory=Default --app=https://canva.com
+Exec=chromium --app=https://canva.com
 Icon=/home/t4m4r4/.local/share/applications/icons/canva.svg
 

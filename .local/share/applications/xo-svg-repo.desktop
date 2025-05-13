@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=SVG Repo
-Exec=chromium --profile-directory=Default --app=https://www.svgrepo.com
+Exec=chromium --app=https://www.svgrepo.com
 Icon=/home/t4m4r4/.local/share/applications/icons/svg-repo.png
 

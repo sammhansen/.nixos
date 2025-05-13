@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=TikTok
-Exec=chromium --profile-directory=Default --app=https://tiktok.com
+Exec=chromium --app=https://tiktok.com
 Icon=/home/t4m4r4/.local/share/applications/icons/tiktok.png
 

@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Addie Notes
-Exec=chromium --profile-directory=Default --app=https://publish.obsidian.md/addielamarr/01+Cybersecurity+Mastery
+Exec=chromium --app=https://publish.obsidian.md/addielamarr/01+Cybersecurity+Mastery
 Icon=/home/t4m4r4/.local/share/applications/icons/hacktricks.png
 
