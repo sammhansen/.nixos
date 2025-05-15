@@ -12,6 +12,7 @@
 > - Nvidia?? we dont do that here
 
 ![image](https://github.com/user-attachments/assets/848c1be4-9504-4de8-9d74-55d8a69fb2b2)
+![image](https://github.com/user-attachments/assets/9fce2274-45d3-446c-a89e-52dfb27d2f9e)
 ![image](https://github.com/user-attachments/assets/2839331b-ed3a-4cae-b8b2-b71fb7f82113)
 
 
