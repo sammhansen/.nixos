@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=OdySee
 Exec=chromium --app=https://odysee.com
-Icon=/home/t4m4r4/.local/share/applications/icons/odysee.png
+Icon=/home/tamara/.local/share/applications/icons/odysee.png
 

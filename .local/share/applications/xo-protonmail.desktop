@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Proton Mail
 Exec=chromium --app=https://mail.proton.me/u/0/inbox
-Icon=/home/t4m4r4/.local/share/applications/icons/proton-mail.png
+Icon=/home/tamara/.local/share/applications/icons/proton-mail.png
 

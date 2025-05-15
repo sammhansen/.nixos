@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=TikTok
 Exec=chromium --app=https://tiktok.com
-Icon=/home/t4m4r4/.local/share/applications/icons/tiktok.png
+Icon=/home/tamara/.local/share/applications/icons/tiktok.png
 

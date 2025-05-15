@@ -1,7 +1,7 @@
 {
   imports = [
     # ./fuzzel
-    ./rofi.nix
-    ./dmenu
+    # ./dmenu
+    ./rofi
   ];
 }

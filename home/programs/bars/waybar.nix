@@ -14,8 +14,8 @@ in {
         layer = "top";
         position = "left";
         width = 15;
-        margin-top = 12;
-        margin-bottom = 12;
+        margin-top = 5;
+        margin-bottom = 5;
         margin-left = 4;
         margin-right = 0;
         gtk-layer-shell = true;
@@ -80,8 +80,8 @@ in {
           on-click = "activate";
           orientation = "vertical";
           persistent-workspaces = {
-            "HDMI-A-2" = [1 2 3 4 5];
-            "eDP-1" = [6 7 8 9];
+            "${bifrost.monitors.external.name}" = [1 2 3 4 5];
+            "${bifrost.monitors.inbuilt.name}" = [6 7 8 9];
           };
         };
         "river/tags" = {
@@ -166,7 +166,7 @@ in {
         };
         "custom/batt-warn" = {
           exec = "/home/${username}/.config/waybar/scripts/batt-warn.sh";
-          interval = 7;
+          interval = 5;
         };
 
         modules-left = [
@@ -209,7 +209,7 @@ in {
       window#waybar {
         background: @background;
         border-radius: 0px;
-        border: 1px solid ${colors.outline_variant};
+        border: 0px solid ${colors.outline_variant};
       }
 
       tooltip {
@@ -252,6 +252,50 @@ in {
       #clock {
         color: @on_background;
       }
+
+      #workspaces button {
+        color: @primary;
+        font-size: 13px;
+      }
+
+      #workspaces button.empty {
+        color: @outline_variant;
+      }
+
+      #workspaces button.active {
+        color: @on_primary_container;
+        background-color: @primary_container;
+        border-radius: 20px;
+        padding: 0px;
+        margin: 2px 7px 2px 7px;
+      }
+
+      #workspaces button.special {
+        color: ${colors.on_secondary_container};
+        background-color: ${colors.secondary_container};
+        border-radius: 20px;
+        padding: 0px;
+        margin: 2px 7px 2px 7px;
+
+      }
+
+      #workspaces button.visible {
+        color: @on_primary_container;
+        background-color: @primary_container;
+        border-radius: 20px;
+        padding: 0px;
+        margin: 2px 7px 2px 7px;
+      }
+
+      #workspaces button.urgent {
+        color: ${colors.on_error_container};
+        background-color: ${colors.error_container};
+        border-radius: 20px;
+        padding: 0px;
+        margin: 2px 7px 2px 7px;
+      }
+
+      /*#workspaces button.persistent*/
 
       #tags button {
         color: @outline_variant;

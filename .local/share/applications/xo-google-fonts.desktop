@@ -5,4 +5,4 @@ Terminal=false
 Type=Application
 Name=Google Fonts
 Exec=chromium --app=https://fonts.google.com
-Icon=/home/t4m4r4/.local/share/applications/icons/google-fonts.png
+Icon=/home/tamara/.local/share/applications/icons/google-fonts.png

@@ -5,4 +5,4 @@ Terminal=false
 Type=Application
 Name=Font Awesome
 Exec=chromium --app=https://fontawesome.com/icons
-Icon=/home/t4m4r4/.local/share/applications/icons/fontawesome.png
+Icon=/home/tamara/.local/share/applications/icons/fontawesome.png

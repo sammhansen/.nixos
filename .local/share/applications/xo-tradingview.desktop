@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Trading View
 Exec=chromium --app=https://tradingview.com
-Icon=/home/t4m4r4/.local/share/applications/icons/trading-view.png
+Icon=/home/tamara/.local/share/applications/icons/trading-view.png
 

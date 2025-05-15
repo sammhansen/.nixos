@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Cisco
 Exec=chromium --app=https://www.netacad.com/catalogs/learn
-Icon=/home/t4m4r4/.local/share/applications/icons/cisco.png
+Icon=/home/tamara/.local/share/applications/icons/cisco.png
 

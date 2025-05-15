@@ -65,4 +65,7 @@ in {
       categories = ["Utility"];
     })
   ];
+  imports = [
+    ./settings.nix
+  ];
 }

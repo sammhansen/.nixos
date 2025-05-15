@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Regexr
 Exec=chromium --app=https://regexr.com
-Icon=/home/t4m4r4/.local/share/applications/icons/hashtag-solid.svg
+Icon=/home/tamara/.local/share/applications/icons/hashtag-solid.svg
 

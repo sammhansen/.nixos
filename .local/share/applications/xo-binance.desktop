@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Binance
 Exec=chromium --app=https://binance.com
-Icon=/home/t4m4r4/.local/share/applications/icons/binance.png
+Icon=/home/tamara/.local/share/applications/icons/binance.png
 

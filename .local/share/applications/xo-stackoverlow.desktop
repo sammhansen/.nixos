@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Stack Overflow
 Exec=chromium --app=https://stackoverflow.com
-Icon=/home/t4m4r4/.local/share/applications/icons/stack-overflow.svg
+Icon=/home/tamara/.local/share/applications/icons/stack-overflow.svg
 

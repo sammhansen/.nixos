@@ -53,10 +53,11 @@
   '';
 in {
   home.packages = with pkgs; [
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
-    pywal_discord
+    # (discord.override {
+    #   withOpenASAR = false;
+    #   withVencord = false;
+    # })
+    discord
+    # pywal_discord
   ];
 }

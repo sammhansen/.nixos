@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Bug Crowd
 Exec=chromium --app=https://bugcrowd.com/engagements
-Icon=/home/t4m4r4/.local/share/applications/icons/bugcrowd.png
+Icon=/home/tamara/.local/share/applications/icons/bugcrowd.png
 

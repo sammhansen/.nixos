@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Nix Package Search
 Exec=chromium --app=https://search.nixos.org/packages
-Icon=/home/t4m4r4/.local/share/applications/icons/nix.png
+Icon=/home/tamara/.local/share/applications/icons/nix.png
 

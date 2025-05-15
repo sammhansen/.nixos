@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=YouTube
 Exec=chromium --app=https://youtube.com
-Icon=/home/t4m4r4/.local/share/applications/icons/youtube.png
+Icon=/home/tamara/.local/share/applications/icons/youtube.png
 

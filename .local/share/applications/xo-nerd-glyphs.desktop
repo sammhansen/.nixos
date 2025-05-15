@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=Nerd Glyghs
 Exec=chromium --app=https://www.nerdfonts.com/cheat-sheet
-Icon=/home/t4m4r4/.local/share/applications/icons/nerd.png
+Icon=/home/tamara/.local/share/applications/icons/nerd.png
 

@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Name=zueLearning
 Exec=chromium --app=https://elearning.zetech.ac.ke
-Icon=/home/t4m4r4/.local/share/applications/icons/zuni.png
+Icon=/home/tamara/.local/share/applications/icons/zuni.png
 

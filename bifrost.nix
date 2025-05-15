@@ -2,7 +2,7 @@
   bifrost = {
     userconf = {
       name = "Hansen";
-      username = "t4m4r4";
+      username = "tamara";
       editor = "neovim";
       dotsdir = "atlantis";
     };

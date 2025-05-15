@@ -5,4 +5,4 @@ Terminal=false
 Type=Application
 Name=Instagram
 Exec=chromium --app=https://instagram.com
-Icon=/home/t4m4r4/.local/share/applications/icons/instagram.png
+Icon=/home/tamara/.local/share/applications/icons/instagram.png
