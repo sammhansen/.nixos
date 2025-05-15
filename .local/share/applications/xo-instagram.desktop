@@ -4,5 +4,5 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Instagram
-Exec=chromium --profile-directory=Default --app=https://instagram.com
+Exec=chromium --app=https://instagram.com
 Icon=/home/tamara/.local/share/applications/icons/instagram.png

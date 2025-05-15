@@ -11,8 +11,8 @@
       host = "atlantis";
       locale = "en_US.UTF-8";
       timezone = "Africa/Nairobi";
-      osprober = true;
-      hardwareclock = true;
+      osprober = false;
+      hardwareclock = false;
       keyboardlayout = "us";
     };
 
@@ -25,7 +25,10 @@
       default = "HDMI-A-2";
       inbuilt = {
         name = "eDP-1";
-        position = "0x1080";
+        position = {
+          x = "0";
+          y = "1080";
+        };
       };
       external = {
         enable = true;
@@ -37,35 +40,39 @@
       dm = "sddm"; #tui-greet
       gnome.enable = false;
       hyprland.enable = true;
-      xwayland.enable = true;
-      niri.enable = false; # niri conflicts with xwayland..disable xwayland above
     };
 
     themes = {
       font = {
         name = "SpaceMono Nerd Font";
-        size = "17";
-      };
-      catppuccin = {
-        flavor = "mocha";
-        accent = "pink";
+        monospace = {
+          name = "SpaceMono Nerd Font";
+          variant = "Regular";
+        };
+        sansSerif = {
+          name = "Noto Sans";
+          variant = "Regular";
+        };
+
+        size = 11;
       };
     };
 
     terminals = {
       default = "foot";
-      kitty.enable = false;
       foot.enable = true;
+      kitty.enable = false;
       ghostty.enable = false;
       wezterm.enable = false;
     };
 
     browsers = {
       default = "chromium";
-      firefox.enable = true;
-      zen.enable = true;
+      firefox.enable = false;
+      floorp.enable = true;
+      zen.enable = false;
       tor-browser.enable = true;
-      chrome.enable = true;
+      chrome.enable = false;
       chromium.enable = true;
       qute.enable = false;
     };
@@ -81,7 +88,7 @@
         androidstd.enable = false;
       };
       langs = {
-        nodejs.enable = false;
+        nodejs.enable = true;
         flutter.enable = false;
       };
       dbs = {
@@ -100,7 +107,7 @@
       podman.enable = true;
       docker.enable = true;
       ollama.enable = false;
-      waydroid.enable = false;
+      waydroid.enable = true;
       emulator.enable = false;
     };
 
@@ -109,18 +116,19 @@
     };
 
     git = {
-      username = "sammhansen";
-      email = "samhansen.dev@gmail.com";
+      username = "sa" + "mm" + "han" + "sen";
+      email = "sa" + "m" + "han" + "sen" + "dev" + "@" + "gm" + "ail" + "co" + "m";
     };
 
     shells = {
-      default = "zsh";
+      default = "fish";
       zsh.enable = true;
       fish.enable = true;
     };
 
     extra = {
-      flatpak.enable = false;
+      filemanager = "thunar";
+      flatpak.enable = true;
       printing.enable = false;
     };
   };

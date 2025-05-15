@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=WIFI Admin
-Exec=chromium --profile-directory=Default --app=http://192.168.99.1
+Exec=chromium --app=http://192.168.99.1
 Icon=/home/tamara/.local/share/applications/icons/wifi-admin.png
 

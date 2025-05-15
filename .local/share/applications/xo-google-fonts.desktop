@@ -4,5 +4,5 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Google Fonts
-Exec=chromium --profile-directory=Default --app=https://fonts.google.com
+Exec=chromium --app=https://fonts.google.com
 Icon=/home/tamara/.local/share/applications/icons/google-fonts.png

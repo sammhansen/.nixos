@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Reddit
-Exec=chromium --profile-directory=Default --app=https://reddit.com
+Exec=chromium --app=https://reddit.com
 Icon=/home/tamara/.local/share/applications/icons/reddit.png
 

@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Figma
-Exec=chromium --profile-directory=Default --app=https://figma.com
+Exec=chromium --app=https://figma.com
 Icon=/home/tamara/.local/share/applications/icons/figma.png
 

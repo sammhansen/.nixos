@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=omegle
-Exec=chromium --profile-directory=Default --app=https://omegle.cc
+Exec=chromium --app=https://omegle.cc
 Icon=/home/tamara/.local/share/applications/icons/omegle.svg
 

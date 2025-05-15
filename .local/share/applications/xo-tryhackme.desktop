@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=TryHackMe
-Exec=chromium --profile-directory=Default --app=https://tryhackme.com/dashboard
+Exec=chromium --app=https://tryhackme.com/dashboard
 Icon=/home/tamara/.local/share/applications/icons/tryhackme.png
 

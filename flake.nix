@@ -5,16 +5,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland?rev=d26439a0fe5594fb26d5a3c01571f9490a9a2d2c&submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      # inputs.nixpkgs.follows = "hyprland";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,19 +30,11 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    catppuccin = {
-      type = "github";
-      owner = "catppuccin";
-      repo = "nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
     nixpkgs,
     nixpkgs-stable,
-    catppuccin,
     home-manager,
     nur,
     ...
@@ -88,7 +70,7 @@
         };
 
         modules = [
-          ./nodes/asgard
+          ./hosts
 
           {
             nixpkgs.config = {
@@ -98,8 +80,6 @@
           }
           nur.modules.nixos.default
           nur.legacyPackages."${system}".repos.iopq.modules.xraya
-
-          catppuccin.nixosModules.catppuccin
 
           inputs.distro-grub-themes.nixosModules.${system}.default
 
@@ -115,8 +95,7 @@
               useUserPackages = true;
               users."${username}" = {
                 imports = [
-                  ./user
-                  catppuccin.homeModules.catppuccin
+                  ./home
                 ];
               };
               backupFileExtension = "backup";
