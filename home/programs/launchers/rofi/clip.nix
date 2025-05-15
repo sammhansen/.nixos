@@ -1,8 +1,4 @@
-{
-  bifrost,
-  pkgs,
-  ...
-}: let
+{bifrost, ...}: let
   colors = import ../../../../.local/state/matugen/colors.nix;
   font = {
     name = bifrost.themes.font.name;
@@ -32,7 +28,7 @@
         location:                    center;
         anchor:                      center;
         fullscreen:                  false;
-        width:                       400px;
+        width:                       700px;
         x-offset:                    0px;
         y-offset:                    0px;
 
@@ -176,21 +172,5 @@
     }
   '';
 in {
-  imports = [
-    ./clip.nix
-    ./emoji.nix
-  ];
-
-  programs.rofi = {
-    enable = true;
-  };
-
-  home.packages = with pkgs; [
-    rofi-rbw-wayland
-    rbw
-    pinentry-curses
-    pinentry-rofi
-  ];
-
-  home.file.".config/rofi/theme.rasi".text = theme;
+  home.file.".config/rofi/clip.rasi".text = theme;
 }

@@ -1,4 +1,13 @@
-{...}: {
+{
+  imports = [
+    ./zram.nix
+    ./dconf.nix
+    ./fstrim.nix
+    ./libinput.nix
+    ./printing.nix
+    ./printing.nix
+  ];
+
   services = {
     smartd = {
       enable = false;

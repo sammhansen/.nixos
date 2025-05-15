@@ -1,7 +1,13 @@
-{...}: let
+{
+  bifrost,
+  lib,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+  cfg = bifrost.sessions.hyprland;
   colors = import ../../../.local/state/matugen/colors.nix;
-in {
-  home.file.".config/swaync/notifications.css".text = ''
+
+  style = ''
     @define-color bg               ${colors.background};
     @define-color on-bg            ${colors.on_background};
     @define-color bg-alt           ${colors.surface_bright};
@@ -156,4 +162,8 @@ in {
       background-color: @selected;
     }
   '';
+in {
+  config = mkIf cfg.enable {
+    home.file.".config/swaync/notifications.css".text = style;
+  };
 }

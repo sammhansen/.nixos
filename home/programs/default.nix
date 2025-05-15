@@ -1,13 +1,7 @@
 {
   imports = [
-    ./pkgs.nix
-
-    ./burpsuite
-    ./obs
-    ./swaylock
     ./bars
     ./launchers
-    ./thunderbird
     ./shell
     ./git
     ./editors
@@ -15,5 +9,6 @@
     ./terminals
     ./media
     ./socials
+    ./misc
   ];
 }

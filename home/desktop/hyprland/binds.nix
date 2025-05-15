@@ -23,7 +23,7 @@
     window{width:440px; height:271px;}
     listview{scrollbar:false;}
     "
-    themeDir="~/.config/rofi/config.rasi"
+    themeDir="~/.config/rofi/clip.rasi"
 
     cliphist list |
         rofi -dmenu -theme-str "''${config}" -theme "''${themeDir}" |
@@ -41,6 +41,11 @@ in {
     binde = [
       # Audio Control
       "SUPER SHIFT, P, exec, playerctl play-pause"
+
+      #for airpods gestures to work
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
 
       ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
@@ -96,16 +101,16 @@ in {
       "SUPER , E, exec, uwsm app -- thunar"
       "ALT, S, exec, ${hyprshot}/bin/hyprshot.sh"
 
-      # "SUPER, A , exec, ${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.config/rofi/launcher.rasi"
+      # "SUPER, A , exec, ${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.local/share/rofi/themes/custom.rasi"
 
-      "SUPER, A , exec, ${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.config/rofi/launcher.rasi"
-      "SUPER, W , exec, ${pkgs.rofi-wayland}/bin/rofi -show window -theme ~/.config/rofi/launcher.rasi"
+      "SUPER, A , exec, ${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.config/rofi/theme.rasi"
+      "SUPER, W , exec, ${pkgs.rofi-wayland}/bin/rofi -show window -theme ~/.config/rofi/theme.rasi"
       "Super, V, exec, ${clipboard}/bin/rofi-clipboard.sh"
-      "Super, Period, exec, pkill fuzzel || ~/${dotsdir}/user/pkgs/gui/launchers/fuzzel/fuzzel-emoji"
+      "Super, P, exec, rofi-rbw"
+      "Super, Period, exec, ~/.config/rofi/scripts/emoji.sh"
       "SHIFT+CTRL, S, exec, wlogout"
-      "SUPER+CTRL, T, exec, ${pkgs.waypaper}/bin/waypaper"
+      "SUPER+CTRL, T, exec, waypaper"
 
-      "CTRL SUPER ALT, SPACE, exec, rofi -show menu -theme ~/.config/rofi/powermenu.rasi -modi 'menu:rofi-power-menu --choices=shutdown/reboot/logout/hibernate'"
       "Super, B, exec, ${browser}"
       "Alt, C, exec, chromium --app='https://chatgpt.com'"
       "Alt, G, exec, chromium --app='https://gemini.google.com/app'"

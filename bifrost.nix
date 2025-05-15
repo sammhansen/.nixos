@@ -40,9 +40,6 @@
       dm = "sddm"; #tui-greet
       gnome.enable = false;
       hyprland.enable = true;
-      river.enable = true;
-      xwayland.enable = true;
-      niri.enable = false; # niri conflicts with xwayland..disable xwayland above
     };
 
     themes = {
@@ -58,10 +55,6 @@
         };
 
         size = 11;
-      };
-      catppuccin = {
-        flavor = "mocha";
-        accent = "pink";
       };
     };
 
@@ -123,8 +116,8 @@
     };
 
     git = {
-      username = "sammhansen";
-      email = "samhansen.dev@gmail.com";
+      username = "sa" + "mm" + "han" + "sen";
+      email = "sa" + "m" + "han" + "sen" + "dev" + "@" + "gm" + "ail" + "co" + "m";
     };
 
     shells = {

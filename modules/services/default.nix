@@ -1,13 +1,6 @@
 {
   imports = [
-    ./dconf.nix
-    ./printing.nix
-    ./fstrim.nix
-    ./zram.nix
-    ./libinput.nix
-    ./security.nix
-    ./misc.nix
-
+    ./misc
     ./power
     ./database
   ];

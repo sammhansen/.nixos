@@ -1,10 +1,9 @@
 {
   imports = [
     ./kdeconnect
-    ./wlsunset
     ./swww
+    ./hypr
     ./kanshi
-    ./swayidle
     ./swaync
   ];
 }

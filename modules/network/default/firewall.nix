@@ -5,6 +5,7 @@
       # allowedTCPPorts = [];
       # allowedUDPPorts = [];
 
+      #kde-connect
       allowedTCPPortRanges = [
         {
           from = 1714;
@@ -16,6 +17,7 @@
       allowedUDPPorts = [19000 19001];
 
       allowedUDPPortRanges = allowedTCPPortRanges;
+      trustedInterfaces = ["waydroid0"];
     };
   };
 }

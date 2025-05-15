@@ -11,7 +11,7 @@ in {
       enable = true;
       portalPackage = pkgs.xdg-desktop-portal-hyprland;
       withUWSM = true;
-      xwayland.enable = bifrost.sessions.xwayland.enable;
+      xwayland.enable = true;
     };
 
     nm-applet.indicator = false;

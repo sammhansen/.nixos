@@ -17,7 +17,6 @@ in {
       extraGroups = [
         "networkmanager"
         "wheel"
-        "libvirtd"
         "scanner"
         "lp"
         "video"
@@ -28,7 +27,6 @@ in {
         "dialout"
         "fingerprint"
         "plugdev"
-        "kvm"
         "ydotool" #require for hints
       ];
     };

@@ -152,9 +152,12 @@ in {
             warning = 30;
             critical = 10;
           };
-          format = "<span foreground='${colors.primary}' size='13000'></span>\n{capacity}";
-          format-charging = "<span foreground='${colors.primary}' size='13000'><span foreground='#2CFF05'><sup></sup></span></span>\n{capacity}";
-          format-plugged = "<span foreground='${colors.tertiary_container}' size='13000'></span>\n{capacity}";
+          # format = "<span foreground='${colors.primary}' size='13000'></span>\n{capacity}";
+          # format-charging = "<span foreground='${colors.primary}' size='13000'><span foreground='#2CFF05'><sup></sup></span></span>\n{capacity}";
+          # format-plugged = "<span foreground='${colors.tertiary_container}' size='13000'></span>\n{capacity}";
+          format = "<span foreground='${colors.primary}' size='13000'>󰁹</span>\n{capacity}";
+          format-charging = "<span foreground='${colors.primary}' size='13000'>󰁹<span foreground='#2CFF05'><sup></sup></span></span>\n{capacity}";
+          format-plugged = "<span foreground='${colors.tertiary_container}' size='13000'>󰁹</span>\n{capacity}";
           format-full = "100";
           # format-icons = [
           #   # "❤"
