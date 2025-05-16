@@ -58,11 +58,11 @@ in {
 
       set-option -g status-left-style none
       set -g status-left-length 60
-      set-option -g status-left "#[bg=#{@primary_container},fg=#{@on_primary_container}]#{?client_prefix, , } #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] #S "
+      set-option -g status-left "#[bg=#{@primary_container},fg=#{@on_primary_container}]#{?client_prefix, , } #[default] #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] #S #[default] "
 
       set-option -g status-right-style none
       set -g status-right-length 120
-      set -g status-right '#[fg=white]#(if git -C "#{pane_current_path}" rev-parse --is-inside-work-tree 2>/dev/null; then echo "  on #[fg=#{@on_surface}]$(git -C "#{pane_current_path}" rev-parse --abbrev-ref HEAD)"; fi) #[fg=#{@primary}] #[fg=#{@on_primary_container},bg=#{@primary_container}]  #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] #W #[fg=#{@on_primary_container},bg=#{@primary_container}]  #[fg=#{@on_surface},bg=default] #{p:pane_current_path} #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] %H #[fg=#{@on_primary_container},bg=#{@primary_container}] %M '
+      set -g status-right '#[fg=white]#(if git -C "#{pane_current_path}" rev-parse --is-inside-work-tree 2>/dev/null; then echo "  on #[fg=#{@on_surface}]$(git -C "#{pane_current_path}" rev-parse --abbrev-ref HEAD)"; fi) #[fg=#{@primary}] #[fg=#{@on_primary_container},bg=#{@primary_container}]  #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] #W #[default] #[fg=#{@on_primary_container},bg=#{@primary_container}]  #[fg=#{@on_surface},bg=default] #{p:pane_current_path} #[fg=#{@on_tertiary_container},bg=#{@tertiary_container}] %H #[fg=#{@on_primary_container},bg=#{@primary_container}] %M '
 
       set -g window-status-separator "#[bg=default] "
       set -g window-status-current-format "#[fg=color15,bg=color8] #W #[fg=color0,bg=color2] #I "

@@ -15,7 +15,7 @@ in {
       settings = {
         background = {
           monitor = "${monitor}";
-          path = "/home/${username}/Pictures/wals/mickey.png";
+          path = "/home/${username}/Pictures/Wallpapers/mickey.png";
           blur_passes = 0;
           contrast = 0.8916;
           brightness = 0.8172;

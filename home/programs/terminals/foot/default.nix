@@ -5,6 +5,11 @@
 }: let
   inherit (lib.modules) mkIf;
   cfg = bifrost.terminals.foot;
+  font = {
+    name = bifrost.themes.font.name;
+    size = builtins.toString bifrost.themes.font.name;
+  };
+
   colors = import ../../../../.local/state/matugen/colors.nix;
 
   stripHash = hex: builtins.substring 1 (builtins.stringLength hex) hex;
@@ -17,7 +22,7 @@ in {
           shell = "tmux";
           term = "xterm-256color";
           title = "foot";
-          font = lib.mkForce "SpaceMono Nerd Font:size=11";
+          font = "${font.name}:size=11";
           # line-height = 13.5;
           letter-spacing = 0;
           selection-target = "clipboard";
@@ -40,7 +45,7 @@ in {
         };
 
         colors = {
-          alpha = lib.mkForce 0.7;
+          alpha = 0.7;
           background = stripHash colors.background;
           foreground = stripHash colors.on_surface;
           regular0 = stripHash colors.surface;
