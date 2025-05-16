@@ -88,7 +88,7 @@
         androidstd.enable = false;
       };
       langs = {
-        nodejs.enable = true;
+        nodejs.enable = false;
         flutter.enable = false;
       };
       dbs = {
@@ -98,7 +98,7 @@
     };
 
     virtualisation = {
-      enable = true;
+      enable = false;
 
       distrobox = {
         kali.hostname = "kali";
@@ -112,7 +112,7 @@
     };
 
     pentester = {
-      enable = true;
+      enable = false;
     };
 
     git = {

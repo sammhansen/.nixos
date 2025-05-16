@@ -6,7 +6,6 @@
     activitywatch
     hours
     eog
-    caido
 
     waypaper
 
