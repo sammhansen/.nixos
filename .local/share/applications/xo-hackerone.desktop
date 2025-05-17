@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=HackerOne
-Exec=chromium --app=https://hackerone.com/opportunities/all
+Exec=qutebrowser --target window https://hackerone.com/opportunities/all
 Icon=/home/tamara/.local/share/applications/icons/hackerone.png
 

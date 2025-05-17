@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Proton Mail
-Exec=chromium --app=https://mail.proton.me/u/0/inbox
+Exec=qutebrowser --target window https://mail.proton.me/u/0/inbox
 Icon=/home/tamara/.local/share/applications/icons/proton-mail.png
 

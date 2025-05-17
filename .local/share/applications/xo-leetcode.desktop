@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Leetcode
-Exec=chromium --app=https://leetcode.com
+Exec=qutebrowser --target window https://leetcode.com
 Icon=/home/tamara/.local/share/applications/icons/leetcode.svg
 

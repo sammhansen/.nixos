@@ -67,14 +67,14 @@
     };
 
     browsers = {
-      default = "chromium";
+      default = "qutebrowser";
       firefox.enable = false;
       floorp.enable = true;
       zen.enable = false;
       tor-browser.enable = true;
       chrome.enable = false;
       chromium.enable = true;
-      qute.enable = false;
+      qute.enable = true;
     };
 
     dev = {
@@ -112,7 +112,7 @@
     };
 
     pentester = {
-      enable = false;
+      enable = true;
     };
 
     git = {

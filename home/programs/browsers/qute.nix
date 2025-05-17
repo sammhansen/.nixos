@@ -6,7 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
   cfg = bifrost.browsers.qute;
-  colors = import ../../../../.local/state/matugen/colors.nix;
+  colors = import ../../../.local/state/matugen/colors.nix;
 
   palette = {
     background = "${colors.background}";

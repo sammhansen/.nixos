@@ -1,10 +1,10 @@
-{...}: let
+{pkgs, ...}: let
   colors = import ../../../../.local/state/matugen/colors.nix;
 in {
   programs.tmux = {
     enable = true;
     terminal = "screen-256color";
-    shell = "/usr/bin/fish";
+    shell = "/run/current-system/sw/bin/fish";
     clock24 = false;
     baseIndex = 1;
     mouse = true;

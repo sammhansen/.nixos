@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Canva
-Exec=chromium --app=https://canva.com
+Exec=qutebrowser --target window https://canva.com
 Icon=/home/tamara/.local/share/applications/icons/canva.svg
 

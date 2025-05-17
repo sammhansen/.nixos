@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=TryHackMe
-Exec=chromium --app=https://tryhackme.com/dashboard
+Exec=qutebrowser --target window https://tryhackme.com/dashboard
 Icon=/home/tamara/.local/share/applications/icons/tryhackme.png
 

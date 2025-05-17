@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=zuResults
-Exec=chromium --app=https://results.zetech.ac.ke
+Exec=qutebrowser --target window https://results.zetech.ac.ke
 Icon=/home/tamara/.local/share/applications/icons/zuni.png
 

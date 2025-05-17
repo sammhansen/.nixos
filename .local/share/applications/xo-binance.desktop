@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Binance
-Exec=chromium --app=https://binance.com
+Exec=qutebrowser --target window https://binance.com
 Icon=/home/tamara/.local/share/applications/icons/binance.png
 

@@ -57,7 +57,8 @@ in {
     #   withOpenASAR = false;
     #   withVencord = false;
     # })
-    discord
+    #discord
+    vesktop
     # pywal_discord
   ];
 }

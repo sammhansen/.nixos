@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=HTB Labs
-Exec=chromium --app=https://app.hackthebox.com/home
+Exec=qutebrowser --target window https://app.hackthebox.com/home
 Icon=/home/tamara/.local/share/applications/icons/htb.png
 

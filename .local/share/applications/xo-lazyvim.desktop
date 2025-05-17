@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=LazyVim
-Exec=chromium --app=https://www.lazyvim.org/
+Exec=qutebrowser --target window https://www.lazyvim.org/
 Icon=/home/tamara/.local/share/applications/icons/lazyvim.svg
 
