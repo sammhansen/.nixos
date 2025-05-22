@@ -8,7 +8,7 @@
     };
     sysconf = {
       system = "x86_64-linux";
-      host = "atlantis";
+      host = "hell";
       locale = "en_US.UTF-8";
       timezone = "Africa/Nairobi";
       osprober = false;
