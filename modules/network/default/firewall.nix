@@ -1,7 +1,7 @@
 {...}: {
   networking = {
     firewall = rec {
-      enable = true;
+      enable = false;
       # allowedTCPPorts = [];
       # allowedUDPPorts = [];
 

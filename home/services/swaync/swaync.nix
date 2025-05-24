@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.hyprland;
+  cfg = bifrost.sessions.river;
 in {
   imports = [
     ./notifications.nix
@@ -86,24 +86,27 @@ in {
                 update-command = "sh -c '[[ $(warp-cli status ) == \"Status update: Connected\" ]] && echo true || echo false'";
               }
               {
-                label = " Night";
+                active = false;
+                command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nm-connection-editor || pkexec pkill openvpn'";
+                label = "󰯄 OpenVPN";
                 position = "right";
+                type = "toggle";
+                update-command = "sh -c '[ -d /sys/class/net/tun0 ] && echo true || echo false'";
+              }
+              {
+                label = " Night";
+                position = "left";
                 type = "toggle";
                 command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && systemctl --user start wlsunset.service || systemctl --user stop wlsunset.service'";
                 update-command = "sh -c 'systemctl --user is-active --quiet wlsunset.service && echo true || echo false'";
               }
               {
-                label = " DnD";
-                position = "left";
-                type = "toggle";
                 active = false;
                 command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && swaync-client --dnd-on || swaync-client --dnd-off'";
-                update-command = "sh -c '[[ $(swaync-client --get-dnd) == \"true\" ]] && echo true || echo false'";
-              }
-              {
-                label = "󱨍 Picker";
+                label = " DnD";
                 position = "right";
-                command = "sh -c 'swaync-client --close-panel; hyprpicker -a'";
+                type = "toggle";
+                update-command = "sh -c '[[ $(swaync-client --get-dnd) == \"true\" ]] && echo true || echo false'";
               }
               {
                 label = "󱣵 Snip";
@@ -116,9 +119,9 @@ in {
                 command = "sh -c 'obs'";
               }
               {
-                label = " Profiles";
+                label = "󱨍 Picker";
                 position = "left";
-                command = "obs";
+                command = "sh -c 'swaync-client --close-panel; hyprpicker -a'";
               }
               {
                 label = "󰃢 Clear";

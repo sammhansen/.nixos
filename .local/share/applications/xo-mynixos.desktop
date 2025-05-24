@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=My Nixos
-Exec=qutebrowser --target window https://mynixos.com
+Exec=chromium --app=https://mynixos.com
 Icon=/home/tamara/.local/share/applications/icons/nix.png
 

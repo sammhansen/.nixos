@@ -4,5 +4,5 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Docker Hub
-Exec=qutebrowser --target window https://hub.docker.com/explore
+Exec=chromium --app=https://hub.docker.com/explore
 Icon=/home/tamara/.local/share/applications/icons/docker.png

@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=ChatGPT
-Exec=qutebrowser --target window https://chatgpt.com
+Exec=chromium --app=https://chatgpt.com
 Icon=/home/tamara/.local/share/applications/icons/chatgpt.png
 

@@ -4,15 +4,15 @@
       name = "Hansen";
       username = "tamara";
       editor = "neovim";
-      dotsdir = "atlantis";
+      dotsdir = ".nixos";
     };
     sysconf = {
       system = "x86_64-linux";
-      host = "atlantis";
+      host = "hell";
       locale = "en_US.UTF-8";
       timezone = "Africa/Nairobi";
-      osprober = false;
-      hardwareclock = false;
+      osprober = true;
+      hardwareclock = true;
       keyboardlayout = "us";
     };
 
@@ -39,7 +39,8 @@
     sessions = {
       dm = "sddm"; #tui-greet
       gnome.enable = false;
-      hyprland.enable = true;
+      hyprland.enable = false;
+      river.enable = true;
     };
 
     themes = {
@@ -67,14 +68,14 @@
     };
 
     browsers = {
-      default = "qutebrowser";
+      default = "chromium";
       firefox.enable = false;
       floorp.enable = true;
       zen.enable = false;
       tor-browser.enable = true;
       chrome.enable = false;
       chromium.enable = true;
-      qute.enable = true;
+      qute.enable = false;
     };
 
     dev = {
@@ -98,16 +99,16 @@
     };
 
     virtualisation = {
-      enable = false;
+      enable = true;
 
       distrobox = {
         kali.hostname = "kali";
       };
       bottles.enable = false;
-      podman.enable = true;
+      podman.enable = false;
       docker.enable = true;
       ollama.enable = false;
-      waydroid.enable = true;
+      waydroid.enable = false;
       emulator.enable = false;
     };
 

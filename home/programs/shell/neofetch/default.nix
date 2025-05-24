@@ -45,7 +45,7 @@
     bar_color_elapsed="distro"
     bar_color_total="distro"
     image_backend="kitty"
-    image_source="/home/lilith/atlantis/home/cli/neofetch/neofetch.png"
+    image_source="/home/lilith/hell/home/cli/neofetch/neofetch.png"
     image_size="250px"
     image_loop="on"
     ascii_distro="nixos"

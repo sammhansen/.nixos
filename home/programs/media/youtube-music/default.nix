@@ -143,21 +143,21 @@
 in {
   home.packages = with pkgs; [
     youtube-music
-    curl
+    # curl
   ];
 
-  xdg.configFile."YouTube Music/config.json".text = builtins.toJSON ytMusicConfig;
+  # xdg.configFile."YouTube Music/config.json".text = builtins.toJSON ytMusicConfig;
 
-  # Fetch the theme
-  home.activation.fetchYoutubeTheme = lib.mkAfter ''
-    if ! [ -f "$HOME/.config/YouTube Music/themes/catppuccin-mocha.css" ]; then
-      export PATH=${pkgs.curl}/bin:$PATH
-      THEME_DIR="$HOME/.config/YouTube Music/themes"
-      THEME_FILE="$THEME_DIR/catppuccin-mocha.css"
-      mkdir -p "$THEME_DIR"
-      curl -sSfL "https://raw.githubusercontent.com/catppuccin/youtubemusic/main/src/macchiato.css" -o "$THEME_FILE"
-    fi
-  '';
+  # # Fetch the theme
+  # home.activation.fetchYoutubeTheme = lib.mkAfter ''
+  #   if ! [ -f "$HOME/.config/YouTube Music/themes/catppuccin-mocha.css" ]; then
+  #     export PATH=${pkgs.curl}/bin:$PATH
+  #     THEME_DIR="$HOME/.config/YouTube Music/themes"
+  #     THEME_FILE="$THEME_DIR/catppuccin-mocha.css"
+  #     mkdir -p "$THEME_DIR"
+  #     curl -sSfL "https://raw.githubusercontent.com/catppuccin/youtubemusic/main/src/macchiato.css" -o "$THEME_FILE"
+  #   fi
+  # '';
 
   # make the config writable (may cause home-manager conflicts)
   # home.activation.makeYoutubeMusicConfigWritable = lib.mkAfter ''

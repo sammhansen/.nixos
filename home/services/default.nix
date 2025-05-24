@@ -4,6 +4,8 @@
     ./swww
     ./hypr
     ./kanshi
+    ./swayidle
+    ./wlsunset
     ./swaync
   ];
 }

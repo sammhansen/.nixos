@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.hyprland;
+  cfg = bifrost.sessions.river;
 in {
   config = mkIf cfg.enable {
     services.kanshi = {

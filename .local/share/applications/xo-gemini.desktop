@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Gemini
-Exec=qutebrowser --target window https://gemini.google.com/app
+Exec=chromium --app=https://gemini.google.com/app
 Icon=/home/tamara/.local/share/applications/icons/gemini.png
 

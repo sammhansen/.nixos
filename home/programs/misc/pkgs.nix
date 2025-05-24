@@ -3,11 +3,7 @@
     xfce.thunar
     blender
     kdePackages.kdenlive
-    activitywatch
-    hours
     eog
-
-    waypaper
 
     git
     gh-dash

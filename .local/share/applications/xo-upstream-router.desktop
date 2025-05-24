@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Upstream Router
-Exec=qutebrowser --target window http://192.168.100.1
+Exec=chromium --app=http://192.168.100.1
 Icon=/home/tamara/.local/share/applications/icons/upstream.png
 

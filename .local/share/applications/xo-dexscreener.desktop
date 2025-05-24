@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=DexScreener
-Exec=qutebrowser --target window https://dexscreener.com
+Exec=chromium --app=https://dexscreener.com
 Icon=/home/tamara/.local/share/applications/icons/dexscreener.png
 

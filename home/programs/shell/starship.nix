@@ -23,9 +23,15 @@ in {
     settings = {
       add_newline = true;
       format = concatStrings [
-        "$os $hostname $username $directory\n"
+        "$container $os $hostname $username $directory\n"
         "$character"
       ];
+
+      container = {
+        symbol = " 󰏖";
+        style = "bg:default fg:yellow dimmed";
+        format = "[$symbol \[$name\]]($style)";
+      };
 
       hostname = {
         ssh_only = true;
@@ -100,7 +106,7 @@ in {
         };
       };
 
-      container = ss " 󰏖" "yellow dimmed";
+      # container = ss " 󰏖" "yellow dimmed";
       python = ss "" "yellow";
       nodejs = ss " " "yellow";
       lua = ss "󰢱 " "blue";

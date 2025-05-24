@@ -2,7 +2,7 @@
   config = ''
     [Settings]
     language = en
-    folder = ~/Pictures/wals
+    folder = ~/Pictures/Wallpapers
     monitors = All
     wallpaper = ~/Pictures/
     show_path_in_tooltip = True

@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Sign In
-Exec=qutebrowser --target window https://myaccount.google.com
+Exec=chromium --app=https://myaccount.google.com
 Icon=/home/tamara/.local/share/applications/icons/google.png
 

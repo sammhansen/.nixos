@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Movie Box
-Exec=qutebrowser --target window https:moviebox.ng
+Exec=chromium --app=https:moviebox.ng
 Icon=/home/tamara/.local/share/applications/icons/moviebox.svg
 

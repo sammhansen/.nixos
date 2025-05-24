@@ -43,7 +43,7 @@ in {
     "nd" = "nix develop";
     "nsh" = "nix-shell shell.nix";
 
-    "ns" = "sudo nixos-rebuild switch --flake .#atlantis";
+    "ns" = "sudo nixos-rebuild switch --flake .#hell";
     nixos-gens = "sudo nix-env --list-generations --profile ${nixprofile_path}";
     nixos-gens-rm = "sudo nix-env --profile ${nixprofile_path} --delete-generations";
 

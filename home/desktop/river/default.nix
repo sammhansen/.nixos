@@ -30,6 +30,10 @@ in {
   imports = [
     ./pkgs.nix
   ];
+  home.sessionVariables = {
+    JAVA_AWT_WM_NONREPARENTING = "1";
+  };
+
   wayland.windowManager.river = {
     enable = true;
     extraConfig = ''
@@ -79,6 +83,7 @@ in {
          # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
          riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
        done
+
     '';
     settings = {
       declare-mode = ["passthrough"];
@@ -121,6 +126,7 @@ in {
           "Super A" = "spawn 'rofi -show drun -theme ~/.config/rofi/theme.rasi'";
           "Alt A" = "spawn 'pkill rofi'";
           "Super V" = "spawn '${clipboard}/bin/rofi-clipboard.sh'";
+          "Alt S" = "spawn '${pkgs.hyprshot}/bin/hyprshot -m region'";
           "Super P" = "spawn rofi-rbw";
           "Super D" = "spawn ~/.config/rofi/scripts/emoji.sh";
 
@@ -213,6 +219,7 @@ in {
         "'wl-paste --type text --watch cliphist store &'"
         "'wl-paste --type image --watch cliphist store &'"
         "'discord &'"
+        "'vesktop &'"
         "powermode-indicator"
       ];
 

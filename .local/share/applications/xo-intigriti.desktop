@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=intigriti
-Exec=qutebrowser --target window https://app.intigriti.com/researcher/programs/overview
+Exec=chromium --app=https://app.intigriti.com/researcher/programs/overview
 Icon=/home/tamara/.local/share/applications/icons/intigriti.png
 

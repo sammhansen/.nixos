@@ -5,7 +5,6 @@
     ./fstrim.nix
     ./libinput.nix
     ./printing.nix
-    ./printing.nix
   ];
 
   services = {
@@ -27,7 +26,5 @@
     openssh.enable = false;
 
     fwupd.enable = true;
-
-    gnome.gnome-keyring.enable = true;
   };
 }

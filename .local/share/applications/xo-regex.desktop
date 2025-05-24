@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Regexr
-Exec=qutebrowser --target window https://regexr.com
+Exec=chromium --app=https://regexr.com
 Icon=/home/tamara/.local/share/applications/icons/hashtag-solid.svg
 

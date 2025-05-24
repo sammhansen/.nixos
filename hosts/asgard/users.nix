@@ -25,21 +25,15 @@ in {
         "docker"
         "wireshark"
         "dialout"
-        "fingerprint"
         "plugdev"
-        "ydotool" #require for hints
       ];
     };
 
-    # create groups that arent created
     groups = {
       scanner = {};
-      libvirtd = {};
       wireshark = {};
       dialout = {};
-      fingerprint = {};
       plugdev = {};
-      ydotool = {};
     };
 
     defaultUserShell = pkgs.bash;
