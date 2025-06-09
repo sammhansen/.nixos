@@ -1,5 +1,6 @@
 {
   bifrost,
+  username,
   lib,
   ...
 }: let
@@ -19,7 +20,8 @@ in {
       enable = true;
       settings = {
         main = {
-          shell = "tmux";
+          shell = "zellij";
+          include = "/home/${username}/.local/foot/colors.ini";
           term = "xterm-256color";
           title = "foot";
           font = "${font.name}:size=11";
@@ -38,10 +40,9 @@ in {
         };
 
         bell = {
-          command = "notify-send bell";
           command-focused = "no";
-          notify = "yes";
-          urgent = "yes";
+          notify = "no";
+          urgent = "no";
         };
 
         colors = {

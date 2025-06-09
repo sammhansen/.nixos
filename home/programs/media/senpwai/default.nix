@@ -65,7 +65,7 @@ in {
       categories = ["Utility"];
     })
   ];
-  imports = [
-    ./settings.nix
-  ];
+  # imports = [
+  #   ./settings.nix
+  # ];
 }

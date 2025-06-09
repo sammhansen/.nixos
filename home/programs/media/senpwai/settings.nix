@@ -5,7 +5,7 @@
 }: let
   font = bifrost.themes.font.name;
 in {
-  home.file.".config.Senpwai.settings.json".text = ''
+  home.file.".config/Senpwai/settings.json".text = ''
     {
       "sub_or_dub": "sub",
       "quality": "1080p",

@@ -27,7 +27,7 @@ in {
 
         "custom/menu" = {
           format = "";
-          on-click = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
+          on-click = "fuzzel";
           tooltip = false;
         };
 
@@ -74,31 +74,8 @@ in {
           # format-icons = ["󰅓"];
           tooltip = false;
         };
-
-        "hyprland/workspaces" = {
-          format = "{icon}";
-          on-click = "activate";
-          orientation = "vertical";
-          persistent-workspaces = {
-            "${bifrost.monitors.external.name}" = [1 2 3 4 5];
-            "${bifrost.monitors.inbuilt.name}" = [6 7 8 9];
-          };
-        };
-        "river/tags" = {
-          num-tags = 9;
-          tag-labels = [
-            1
-            2
-            3
-            4
-            5
-            6
-            7
-            8
-            9
-          ];
-          disable-click = false;
-          hide-vacant = false;
+        "niri/workspaces" = {
+          format = "{index}";
         };
 
         bluetooth = {
@@ -152,19 +129,10 @@ in {
             warning = 30;
             critical = 10;
           };
-          # format = "<span foreground='${colors.primary}' size='13000'></span>\n{capacity}";
-          # format-charging = "<span foreground='${colors.primary}' size='13000'><span foreground='#2CFF05'><sup></sup></span></span>\n{capacity}";
-          # format-plugged = "<span foreground='${colors.tertiary_container}' size='13000'></span>\n{capacity}";
           format = "<span foreground='${colors.primary}' size='13000'>󰁹</span>\n{capacity}";
           format-charging = "<span foreground='${colors.primary}' size='13000'>󰁹<span foreground='#2CFF05'><sup></sup></span></span>\n{capacity}";
           format-plugged = "<span foreground='${colors.tertiary_container}' size='13000'>󰁹</span>\n{capacity}";
           format-full = "100";
-          # format-icons = [
-          #   # "❤"
-          #   "💙" #blue
-          #   "💚" #green
-          #   "💛" #yellow
-          # ];
           tooltip = false;
         };
         "custom/batt-warn" = {
@@ -181,8 +149,7 @@ in {
           "clock"
         ];
         modules-center = [
-          "hyprland/workspaces"
-          "river/tags"
+          "niri/workspaces"
         ];
         modules-right = [
           "custom/swaync"
@@ -212,7 +179,7 @@ in {
       window#waybar {
         background: @background;
         border-radius: 0px;
-        border: 0px solid ${colors.outline_variant};
+        border: 1px solid ${colors.outline_variant};
       }
 
       tooltip {
@@ -298,30 +265,6 @@ in {
         margin: 2px 7px 2px 7px;
       }
 
-      /*#workspaces button.persistent*/
-
-      #tags button {
-        color: @outline_variant;
-        font-size: 13px;
-      }
-
-      #tags button.occupied {
-        color: @primary;
-      }
-
-      #tags button.focused {
-        color: @on_primary_container;
-        background-color: @primary_container;
-        border-radius: 20px;
-        padding: 0px;
-        margin: 2px 7px 2px 7px;
-      }
-
-      #tags button.urgent {
-        color: @error;
-      }
-
-
       #temperature.critical {
         background-color: ${colors.error_container};
       }
@@ -373,7 +316,7 @@ in {
           sleep 5
           systemctl suspend
           sleep 3
-          hyprlock
+          swaylock
           touch "$WARN_CRITICAL_FILE"
         fi
       elif [ "$BATT_LEVEL" -le "$LOW" ]; then

@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=GitHub
-Exec=chromium --app=https://github.com
+Exec=brave --app=https://github.com
 Icon=/home/tamara/.local/share/applications/icons/github.png
 

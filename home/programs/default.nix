@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./bars
     ./launchers
@@ -10,5 +10,10 @@
     ./media
     ./socials
     ./misc
+  ];
+  home.packages = with pkgs; [
+    # moodle
+    moodle-dl
+    polypane
   ];
 }

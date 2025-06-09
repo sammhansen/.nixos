@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    xfce.thunar
     blender
     kdePackages.kdenlive
     eog
@@ -12,6 +11,8 @@
     # easyeffects
 
     bitwarden-desktop
+    bitwarden-cli
+
     gnome-control-center
     openvpn
 
@@ -26,15 +27,7 @@
     playerctl
     hyprshot
 
-    #screenrecord script
-    # slurp
-    # wf-recorder
-
-    # btop
     eza
-    # carapace
-    # zoxide
-    # delta
     bat
     fzf
     ripgrep
@@ -43,7 +36,6 @@
     unzip
 
     glib
-    # ydotool
     file
 
     ani-cli
@@ -56,9 +48,6 @@
 
     vlc
 
-    nautilus
     yad
-
-    libreoffice-fresh
   ];
 }

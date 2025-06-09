@@ -1,8 +1,8 @@
-{pkgs, ...}: let
+{...}: let
   colors = import ../../../../.local/state/matugen/colors.nix;
 in {
   programs.tmux = {
-    enable = true;
+    enable = false;
     terminal = "screen-256color";
     shell = "/run/current-system/sw/bin/fish";
     clock24 = false;
@@ -11,7 +11,7 @@ in {
     escapeTime = 0;
     historyLimit = 2000;
     keyMode = "vi";
-    prefix = "M-t";
+    prefix = "M-g";
     extraConfig = ''
       set-option -g status-position top
       bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"

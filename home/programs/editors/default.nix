@@ -1,9 +1,11 @@
 {pkgs, ...}: {
   imports = [
     ./neovim
-    ./helix
     ./zed
     ./vscode
+
+    ./onlyoffice
+    ./obsidian
   ];
 
   home.packages = with pkgs; [

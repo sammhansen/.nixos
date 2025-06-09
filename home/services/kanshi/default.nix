@@ -4,12 +4,12 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.river;
+  cfg = bifrost.sessions.niri;
 in {
   config = mkIf cfg.enable {
     services.kanshi = {
       enable = true;
-      systemdTarget = "river-session.target";
+      systemdTarget = "graphical-session.target";
       settings = [
         {
           output.criteria = "eDP-1";

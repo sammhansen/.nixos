@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Nix Package Search
-Exec=chromium --app=https://search.nixos.org/packages
+Exec=brave --app=https://search.nixos.org/packages
 Icon=/home/tamara/.local/share/applications/icons/nix.png
 

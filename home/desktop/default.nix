@@ -3,5 +3,6 @@
     ./default
     ./hyprland
     ./river
+    ./niri
   ];
 }

@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Nerd Glyghs
-Exec=chromium --app=https://www.nerdfonts.com/cheat-sheet
+Exec=brave --app=https://www.nerdfonts.com/cheat-sheet
 Icon=/home/tamara/.local/share/applications/icons/nerd.png
 

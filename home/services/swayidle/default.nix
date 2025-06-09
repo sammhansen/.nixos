@@ -4,15 +4,15 @@
   pkgs,
   ...
 }: let
-  cfg = bifrost.sessions.river;
+  cfg = bifrost.sessions.niri;
 
   inherit (lib.modules) mkIf;
 in {
   config = mkIf cfg.enable {
     services.swayidle = {
-      package = pkgs.swaylock-effects;
       enable = true;
-      systemdTarget = "river-session.target";
+      package = pkgs.swayidle;
+      systemdTarget = "graphical-session.target";
     };
   };
 }

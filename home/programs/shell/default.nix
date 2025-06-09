@@ -16,7 +16,8 @@
     ./tmux
     ./zellij
 
-    ./neofetch
+    ./fastfetch
+    ./aerc
     ./bash
     ./zsh
     ./fish

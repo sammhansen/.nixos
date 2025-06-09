@@ -19,7 +19,8 @@
     username = bifrost.userconf.username;
     homeDirectory = "/home/${bifrost.userconf.username}";
     packages = with pkgs; [
-      firefox-bin
+      libreoffice
+      xonotic
     ];
     stateVersion = "24.11";
   };

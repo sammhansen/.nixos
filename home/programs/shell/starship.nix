@@ -23,9 +23,16 @@ in {
     settings = {
       add_newline = true;
       format = concatStrings [
-        "$container $os $hostname $username $directory\n"
+        "$container $nix_shell $os $hostname $username $directory $git_branch $git_status\n"
         "$character"
       ];
+
+      nix_shell = {
+        disabled = false;
+        symbol = " ";
+        style = "bg:default fg:blue";
+        format = "[$symbol]($style)";
+      };
 
       container = {
         symbol = " 󰏖";
@@ -116,31 +123,29 @@ in {
       golang = ss "" "blue";
       docker_context = ss " " "blue";
 
-      nix_shell = ssv " " "blue";
+      git_branch = {
+        symbol = "󰘬";
+        format = "[[   on](fg:white) $symbol $branch ](fg:purple)(:$remote_branch)";
+        truncation_length = 4;
+        truncation_symbol = "…/";
+        style = "bold green";
+      };
+      git_status = {
+        format = "[$all_status$ahead_behind]($style) ";
+        style = "bold green";
+        conflicted = "🏳";
+        up_to_date = " ";
+        untracked = " ";
+        ahead = "⇡\${count}";
+        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+        behind = "⇣\${count}";
+        stashed = "󰏗 ";
+        modified = " ";
+        staged = "[++\\($count\\)](green)";
+        renamed = "󰖷 ";
+        deleted = " ";
+      };
 
-      # git_branch = {
-      #   symbol = "󰘬";
-      #   format = "[[   on](fg:white) $symbol $branch ](fg:purple)(:$remote_branch)";
-      #   truncation_length = 4;
-      #   truncation_symbol = "…/";
-      #   style = "bold green";
-      # };
-      # git_status = {
-      #   format = "[$all_status$ahead_behind]($style) ";
-      #   style = "bold green";
-      #   conflicted = "🏳";
-      #   up_to_date = " ";
-      #   untracked = " ";
-      #   ahead = "⇡\${count}";
-      #   diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-      #   behind = "⇣\${count}";
-      #   stashed = "󰏗 ";
-      #   modified = " ";
-      #   staged = "[++\\($count\\)](green)";
-      #   renamed = "󰖷 ";
-      #   deleted = " ";
-      # };
-      #
       battery.disabled = true;
     };
   };

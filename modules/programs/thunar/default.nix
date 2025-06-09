@@ -1,5 +1,5 @@
 {
-  programs.helix = {
+  programs.thunar = {
     enable = true;
   };
 }

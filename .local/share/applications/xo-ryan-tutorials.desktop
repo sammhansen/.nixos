@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Ryan Tutorials
-Exec=chromium --app=https://ryanstutorials.net
+Exec=brave --app=https://ryanstutorials.net
 Icon=/home/tamara/.local/share/applications/icons/adventofcode.png
 

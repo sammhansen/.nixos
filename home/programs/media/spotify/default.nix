@@ -17,14 +17,17 @@ in {
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
       adblock
-      hidePodcasts
+      # hidePodcasts
       shuffle
-      trashbin
-      popupLyrics
+      # trashbin
+      # popupLyrics
+      allOfArtist
+      # bestMoment
+      # wikify
     ];
 
-    theme = spicePkgs.themes.text;
-    # colorScheme = "custom";
+    theme = spicePkgs.themes.fluent;
+    colorScheme = "dark";
     # customColorScheme = {
     #   "text" = stripHash colors.on_surface; # Text
     #   "subtext" = stripHash colors.on_surface_variant; # Subtext1

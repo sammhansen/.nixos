@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.river;
+  cfg = bifrost.sessions.niri;
   colors = import ../../../.local/state/matugen/colors.nix;
 
   style = ''
