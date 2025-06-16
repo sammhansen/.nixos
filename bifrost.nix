@@ -1,16 +1,16 @@
 {
-  bifrost = {
+  bifrost = rec {
     userconf = {
-      name = "Hansen";
-      username = "tamara";
+      name = "Ha" + "ns" + "en";
+      username = "ta" + "ma" + "ra";
       editor = "neovim";
       dotsdir = ".nixos";
     };
     sysconf = {
       system = "x86_64-linux";
-      host = "hell";
+      host = "he" + "ll";
       locale = "en_US.UTF-8";
-      timezone = "Africa/Nairobi";
+      timezone = "Af" + "ri" + "ca" + "/" + "Na" + "ir" + "obi";
       osprober = true;
       hardwareclock = true;
       keyboardlayout = "us";
@@ -26,8 +26,8 @@
       inbuilt = {
         name = "eDP-1";
         position = {
-          x = "0";
-          y = "1080";
+          x = "1920";
+          y = "850";
         };
       };
       external = {
@@ -37,13 +37,14 @@
     };
 
     sessions = {
-      dm = "sddm"; #tui-greet
+      dm = "sddm";
       gnome.enable = false;
-      hyprland.enable = false;
-      river.enable = true;
+      niri.enable = true;
     };
 
     themes = {
+      wallpaper = "/home/${userconf.username}/Pictures/wallpapers/catgirl.png";
+      lock-wallpaper = "/home/${userconf.username}/Pictures/wallpapers/nature-girl.jpg";
       font = {
         name = "SpaceMono Nerd Font";
         monospace = {
@@ -62,19 +63,16 @@
     terminals = {
       default = "foot";
       foot.enable = true;
-      kitty.enable = false;
-      ghostty.enable = false;
-      wezterm.enable = false;
     };
 
     browsers = {
-      default = "chromium";
-      firefox.enable = false;
+      default = "brave";
+      brave.enable = true;
+      chrome.enable = true;
       floorp.enable = true;
+      firefox.enable = false;
       zen.enable = false;
       tor-browser.enable = true;
-      chrome.enable = false;
-      chromium.enable = true;
       qute.enable = false;
     };
 
@@ -108,7 +106,7 @@
       podman.enable = false;
       docker.enable = true;
       ollama.enable = false;
-      waydroid.enable = false;
+      waydroid.enable = true;
       emulator.enable = false;
     };
 

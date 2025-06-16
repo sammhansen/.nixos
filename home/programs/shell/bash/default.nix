@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.bash = {
     enableCompletion = true;
 

@@ -1,8 +1,6 @@
 {
   imports = [
-    ./default
-    ./hyprland
-    ./river
     ./niri
+    ./LGBTheme
   ];
 }

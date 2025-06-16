@@ -5,6 +5,14 @@
 }: let
   inherit (lib.modules) mkIf;
   cfg = bifrost.sessions.niri;
+  inbuilt = {
+    name = bifrost.monitors.inbuilt.name;
+    position = {
+      x = "${bifrost.monitors.inbuilt.position.x}";
+      y = "${bifrost.monitors.inbuilt.position.y}";
+    };
+  };
+  external = bifrost.monitors.external.name;
 in {
   config = mkIf cfg.enable {
     services.kanshi = {
@@ -12,12 +20,12 @@ in {
       systemdTarget = "graphical-session.target";
       settings = [
         {
-          output.criteria = "eDP-1";
+          output.criteria = "${inbuilt.name}";
           output.mode = "1920x1080@60";
           output.scale = 1.0;
         }
         {
-          output.criteria = "HDMI-A-2";
+          output.criteria = "${external}";
           output.mode = "1920x1080@60";
           output.scale = 1.0;
         }
@@ -26,7 +34,7 @@ in {
             name = "undocked";
             outputs = [
               {
-                criteria = "eDP-1";
+                criteria = "${inbuilt.name}";
                 status = "enable";
                 position = "0,0";
               }
@@ -39,12 +47,12 @@ in {
             name = "docked";
             outputs = [
               {
-                criteria = "eDP-1";
+                criteria = "${inbuilt.name}";
                 status = "enable";
-                position = "0,1080";
+                position = "${inbuilt.position.x},${inbuilt.position.y}";
               }
               {
-                criteria = "HDMI-A-2";
+                criteria = "${external}";
                 status = "enable";
                 position = "0,0";
               }

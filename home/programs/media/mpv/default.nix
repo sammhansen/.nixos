@@ -3,7 +3,6 @@
     enable = true;
     scripts = with pkgs.mpvScripts; [
       mpris
-      mpv-discord
     ];
     config = {
       hwdec = "auto-safe";

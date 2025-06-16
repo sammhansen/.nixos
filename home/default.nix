@@ -1,8 +1,4 @@
-{
-  bifrost,
-  pkgs,
-  ...
-}: {
+{bifrost, ...}: {
   imports = [
     ./env.nix
     ./xdg.nix
@@ -18,10 +14,6 @@
   home = {
     username = bifrost.userconf.username;
     homeDirectory = "/home/${bifrost.userconf.username}";
-    packages = with pkgs; [
-      libreoffice
-      xonotic
-    ];
     stateVersion = "24.11";
   };
 }

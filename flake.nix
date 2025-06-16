@@ -1,12 +1,46 @@
 {
-  description = "Hansen's Nix Setup";
+  description = "May the cats be with you.SO MOTE IT BE";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-unstable";
+    };
 
     spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
+      type = "github";
+      owner = "Gerg-L";
+      repo = "spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixcord = {
+      type = "github";
+      owner = "kaylorben";
+      repo = "nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    burpsuitepro = {
+      type = "github";
+      owner = "xiv3r";
+      repo = "Burpsuite-Professional";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    senpwai = {
+      type = "github";
+      owner = "sammhansen";
+      repo = "senpwai-flake-check";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      type = "github";
+      owner = "Mic92";
+      repo = "sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -17,96 +51,62 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
-
-    #NUR
-    flake-utils.url = "github:numtide/flake-utils";
-    nur = {
-      url = "github:nix-community/NUR";
+    minegrub-theme = {
+      type = "github";
+      owner = "Lxtharia";
+      repo = "minegrub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = {
+    self,
     nixpkgs,
-    nixpkgs-stable,
     home-manager,
-    nur,
+    sops-nix,
+    nixcord,
     ...
   } @ inputs: let
+    inherit (self) outputs;
     inherit (import ./bifrost.nix) bifrost;
+
     system = bifrost.sysconf.system;
     host = bifrost.sysconf.host;
     username = bifrost.userconf.username;
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
-
-    pkgs-stable = import nixpkgs-stable {
-      inherit system;
-      nixpkgs.config = {
-        allowUnfree = true;
-        allowBroken = true;
-      };
-    };
   in {
     nixosConfigurations = {
       "${host}" = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit system;
-          inherit inputs;
-          inherit username;
-          inherit host;
-          inherit bifrost;
+          inherit inputs outputs username bifrost host system;
         };
 
         modules = [
           ./hosts
-
-          {
-            nixpkgs.config = {
-              allowUnfree = true;
-              # allowBroken = true;
-            };
-          }
-          nur.modules.nixos.default
-          nur.legacyPackages."${system}".repos.iopq.modules.xraya
-
-          inputs.distro-grub-themes.nixosModules.${system}.default
-
-          # Make pkgs-stable available as a special argument for modules
-          {
-            _module.args.pkgs-stable = pkgs-stable;
-          }
-
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              # useGlobalPkgs = true;
-              useUserPackages = true;
+              useGlobalPkgs = true;
               users."${username}" = {
                 imports = [
                   ./home
                 ];
               };
               backupFileExtension = "backup";
-
               extraSpecialArgs = {
-                inherit pkgs;
-                inherit system;
-                inherit inputs;
-                inherit username;
-                inherit bifrost;
+                inherit inputs outputs username bifrost host system;
               };
+              sharedModules = [
+                nixcord.homeModules.nixcord
+              ];
             };
           }
         ];

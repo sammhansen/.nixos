@@ -1,9 +1,12 @@
-{...}: {
+{pkgs, ...}: {
   virtualisation = {
     podman = {
-      enable = false;
+      enable = true;
       dockerCompat = false;
       defaultNetwork.settings.dns_enabled = false;
     };
   };
+  environment.systemPackages = with pkgs; [
+    podman-desktop
+  ];
 }

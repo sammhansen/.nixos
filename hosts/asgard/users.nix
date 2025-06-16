@@ -1,10 +1,8 @@
 {
   bifrost,
-  lib,
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
   username = "${bifrost.userconf.username}";
   name = "${bifrost.userconf.name}";
 in {
@@ -36,17 +34,12 @@ in {
       plugdev = {};
     };
 
-    defaultUserShell = pkgs.bash;
+    defaultUserShell = pkgs.zsh;
   };
 
   environment.shells = with pkgs; [
     bash
     fish
     zsh
-    nushell
   ];
-
-  programs.fish = mkIf bifrost.shells.fish.enable {
-    enable = true;
-  };
 }

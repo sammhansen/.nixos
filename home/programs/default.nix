@@ -1,19 +1,38 @@
 {pkgs, ...}: {
   imports = [
-    ./bars
-    ./launchers
     ./shell
     ./git
     ./editors
     ./browsers
-    ./terminals
     ./media
     ./socials
-    ./misc
+    ./thunderbird
+    ./obs
+    ./foot
   ];
   home.packages = with pkgs; [
-    # moodle
+    qalculate-gtk
+    gnome-calculator
+    appflowy
+    handbrake
+    zapzap
+    whatsie
+    whatsapp-for-linux
+
     moodle-dl
-    polypane
+    eog
+    bitwarden-desktop
+    nix-prefetch-git
+    xdg-user-dirs
+    pavucontrol
+    playerctl
+    zip
+    unzip
+    glib
+    file
+    ani-cli
+    yt-dlp
+    spotdl
+    yad
   ];
 }

@@ -386,8 +386,8 @@
         copy_on_select true
         scrollback_editor "${pkgs.neovim}/bin/nvim"
 
-        session_name "spawnPoint"
-        attach_to_session true
+        // session_name "spawnPoint"
+        attach_to_session false
 
         // auto_layout false
 
@@ -403,7 +403,7 @@
   '';
 in {
   programs.zellij = {
-    enable = true;
+    enable = false;
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;

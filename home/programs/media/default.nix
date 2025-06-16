@@ -1,13 +1,12 @@
-{pkgs, ...}: {
+{inputs, ...}: {
   imports = [
     ./mpv
+    ./amberol
     ./youtube-music
     ./spotify
-    ./senpwai
     ./zathura
   ];
-
-  home.packages = with pkgs; [
-    amberol
+  home.packages = [
+    inputs.senpwai.packages.x86_64-linux.default
   ];
 }

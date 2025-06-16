@@ -17,34 +17,36 @@ in {
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
       adblock
-      # hidePodcasts
       shuffle
-      # trashbin
-      # popupLyrics
-      allOfArtist
-      # bestMoment
-      # wikify
+      trashbin
+      popupLyrics
+      bestMoment
+      wikify
     ];
 
-    theme = spicePkgs.themes.fluent;
-    colorScheme = "dark";
-    # customColorScheme = {
-    #   "text" = stripHash colors.on_surface; # Text
-    #   "subtext" = stripHash colors.on_surface_variant; # Subtext1
-    #   "sidebar-text" = stripHash colors.on_surface; # Text
-    #   "main" = stripHash colors.background; # Base
-    #   "sidebar" = stripHash colors.surface_container; # Mantle
-    #   "player" = stripHash colors.surface; # Base
-    #   "card" = stripHash colors.surface; # Base
-    #   "shadow" = stripHash colors.shadow; # Mantle
-    #   "selected-row" = stripHash colors.secondary; # Overlay2
-    #   "button" = stripHash colors.outline; # Overlay1
-    #   "button-active" = stripHash colors.primary; # Overlay2
-    #   "button-disabled" = stripHash colors.outline_variant; # Overlay0
-    #   "tab-active" = stripHash colors.surface_container_high; # Surface0
-    #   "notification" = stripHash colors.surface_container_high; # Surface0
-    #   "notification-error" = stripHash colors.error; # Red
-    #   "misc" = stripHash colors.surface_variant; # Surface1
-    # };
+    theme = spicePkgs.themes.orchis;
+    colorScheme = "custom";
+    customColorScheme = {
+      "text" = stripHash colors.on_surface;
+      "subtext" = stripHash colors.on_surface_variant;
+      "nav-active-text" = stripHash colors.surface;
+      "main" = stripHash colors.background;
+      "sidebar" = stripHash colors.surface_container;
+      "player" = stripHash colors.primary;
+      "card" = stripHash colors.surface;
+      "shadow" = stripHash colors.shadow;
+      "main-secondary" = stripHash colors.secondary;
+      "button" = stripHash colors.primary;
+      "button-secondary" = stripHash colors.secondary;
+      "button-active" = stripHash colors.primary;
+      "button-disabled" = stripHash colors.outline_variant;
+      "nav-active" = stripHash colors.surface_container_high;
+      "play-button" = stripHash colors.primary_container;
+      "tab-active" = stripHash colors.surface_container_high;
+      "notification" = stripHash colors.surface_container_high;
+      "notification-error" = stripHash colors.error;
+      "playback-bar" = stripHash colors.primary_container;
+      "misc" = stripHash colors.surface_variant;
+    };
   };
 }

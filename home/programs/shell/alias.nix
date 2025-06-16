@@ -1,12 +1,12 @@
 {bifrost, ...}: let
   nixprofile_path = "/nix/var/nix/profiles/system";
   username = bifrost.userconf.username;
+  dotsdir = bifrost.userconf.dotsdir;
   kali-host = bifrost.virtualisation.distrobox.kali.hostname;
 in {
   home.shellAliases = {
     x = "clear";
     space = "du -sh * | sort -h";
-    cat = "bat";
     car = "bat";
     q = "exit";
     ":q" = "exit";
@@ -18,9 +18,8 @@ in {
     zka = "zellij kill-all-sessions";
     zrf = "zellij run --floating --";
 
-    lf = "yazi";
-
     lg = "lazygit";
+    dg = "gh dash";
     v = "nvim";
 
     xcb = "export QT_QPA_PLATFORM=xcb";
@@ -41,28 +40,15 @@ in {
     gpm = "git push -u origin main";
     gr = "git reset --soft HEAD~1";
 
-    del = "gio trash";
     dev = "nix develop -c nvim";
-    nd = "nix develop";
-    nsh = "nix-shell shell.nix";
+    nd = "nix develop -c zsh";
+    ns = "nix-shell -c zsh";
 
-    ns = "sudo nixos-rebuild switch --flake .#hell";
+    nrf = "sudo nixos-rebuild switch --flake /home/${username}/${dotsdir}/#hell; swaync-client -R; swaync-client -rs";
     nixos-gens = "sudo nix-env --list-generations --profile ${nixprofile_path}";
     nixos-gens-rm = "sudo nix-env --profile ${nixprofile_path} --delete-generations";
     nixos-boot-clean = "sudo /run/current-system/bin/switch-to-configuration boot";
 
-    rb = "systemctl reboot";
-    sdn = "shutdown now";
-
-    font-list = "fc-list : family | fzf | tr -d '\\n'";
     mkdir = "mkdir -pv";
-
-    #sessions
-    slock = "loginctl lock-session";
-    slogout = "hyprctl dispatch exit";
-    ssleep = "loginctl suspend";
-    shibernate = "loginctl hibernate";
-    spoweroff = "systemctl poweroff";
-    sreboot = "systemctl reboot";
   };
 }
