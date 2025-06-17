@@ -6,19 +6,17 @@
     ./browsers
     ./media
     ./socials
-    ./thunderbird
+    # ./thunderbird
     ./obs
     ./foot
+    ./distrobox
   ];
   home.packages = with pkgs; [
-    qalculate-gtk
+    # qalculate-gtk
     gnome-calculator
-    appflowy
-    handbrake
+    # appflowy
+    # handbrake
     zapzap
-    whatsie
-    whatsapp-for-linux
-
     moodle-dl
     eog
     bitwarden-desktop

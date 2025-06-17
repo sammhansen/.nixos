@@ -26,8 +26,8 @@
       inbuilt = {
         name = "eDP-1";
         position = {
-          x = "1920";
-          y = "850";
+          x = "0";
+          y = "1080";
         };
       };
       external = {
@@ -100,6 +100,7 @@
       enable = true;
 
       distrobox = {
+        enable = true;
         kali.hostname = "kali";
       };
       bottles.enable = false;

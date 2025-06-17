@@ -42,9 +42,8 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      distrobox
-      lmstudio
-      # dnsmasq #required for virt-manager
+      # lmstudio
+      dnsmasq #required for virt-manager
     ];
   };
 }

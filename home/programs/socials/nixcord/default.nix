@@ -40,17 +40,4 @@
       };
     };
   };
-  systemd.user.services.vesktop = {
-    Unit = {
-      Description = "A discord client";
-      After = ["graphical-session.target"];
-    };
-    Service = {
-      ExecStart = "vesktop";
-      Restart = "on-failure";
-    };
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
-  };
 }

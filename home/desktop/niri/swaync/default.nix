@@ -96,6 +96,18 @@ in {
                 update-command = "sh -c 'systemctl --user is-active --quiet wlsunset.service && echo true || echo false'";
               }
               {
+                command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && easyeffects --bypass 1 || easyeffects --bypass 2'";
+                label = "󰺢 Bypass";
+                position = "right";
+                type = "toggle";
+                update-command = "sh -c 'easyeffects --bypass 3 | grep -q '\\''1'\\'' && echo true || echo false'";
+              }
+              {
+                label = "󱣵 Snip";
+                position = "left";
+                command = "sh -c 'niri msg action screenshot'";
+              }
+              {
                 active = false;
                 command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && swaync-client --dnd-on || swaync-client --dnd-off'";
                 label = " DnD";

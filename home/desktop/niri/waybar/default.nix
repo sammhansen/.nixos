@@ -12,7 +12,7 @@ in {
     package = pkgs.waybar;
     systemd = {
       enable = true;
-      target = ["graphical-session.target"];
+      target = "graphical-session.target";
     };
     settings = [
       {
@@ -225,6 +225,14 @@ in {
       #workspaces button {
         color: @primary;
         font-size: 13px;
+        padding: 0px;
+        margin: 2px 7px 2px 7px;
+        border-radius: 20px;
+      }
+
+      #workspaces button:not(.active):hover {
+        color: @on_background;
+        background-color: @outline_variant;
       }
 
       #workspaces button.empty {
@@ -234,34 +242,16 @@ in {
       #workspaces button.active {
         color: @on_primary_container;
         background-color: @primary_container;
-        border-radius: 20px;
-        padding: 0px;
-        margin: 2px 7px 2px 7px;
-      }
-
-      #workspaces button.special {
-        color: @on_secondary_container;
-        background-color: @secondary_container;
-        border-radius: 20px;
-        padding: 0px;
-        margin: 2px 7px 2px 7px;
-
       }
 
       #workspaces button.visible {
         color: @on_primary_container;
         background-color: @primary_container;
-        border-radius: 20px;
-        padding: 0px;
-        margin: 2px 7px 2px 7px;
       }
 
       #workspaces button.urgent {
         color: @on_error_container;
         background-color: @error_container;
-        border-radius: 20px;
-        padding: 0px;
-        margin: 2px 7px 2px 7px;
       }
 
       #temperature.critical {
@@ -273,15 +263,13 @@ in {
       #idle_inhibitor
       {
         color: @outline_variant;
-        padding-top: 1px;
-        padding-bottom: 1px;
       }
 
       #custom-swaync,
       #custom-swaync.dnd-none,
       #custom-swaync.dnd-inhibited-none
       {
-        font-size: 13px;
+        font-size: 11px;
         color: @outline_variant;
       }
 
@@ -298,6 +286,7 @@ in {
       #bluetooth {
         font-size: 14px;
         color: @outline_variant;
+        padding: 1px 0px 0px 0px;
       }
 
       #bluetooth.connected {

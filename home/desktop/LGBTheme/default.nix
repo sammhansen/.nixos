@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./matugen.nix
+    ./matugen
     ./gtk.nix
     ./qt.nix
   ];

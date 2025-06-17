@@ -59,6 +59,10 @@
         position x=0 y=0
     }
 
+    hotkey-overlay {
+      skip-at-startup
+    }
+
     layout {
         gaps 8
         background-color "transparent"
@@ -101,12 +105,9 @@
         }
     }
 
-    // spawn-at-startup "swaync"
-    // spawn-at-startup "waybar"
     spawn-at-startup "powermode-indicator"
-    // spawn-at-startup "xwayland-satellite" ":1"
-    // spawn-at-startup "vesktop"
-    // spawn-at-startup "swaybg" "-i" "${wallpaper}" "-m" "fill"
+    spawn-at-startup "vesktop"
+    spawn-at-startup "zapzap"
 
     overview {
       zoom 0.6
@@ -253,7 +254,7 @@
         Alt+E { spawn "thunar"; }
         Alt+A { spawn "fuzzel"; }
         Alt+Period { spawn "~/.config/fuzzel/scripts/emoji"; }
-        Alt+V { spawn "bash" "-c" "pkill fuzzel || cliphist list | cut -f2- | fuzzel  --match-mode fzf --dmenu | cliphist decode | wl-copy"; }
+        Alt+V { spawn "bash" "-c" "pkill fuzzel || cliphist list | fuzzel  --match-mode fzf --dmenu | cliphist decode | wl-copy"; }
         Alt+S { spawn "~/.config/fuzzel/scripts/powermenu.sh"; }
         Alt+P { spawn "swaync-client" "--toggle-panel"; }
 
@@ -398,7 +399,7 @@
         Mod+V { maximize-column; }
         Mod+F { fullscreen-window; }
 
-        Mod+Ctrl+F { expand-column-to-available-width; }
+        Mod+Alt+V { expand-column-to-available-width; }
 
         Mod+C { center-column; }
         Mod+Ctrl+C { center-visible-columns; }
