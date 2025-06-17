@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkForce;
   cfg = bifrost.sessions.niri;
 in {
   imports = [
@@ -144,7 +144,7 @@ in {
           };
         };
       };
-      style = ''
+      style = mkForce ''
         @import "control-center.css";
         @import "notifications.css";
       '';

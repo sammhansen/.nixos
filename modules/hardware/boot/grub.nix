@@ -1,8 +1,11 @@
 {
   bifrost,
+  system,
+  lib,
   inputs,
   ...
 }: let
+  inherit (lib.modules) mkForce;
   cfg = bifrost.sysconf.osprober;
 in {
   imports = [
@@ -19,12 +22,7 @@ in {
       efiSupport = true;
       enable = true;
       useOSProber = cfg;
-      minegrub-theme = {
-        enable = true;
-        splash = "100% Flakes!";
-        background = "background_options/1.8  - [Classic Minecraft].png";
-        boot-options-count = 4;
-      };
+      theme = mkForce inputs.distro-grub-themes.packages.${system}.thinkpad-grub-theme;
     };
   };
 }

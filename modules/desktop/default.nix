@@ -6,5 +6,6 @@
     ./niri
 
     ./sddm
+    ./LGBTheme
   ];
 }

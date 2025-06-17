@@ -16,10 +16,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+
     nixcord = {
       type = "github";
       owner = "kaylorben";
       repo = "nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin = {
+      type = "github";
+      owner = "catppuccin";
+      repo = "nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -73,6 +82,8 @@
     home-manager,
     sops-nix,
     nixcord,
+    distro-grub-themes,
+    catppuccin,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -91,6 +102,9 @@
         modules = [
           ./hosts
           sops-nix.nixosModules.sops
+          catppuccin.nixosModules.catppuccin
+          distro-grub-themes.nixosModules.${system}.default
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -98,6 +112,7 @@
               users."${username}" = {
                 imports = [
                   ./home
+                  catppuccin.homeModules.catppuccin
                 ];
               };
               backupFileExtension = "backup";

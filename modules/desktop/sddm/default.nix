@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkForce;
   cfg = bifrost.sessions.dm;
   theme = pkgs.fetchFromGitHub {
     owner = "sammhansen";
@@ -24,7 +24,7 @@ in {
           wayland = {
             enable = true;
           };
-          theme = "${theme}";
+          theme = mkForce "${theme}";
           extraPackages = with pkgs.kdePackages; [
             qtsvg
             qtmultimedia

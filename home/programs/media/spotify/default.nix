@@ -24,7 +24,9 @@ in {
     ];
 
     # theme = spicePkgs.themes.orchis;
-    theme = spicePkgs.themes.comfy;
+    # theme = spicePkgs.themes.comfy;
+    theme = spicePkgs.themes.ziro;
+    colorScheme = "rose-pine";
     # colorScheme = "custom";
     # customColorScheme = {
     #   "text" = stripHash colors.on_surface;
