@@ -6,6 +6,9 @@
 }: let
   colors = import ../../../../.local/state/matugen/colors.nix;
   dotsdir = bifrost.userconf.dotsdir;
+  pink = "#f5c2e7";
+  red = "#f38ba8";
+  mauve = "#cba6f7";
 in {
   programs.waybar = {
     enable = true;
@@ -37,7 +40,7 @@ in {
         };
 
         cpu = {
-          format = "<span foreground='${colors.primary}'></span>\n{usage}";
+          format = "<span foreground='${pink}'></span>\n{usage}";
           interval = 1;
           min-length = 5;
           format-alt-click = "click";
@@ -45,7 +48,7 @@ in {
 
         memory = {
           interval = 10;
-          format = "<span foreground='${colors.primary}'></span>\n{percentage}";
+          format = "<span foreground='${pink}'></span>\n{percentage}";
           tooltip = false;
         };
 
@@ -57,20 +60,20 @@ in {
             "/sys/class/thermal/thermal_zone0/temp"
           ];
           critical-threshold = 82;
-          format-critical = "<span foreground='${colors.error}'></span>\n{temperatureC}";
-          format = "<span foreground='${colors.primary}'></span>\n{temperatureC}";
+          format-critical = "<span foreground='${red}'></span>\n{temperatureC}";
+          format = "<span foreground='${pink}'></span>\n{temperatureC}";
         };
 
         disk = {
           interval = 30;
           path = "/";
-          format = "<span foreground='${colors.primary}'></span>\n{percentage_used}";
+          format = "<span foreground='${pink}'></span>\n{percentage_used}";
           tooltip = false;
         };
 
         clock = {
           interval = 1;
-          format = "<span foreground='${colors.primary}'></span>\n{:%H\n%M}";
+          format = "<span foreground='${pink}'></span>\n{:%H\n%M}";
           tooltip = false;
         };
         "niri/workspaces" = {
@@ -127,9 +130,9 @@ in {
             warning = 30;
             critical = 10;
           };
-          format = "<span foreground='${colors.primary}' size='13000'>󰁹</span>\n{capacity}";
-          format-charging = "<span foreground='${colors.primary}' size='13000'>󰁹<span foreground='${colors.primary}'><sup></sup></span></span>\n{capacity}";
-          format-plugged = "<span foreground='${colors.tertiary_container}' size='13000'>󰁹</span>\n{capacity}";
+          format = "<span foreground='${pink}' size='13000'>󰁹</span>\n{capacity}";
+          format-charging = "<span foreground='${pink}' size='13000'>󰁹<span foreground='${pink}'><sup></sup></span></span>\n{capacity}";
+          format-plugged = "<span foreground='${mauve}' size='13000'>󰁹</span>\n{capacity}";
           format-full = "100";
           tooltip = false;
         };
@@ -162,8 +165,8 @@ in {
 
     style = ''
       @define-color background ${colors.background};
-      @define-color on_background ${colors.on_background};
-      @define-color primary ${colors.primary};
+      @define-color on_background @base;
+      @define-color primary ${pink};
       @define-color primary_fixed ${colors.primary_fixed};
       @define-color primary_container ${colors.primary_container};
       @define-color on_primary_container ${colors.on_primary_container};
@@ -175,31 +178,58 @@ in {
       @define-color error_container ${colors.error_container};
       @define-color on_error_container ${colors.on_error_container};
 
+      @define-color rosewater #f5e0dc;
+      @define-color flamingo #f2cdcd;
+      @define-color pink #f5c2e7;
+      @define-color mauve #cba6f7;
+      @define-color red #f38ba8;
+      @define-color maroon #eba0ac;
+      @define-color peach #fab387;
+      @define-color yellow #f9e2af;
+      @define-color green #a6e3a1;
+      @define-color teal #94e2d5;
+      @define-color sky #89dceb;
+      @define-color sapphire #74c7ec;
+      @define-color blue #89b4fa;
+      @define-color lavender #b4befe;
+      @define-color text #cdd6f4;
+      @define-color subtext1 #bac2de;
+      @define-color subtext0 #a6adc8;
+      @define-color overlay2 #9399b2;
+      @define-color overlay1 #7f849c;
+      @define-color overlay0 #6c7086;
+      @define-color surface2 #585b70;
+      @define-color surface1 #45475a;
+      @define-color surface0 #313244;
+      @define-color base #1e1e2e;
+      @define-color mantle #181825;
+      @define-color crust #11111b;
+
       * {
         font-family: "SpaceMono Nerd Font";
         font-size: 97%;
       }
 
       window#waybar {
-        background: @background;
+        background: @base;
         border-radius: 0px;
-        border: 1px solid @outline_variant;
+        border: 1px solid @surface0;
       }
 
       tooltip {
-        color: @on_background;
-        background: @background;
+        color: @text;
+        background: @base;
         border-radius: 10px;
       }
 
       tooltip label {
-        color: @on_background;
+        color: @text;
         padding-right: 2px;
         padding-left: 2px;
       }
 
       #custom-menu {
-        color: @primary;
+        color: @pink;
         font-size: 23px;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -213,17 +243,17 @@ in {
       #disk,
       #clock,
       #battery {
-        color: @on_background;
+        color: @text;
         padding-top: 5px;
         padding-bottom: 5px;
       }
 
       #clock {
-        color: @on_background;
+        color: @text;
       }
 
       #workspaces button {
-        color: @primary;
+        color: @pink;
         font-size: 13px;
         padding: 0px;
         margin: 2px 7px 2px 7px;
@@ -231,38 +261,38 @@ in {
       }
 
       #workspaces button:not(.active):hover {
-        color: @on_background;
-        background-color: @outline_variant;
+        color: @text;
+        background-color: @overlay1;
       }
 
       #workspaces button.empty {
-        color: @outline_variant;
+        color: @subtext0;
       }
 
       #workspaces button.active {
-        color: @on_primary_container;
-        background-color: @primary_container;
+        color: @text;
+        background-color: @mauve;
       }
 
       #workspaces button.visible {
-        color: @on_primary_container;
-        background-color: @primary_container;
+        color: @text;
+        background-color: @blue;
       }
 
       #workspaces button.urgent {
-        color: @on_error_container;
-        background-color: @error_container;
+        color: @text;
+        background-color: @red;
       }
 
       #temperature.critical {
-        background-color: @error_container;
+        background-color: @red;
       }
 
       #custom-swaync,
       #bluetooth,
       #idle_inhibitor
       {
-        color: @outline_variant;
+        color: @surface2;
       }
 
       #custom-swaync,
@@ -270,37 +300,37 @@ in {
       #custom-swaync.dnd-inhibited-none
       {
         font-size: 11px;
-        color: @outline_variant;
+        color: @surface2;
       }
 
       #custom-swaync.notification {
-        color: @primary_fixed;
+        color: @surface2;
       }
 
       #custom-swaync.inhibited-notification,
       #custom-swaync.dnd-notification,
       #custom-swaync.dnd-inhibited-notification {
-        color: @tertiary;
+        color: @surface2;
       }
 
       #bluetooth {
         font-size: 14px;
-        color: @outline_variant;
+        color: @surface2;
         padding: 1px 0px 0px 0px;
       }
 
       #bluetooth.connected {
-        color: @primary_fixed;
+        color: @text;
       }
 
       #idle_inhibitor {
         font-size: 15px;
-        color: @outline_variant;
+        color: @surface2;
         margin-bottom: 3px;
       }
 
       #idle_inhibitor.activated {
-        color: @primary_fixed;
+        color: @text;
       }
 
       @keyframes blink {
@@ -310,7 +340,7 @@ in {
       }
 
       #battery.critical:not(.charging) {
-        color: @error_container;
+        color: @red;
         animation-name: blink;
         animation-duration: 0.5s;
         animation-timing-function: linear;
