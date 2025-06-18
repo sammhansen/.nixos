@@ -4,6 +4,7 @@
     ./openssh
     ./keyring
     ./libinput
+    ./easyeffects
 
     # ./httpd
     # ./nginx

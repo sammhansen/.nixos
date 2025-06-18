@@ -16,6 +16,10 @@
       keyboardlayout = "us";
     };
 
+    services = {
+      easyeffects.enable = true;
+    };
+
     hardware = {
       intel.enable = true;
       islaptop = true;
@@ -26,8 +30,8 @@
       inbuilt = {
         name = "eDP-1";
         position = {
-          x = "1920";
-          y = "850";
+          x = "0";
+          y = "1080";
         };
       };
       external = {

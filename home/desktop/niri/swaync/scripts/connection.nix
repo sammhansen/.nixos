@@ -21,7 +21,7 @@
       sleep 2
     done
 
-    ${pkgs.mpv} "$NOTIF_SOUND" >/dev/null 2>&1
+    ${pkgs.mpv}/bin/mpv "$NOTIF_SOUND" >/dev/null 2>&1
     ${pkgs.libnotify}/bin/notify-send -i "$NOTIF_IMG" "System" "Your internet connection is back"
     rm -f "$LOCK_FILE"
   '';

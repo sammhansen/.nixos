@@ -1,8 +1,9 @@
 {pkgs, ...}: {
   imports = [
-    ./matugen.nix
+    ./matugen
     ./gtk.nix
-    ./qt.nix
+    ./meowt.nix
+    # ./qt.nix
   ];
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";

@@ -3,7 +3,6 @@
     ./kdeconnect
     ./kanshi
     ./wlsunset
-    # ./ntfy
     ./easyeffects
   ];
 }

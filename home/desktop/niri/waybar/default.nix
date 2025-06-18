@@ -12,7 +12,7 @@ in {
     package = pkgs.waybar;
     systemd = {
       enable = true;
-      target = ["graphical-session.target"];
+      target = "graphical-session.target";
     };
     settings = [
       {
