@@ -1,15 +1,19 @@
 {
-  bifrost,
+  isServer,
+  isNiri,
+  config,
   lib,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = bifrost.sessions.niri;
-  lock-wallpaper = bifrost.themes.lock-wallpaper;
+  cfg = config.bifrost;
+  lock-wallpaper = cfg.LGBTheme.lockscreen;
+  font-primary = cfg.LGBTheme.main.name;
+  font-sans-serif = cfg.LGBTheme.sans-serif.name;
   monitor = "";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && isNiri) {
     programs.hyprlock = {
       enable = true;
       settings = {
@@ -30,7 +34,7 @@ in {
             monitor = "${monitor}";
             text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
             color = "rgba(216, 222, 233, .7)";
-            font_family = "Cartograph CF";
+            font_family = "${font-primary}";
             font_size = 40;
             position = "40, 60";
             halign = "left";
@@ -41,7 +45,7 @@ in {
             monitor = "${monitor}";
             text = ''cmd[update:1000] echo -e "$(date +"%A, %B %d")"'';
             color = "rgba(216, 222, 233, .7)";
-            font_family = "Cartograph CF Italic";
+            font_family = "${font-sans-serif}";
             font_size = 16;
             position = "30, 40";
             halign = "left";
@@ -61,7 +65,7 @@ in {
           inner_color = "rgba(255, 255, 255, 0.1)";
           font_color = "rgb(200, 200, 200)";
           fade_on_empty = true;
-          font_family = "SpaceMono Nerd Font";
+          font_family = "${font-primary}";
           placeholder_text = "<i><span foreground='##ffffff99'>Enter Pass</span></i>";
           hide_input = false;
           position = "0, 0";

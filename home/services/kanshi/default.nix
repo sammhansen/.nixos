@@ -1,20 +1,22 @@
 {
-  bifrost,
+  config,
   lib,
+  isNiri,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.niri;
+
+  cfg = config.bifrost.monitors;
   inbuilt = {
-    name = bifrost.monitors.inbuilt.name;
+    name = cfg.inbuilt.name;
     position = {
-      x = "${bifrost.monitors.inbuilt.position.x}";
-      y = "${bifrost.monitors.inbuilt.position.y}";
+      x = "${cfg.inbuilt.position.x}";
+      y = "${cfg.inbuilt.position.y}";
     };
   };
-  external = bifrost.monitors.external.name;
+  external = cfg.external.name;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf isNiri {
     services.kanshi = {
       enable = true;
       systemdTarget = "graphical-session.target";
@@ -39,7 +41,7 @@ in {
                 position = "0,0";
               }
             ];
-            exec = "notify-send 'System' 'Display DELL24 not connected'";
+            exec = "notify-send 'Kanshi' 'Laptop undocked'";
           };
         }
         {
@@ -57,7 +59,7 @@ in {
                 position = "0,0";
               }
             ];
-            exec = "notify-send 'System' 'Display DELL24 Connected'";
+            exec = "notify-send 'Kanshi' 'Laptop docked'";
           };
         }
       ];

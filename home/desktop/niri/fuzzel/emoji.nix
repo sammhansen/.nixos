@@ -1,6 +1,15 @@
-{...}: let
+{
+  isServer,
+  isNiri,
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
   script = ''
-        #!/bin/bash
+    #!/usr/bin/env bash
+
     if [ $? -eq 0 ]
     then
         sed '1,/^### DATA ###$/d' $0 | fuzzel fzf --dmenu | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
@@ -1874,6 +1883,10 @@
     🟰 heavy equals sign math
   '';
 in {
-  home.file.".config/fuzzel/scripts/emoji".text = script;
-  home.file.".config/fuzzel/scripts/emoji".executable = true;
+  config = mkIf (!isServer && isNiri) {
+    home.file.".config/fuzzel/scripts/emoji" = {
+      text = script;
+      executable = true;
+    };
+  };
 }

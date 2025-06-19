@@ -1,52 +1,204 @@
 {
-  background = "{{ colors.background.default.hex }}";
-  error = "{{ colors.error.default.hex }}";
-  error_container = "{{ colors.error_container.default.hex }}";
-  inverse_on_surface = "{{ colors.inverse_on_surface.default.hex }}";
-  inverse_primary = "{{ colors.inverse_primary.default.hex }}";
-  inverse_surface = "{{ colors.inverse_surface.default.hex }}";
-  on_background = "{{ colors.on_background.default.hex }}";
-  on_error = "{{ colors.on_error.default.hex }}";
-  on_error_container = "{{ colors.on_error_container.default.hex }}";
-  on_primary = "{{ colors.on_primary.default.hex }}";
-  on_primary_container = "{{ colors.on_primary_container.default.hex }}";
-  on_primary_fixed = "{{ colors.on_primary_fixed.default.hex }}";
-  on_primary_fixed_variant = "{{ colors.on_primary_fixed_variant.default.hex }}";
-  on_secondary = "{{ colors.on_secondary.default.hex }}";
-  on_secondary_container = "{{ colors.on_secondary_container.default.hex }}";
-  on_secondary_fixed = "{{ colors.on_secondary_fixed.default.hex }}";
-  on_secondary_fixed_variant = "{{ colors.on_secondary_fixed_variant.default.hex }}";
-  on_surface = "{{ colors.on_surface.default.hex }}";
-  on_surface_variant = "{{ colors.on_surface_variant.default.hex }}";
-  on_tertiary = "{{ colors.on_tertiary.default.hex }}";
-  on_tertiary_container = "{{ colors.on_tertiary_container.default.hex }}";
-  on_tertiary_fixed = "{{ colors.on_tertiary_fixed.default.hex }}";
-  on_tertiary_fixed_variant = "{{ colors.on_tertiary_fixed_variant.default.hex }}";
-  outline = "{{ colors.outline.default.hex }}";
-  outline_variant = "{{ colors.outline_variant.default.hex }}";
-  primary = "{{ colors.primary.default.hex }}";
-  primary_container = "{{ colors.primary_container.default.hex }}";
-  primary_fixed = "{{ colors.primary_fixed.default.hex }}";
-  primary_fixed_dim = "{{ colors.primary_fixed_dim.default.hex }}";
-  scrim = "{{ colors.scrim.default.hex }}";
-  secondary = "{{ colors.secondary.default.hex }}";
-  secondary_container = "{{ colors.secondary_container.default.hex }}";
-  secondary_fixed = "{{ colors.secondary_fixed.default.hex }}";
-  secondary_fixed_dim = "{{ colors.secondary_fixed_dim.default.hex }}";
-  shadow = "{{ colors.shadow.default.hex }}";
-  surface = "{{ colors.surface.default.hex }}";
-  surface_bright = "{{ colors.surface_bright.default.hex }}";
-  surface_container = "{{ colors.surface_container.default.hex }}";
-  surface_container_high = "{{ colors.surface_container_high.default.hex }}";
-  surface_container_highest = "{{ colors.surface_container_highest.default.hex }}";
-  surface_container_low = "{{ colors.surface_container_low.default.hex }}";
-  surface_container_lowest = "{{ colors.surface_container_lowest.default.hex }}";
-  surface_dim = "{{ colors.surface_dim.default.hex }}";
-  surface_tint = "{{ colors.surface_tint.default.hex }}";
-  surface_variant = "{{ colors.surface_variant.default.hex }}";
-  tertiary = "{{ colors.tertiary.default.hex }}";
-  tertiary_container = "{{ colors.tertiary_container.default.hex }}";
-  tertiary_fixed = "{{ colors.tertiary_fixed.default.hex }}";
-  tertiary_fixed_dim = "{{ colors.tertiary_fixed_dim.default.hex }}";
-  source_color = "{{ colors.source_color.default.hex }}";
+  colors = {
+    background = {
+      hex = "{{ colors.background.default.hex }}";
+      rgb = "{{ colors.background.default.rgb }}";
+    };
+    error = {
+      hex = "{{ colors.error.default.hex }}";
+      rgb = "{{ colors.error.default.rgb }}";
+    };
+    error_container = {
+      hex = "{{ colors.error_container.default.hex }}";
+      rgb = "{{ colors.error_container.default.rgb }}";
+    };
+    inverse_on_surface = {
+      hex = "{{ colors.inverse_on_surface.default.hex }}";
+      rgb = "{{ colors.inverse_on_surface.default.rgb }}";
+    };
+    inverse_primary = {
+      hex = "{{ colors.inverse_primary.default.hex }}";
+      rgb = "{{ colors.inverse_primary.default.rgb }}";
+    };
+    inverse_surface = {
+      hex = "{{ colors.inverse_surface.default.hex }}";
+      rgb = "{{ colors.inverse_surface.default.rgb }}";
+    };
+    on_background = {
+      hex = "{{ colors.on_background.default.hex }}";
+      rgb = "{{ colors.on_background.default.rgb }}";
+    };
+    on_error = {
+      hex = "{{ colors.on_error.default.hex }}";
+      rgb = "{{ colors.on_error.default.rgb }}";
+    };
+    on_error_container = {
+      hex = "{{ colors.on_error_container.default.hex }}";
+      rgb = "{{ colors.on_error_container.default.rgb }}";
+    };
+    on_primary = {
+      hex = "{{ colors.on_primary.default.hex }}";
+      rgb = "{{ colors.on_primary.default.rgb }}";
+    };
+    on_primary_container = {
+      hex = "{{ colors.on_primary_container.default.hex }}";
+      rgb = "{{ colors.on_primary_container.default.rgb }}";
+    };
+    on_primary_fixed = {
+      hex = "{{ colors.on_primary_fixed.default.hex }}";
+      rgb = "{{ colors.on_primary_fixed.default.rgb }}";
+    };
+    on_primary_fixed_variant = {
+      hex = "{{ colors.on_primary_fixed_variant.default.hex }}";
+      rgb = "{{ colors.on_primary_fixed_variant.default.rgb }}";
+    };
+    on_secondary = {
+      hex = "{{ colors.on_secondary.default.hex }}";
+      rgb = "{{ colors.on_secondary.default.rgb }}";
+    };
+    on_secondary_container = {
+      hex = "{{ colors.on_secondary_container.default.hex }}";
+      rgb = "{{ colors.on_secondary_container.default.rgb }}";
+    };
+    on_secondary_fixed = {
+      hex = "{{ colors.on_secondary_fixed.default.hex }}";
+      rgb = "{{ colors.on_secondary_fixed.default.rgb }}";
+    };
+    on_secondary_fixed_variant = {
+      hex = "{{ colors.on_secondary_fixed_variant.default.hex }}";
+      rgb = "{{ colors.on_secondary_fixed_variant.default.rgb }}";
+    };
+    on_surface = {
+      hex = "{{ colors.on_surface.default.hex }}";
+      rgb = "{{ colors.on_surface.default.rgb }}";
+    };
+    on_surface_variant = {
+      hex = "{{ colors.on_surface_variant.default.hex }}";
+      rgb = "{{ colors.on_surface_variant.default.rgb }}";
+    };
+    on_tertiary = {
+      hex = "{{ colors.on_tertiary.default.hex }}";
+      rgb = "{{ colors.on_tertiary.default.rgb }}";
+    };
+    on_tertiary_container = {
+      hex = "{{ colors.on_tertiary_container.default.hex }}";
+      rgb = "{{ colors.on_tertiary_container.default.rgb }}";
+    };
+    on_tertiary_fixed = {
+      hex = "{{ colors.on_tertiary_fixed.default.hex }}";
+      rgb = "{{ colors.on_tertiary_fixed.default.rgb }}";
+    };
+    on_tertiary_fixed_variant = {
+      hex = "{{ colors.on_tertiary_fixed_variant.default.hex }}";
+      rgb = "{{ colors.on_tertiary_fixed_variant.default.rgb }}";
+    };
+    outline = {
+      hex = "{{ colors.outline.default.hex }}";
+      rgb = "{{ colors.outline.default.rgb }}";
+    };
+    outline_variant = {
+      hex = "{{ colors.outline_variant.default.hex }}";
+      rgb = "{{ colors.outline_variant.default.rgb }}";
+    };
+    primary = {
+      hex = "{{ colors.primary.default.hex }}";
+      rgb = "{{ colors.primary.default.rgb }}";
+    };
+    primary_container = {
+      hex = "{{ colors.primary_container.default.hex }}";
+      rgb = "{{ colors.primary_container.default.rgb }}";
+    };
+    primary_fixed = {
+      hex = "{{ colors.primary_fixed.default.hex }}";
+      rgb = "{{ colors.primary_fixed.default.rgb }}";
+    };
+    primary_fixed_dim = {
+      hex = "{{ colors.primary_fixed_dim.default.hex }}";
+      rgb = "{{ colors.primary_fixed_dim.default.rgb }}";
+    };
+    scrim = {
+      hex = "{{ colors.scrim.default.hex }}";
+      rgb = "{{ colors.scrim.default.rgb }}";
+    };
+    secondary = {
+      hex = "{{ colors.secondary.default.hex }}";
+      rgb = "{{ colors.secondary.default.rgb }}";
+    };
+    secondary_container = {
+      hex = "{{ colors.secondary_container.default.hex }}";
+      rgb = "{{ colors.secondary_container.default.rgb }}";
+    };
+    secondary_fixed = {
+      hex = "{{ colors.secondary_fixed.default.hex }}";
+      rgb = "{{ colors.secondary_fixed.default.rgb }}";
+    };
+    secondary_fixed_dim = {
+      hex = "{{ colors.secondary_fixed_dim.default.hex }}";
+      rgb = "{{ colors.secondary_fixed_dim.default.rgb }}";
+    };
+    shadow = {
+      hex = "{{ colors.shadow.default.hex }}";
+      rgb = "{{ colors.shadow.default.rgb }}";
+    };
+    surface = {
+      hex = "{{ colors.surface.default.hex }}";
+      rgb = "{{ colors.surface.default.rgb }}";
+    };
+    surface_bright = {
+      hex = "{{ colors.surface_bright.default.hex }}";
+      rgb = "{{ colors.surface_bright.default.rgb }}";
+    };
+    surface_container = {
+      hex = "{{ colors.surface_container.default.hex }}";
+      rgb = "{{ colors.surface_container.default.rgb }}";
+    };
+    surface_container_high = {
+      hex = "{{ colors.surface_container_high.default.hex }}";
+      rgb = "{{ colors.surface_container_high.default.rgb }}";
+    };
+    surface_container_highest = {
+      hex = "{{ colors.surface_container_highest.default.hex }}";
+      rgb = "{{ colors.surface_container_highest.default.rgb }}";
+    };
+    surface_container_low = {
+      hex = "{{ colors.surface_container_low.default.hex }}";
+      rgb = "{{ colors.surface_container_low.default.rgb }}";
+    };
+    surface_container_lowest = {
+      hex = "{{ colors.surface_container_lowest.default.hex }}";
+      rgb = "{{ colors.surface_container_lowest.default.rgb }}";
+    };
+    surface_dim = {
+      hex = "{{ colors.surface_dim.default.hex }}";
+      rgb = "{{ colors.surface_dim.default.rgb }}";
+    };
+    surface_tint = {
+      hex = "{{ colors.surface_tint.default.hex }}";
+      rgb = "{{ colors.surface_tint.default.rgb }}";
+    };
+    surface_variant = {
+      hex = "{{ colors.surface_variant.default.hex }}";
+      rgb = "{{ colors.surface_variant.default.rgb }}";
+    };
+    tertiary = {
+      hex = "{{ colors.tertiary.default.hex }}";
+      rgb = "{{ colors.tertiary.default.rgb }}";
+    };
+    tertiary_container = {
+      hex = "{{ colors.tertiary_container.default.hex }}";
+      rgb = "{{ colors.tertiary_container.default.rgb }}";
+    };
+    tertiary_fixed = {
+      hex = "{{ colors.tertiary_fixed.default.hex }}";
+      rgb = "{{ colors.tertiary_fixed.default.rgb }}";
+    };
+    tertiary_fixed_dim = {
+      hex = "{{ colors.tertiary_fixed_dim.default.hex }}";
+      rgb = "{{ colors.tertiary_fixed_dim.default.rgb }}";
+    };
+    source_color = {
+      hex = "{{ colors.source_color.default.hex }}";
+      rgb = "{{ colors.source_color.default.rgb }}";
+    };
+  };
 }

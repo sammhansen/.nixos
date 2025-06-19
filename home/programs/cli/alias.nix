@@ -1,8 +1,11 @@
-{bifrost, ...}: let
+{
+  config,
+  username,
+  ...
+}: let
   nixprofile_path = "/nix/var/nix/profiles/system";
-  username = bifrost.userconf.username;
-  dotsdir = bifrost.userconf.dotsdir;
-  kali-host = bifrost.virtualisation.distrobox.kali.hostname;
+  flakeDir = config.bifrost.device.flakeDir;
+  kali-hostname = "kali";
 in {
   home.shellAliases = {
     x = "clear";
@@ -25,8 +28,8 @@ in {
     xcb = "export QT_QPA_PLATFORM=xcb";
 
     db = "distrobox";
-    kali = "distrobox enter ${kali-host} -- /usr/bin/fish";
-    dbinit = "distrobox create --name ${kali-host} -i docker.io/kalilinux/kali-rolling:latest --home /home/${username}/distrobox/kali";
+    kali = "distrobox enter ${kali-hostname} -- /usr/bin/fish";
+    dbinit = "distrobox create --name ${kali-hostname} -i docker.io/kalilinux/kali-rolling:latest --home /home/${username}/distrobox/kali";
 
     gs = "git status";
     gd = "git diff";
@@ -44,7 +47,7 @@ in {
     nd = "nix develop -c zsh";
     ns = "nix-shell -c zsh";
 
-    nrf = "sudo nixos-rebuild switch --flake /home/${username}/${dotsdir}/#hell; swaync-client -R; swaync-client -rs";
+    nrf = "sudo nixos-rebuild switch --flake ${flakeDir}/#hell; swaync-client -R; swaync-client -rs";
     nixos-gens = "sudo nix-env --list-generations --profile ${nixprofile_path}";
     nixos-gens-rm = "sudo nix-env --profile ${nixprofile_path} --delete-generations";
     nixos-boot-clean = "sudo /run/current-system/bin/switch-to-configuration boot";

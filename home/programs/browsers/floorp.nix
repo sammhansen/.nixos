@@ -1,12 +1,13 @@
 {
-  bifrost,
+  isServer,
+  config,
   lib,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.browsers.floorp;
+  cfg = config.bifrost.programs.browsers.floorp;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     programs.floorp = {
       enable = true;
     };

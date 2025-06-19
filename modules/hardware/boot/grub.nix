@@ -1,9 +1,9 @@
 {
-  bifrost,
+  config,
   inputs,
   ...
 }: let
-  cfg = bifrost.sysconf.osprober;
+  cfg = config.bifrost.device.dualBoot;
 in {
   imports = [
     inputs.minegrub-theme.nixosModules.default

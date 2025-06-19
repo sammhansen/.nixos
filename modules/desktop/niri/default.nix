@@ -1,12 +1,13 @@
 {
-  bifrost,
+  config,
   lib,
   pkgs,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = bifrost.sessions.niri;
+  cfg = config.bifrost.windowManager.niri;
 in {
   imports = [
     ./polkit
@@ -14,7 +15,7 @@ in {
     ./xwayland
   ];
 
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     programs.niri = {
       enable = true;
       package = pkgs.niri;

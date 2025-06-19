@@ -1,6 +1,5 @@
-let
-  colors = import ./../../../../../.local/state/matugen/colors.nix;
-  keyColor = colors.tertiary;
+{colors, ...}: let
+  keyColor = colors.tertiary.hex;
 in {
   programs.fastfetch = {
     enable = true;

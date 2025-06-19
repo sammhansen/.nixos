@@ -1,4 +1,11 @@
-let
+{
+  isServer,
+  isNiri,
+  lib,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
   script = ''
     #!/usr/bin/env bash
 
@@ -30,8 +37,10 @@ let
     esac
   '';
 in {
-  xdg.configFile."fuzzel/scripts/powermenu.sh" = {
-    text = script;
-    executable = true;
+  config = mkIf (!isServer && isNiri) {
+    xdg.configFile."fuzzel/scripts/powermenu.sh" = {
+      text = script;
+      executable = true;
+    };
   };
 }

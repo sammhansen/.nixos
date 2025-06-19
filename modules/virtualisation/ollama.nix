@@ -1,11 +1,11 @@
 {
-  bifrost,
+  config,
   lib,
   pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.virtualisation.ollama;
+  cfg = config.bifrost.virtualisation.ollama;
 in {
   config = mkIf cfg.enable {
     services.ollama = {

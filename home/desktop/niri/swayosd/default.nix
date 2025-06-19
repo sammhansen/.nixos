@@ -1,26 +1,20 @@
 {
+  isServer,
+  isNiri,
   username,
+  colors,
+  lib,
   pkgs,
   ...
 }: let
-  colors = import ./../../../../.local/state/matugen/colors.nix;
-in {
-  services.swayosd = {
-    enable = true;
-    topMargin = 0.9;
-    stylePath = "/home/${username}/.config/swayosd/style.css";
-  };
+  inherit (lib.modules) mkIf;
 
-  home.packages = with pkgs; [
-    brightnessctl
-  ];
-
-  home.file.".config/swayosd/style.css".text = ''
+  style = ''
     window#osd {
       padding: 0px 0px;
       border-radius: 5px;
       border: none;
-      background: ${colors.background};
+      background: ${colors.background.hex};
 
       #container {
         margin: 10px;
@@ -28,7 +22,7 @@ in {
 
       image,
       label {
-        color: ${colors.on_background};
+        color: ${colors.on_background.hex};
       }
 
       progressbar:disabled,
@@ -46,14 +40,28 @@ in {
         min-height: inherit;
         border-radius: inherit;
         border: none;
-        background: ${colors.tertiary_container};
+        background: ${colors.tertiary_container.hex};
       }
       progress {
         min-height: inherit;
         border-radius: inherit;
         border: none;
-        background: ${colors.primary};
+        background: ${colors.primary.hex};
       }
     }
   '';
+in {
+  config = mkIf (!isServer && isNiri) {
+    services.swayosd = {
+      enable = true;
+      topMargin = 0.9;
+      stylePath = "/home/${username}/.config/swayosd/style.css";
+    };
+
+    home.packages = with pkgs; [
+      brightnessctl
+    ];
+
+    xdg.configFile."swayosd/style.css".text = style;
+  };
 }

@@ -1,11 +1,11 @@
 {
   imports = [
-    ./config.nix
+    ./settings.nix
 
     ./waybar
     ./swaync
     ./swayosd
-    ./swaybg
+    ./swww
     ./fuzzel
     ./hypridle
     ./hyprlock

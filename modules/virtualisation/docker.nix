@@ -1,10 +1,11 @@
 {
-  bifrost,
+  config,
   lib,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.virtualisation.docker;
+
+  cfg = config.bifrost.virtualisation.docker;
 in {
   config = mkIf cfg.enable {
     virtualisation = {

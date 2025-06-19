@@ -1,18 +1,28 @@
 {
-  programs.lazygit = {
-    enable = true;
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
 
-    settings = {
-      update.method = "never";
+  cfg = config.bifrost.programs.git;
+in {
+  config = mkIf cfg.enable {
+    programs.lazygit = {
+      enable = true;
 
-      gui = {
-        nerdFontsVersion = 3;
-        authorColors."Hansen" = "#f5c2e7";
-      };
+      settings = {
+        update.method = "never";
 
-      git.paging = {
-        colorArg = "always";
-        pager = "delta --paging=never";
+        gui = {
+          nerdFontsVersion = 3;
+          authorColors."${cfg.userName}" = "#f5c2e7";
+        };
+
+        git.paging = {
+          colorArg = "always";
+          pager = "delta --paging=never";
+        };
       };
     };
   };

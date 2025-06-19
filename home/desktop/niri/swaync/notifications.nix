@@ -1,20 +1,20 @@
 {
-  bifrost,
+  isServer,
+  isNiri,
+  colors,
   lib,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.niri;
-  colors = import ../../../../.local/state/matugen/colors.nix;
 
   style = ''
-    @define-color bg               ${colors.background};
-    @define-color on-bg            ${colors.on_background};
-    @define-color bg-alt           ${colors.surface_bright};
-    @define-color on-bg-alt        ${colors.on_surface_variant};
-    @define-color selected         ${colors.primary};
-    @define-color hover            alpha(${colors.primary}, .4);
-    @define-color urgent           ${colors.error_container};
+    @define-color bg               ${colors.background.hex};
+    @define-color on-bg            ${colors.on_background.hex};
+    @define-color bg-alt           ${colors.surface_bright.hex};
+    @define-color on-bg-alt        ${colors.on_surface_variant.hex};
+    @define-color selected         ${colors.primary.hex};
+    @define-color hover            alpha(${colors.primary.hex}, .4);
+    @define-color urgent           ${colors.error_container.hex};
 
     * {
       color: @on-bg;
@@ -163,7 +163,7 @@
     }
   '';
 in {
-  config = mkIf cfg.enable {
-    home.file.".config/swaync/notifications.css".text = style;
+  config = mkIf (!isServer && isNiri) {
+    xdg.configFile."swaync/notifications.css".text = style;
   };
 }

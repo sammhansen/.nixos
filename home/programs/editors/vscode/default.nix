@@ -1,35 +1,47 @@
-{pkgs, ...}: {
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode;
+{
+  config,
+  lib,
+  pkgs,
+  isServer,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
 
-    mutableExtensionsDir = true;
-    profiles = {
-      default = {
-        extensions = with pkgs.vscode-extensions; [
-          github.copilot
-          github.copilot-chat
-          github.vscode-pull-request-github
-          github.vscode-github-actions
-          eamodio.gitlens
+  cfg = config.bifrost.programs.editors.vscode;
+in {
+  config = mkIf (!isServer && cfg.enable) {
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscode;
 
-          ms-vscode-remote.remote-ssh
-          esbenp.prettier-vscode
-          ms-vscode.live-server
-          vscodevim.vim
-          wakatime.vscode-wakatime
-          formulahendry.code-runner
-          leonardssh.vscord
+      mutableExtensionsDir = true;
+      profiles = {
+        default = {
+          extensions = with pkgs.vscode-extensions; [
+            github.copilot
+            github.copilot-chat
+            github.vscode-pull-request-github
+            github.vscode-github-actions
+            eamodio.gitlens
 
-          dart-code.dart-code
-          dart-code.flutter
+            ms-vscode-remote.remote-ssh
+            esbenp.prettier-vscode
+            ms-vscode.live-server
+            vscodevim.vim
+            wakatime.vscode-wakatime
+            formulahendry.code-runner
+            leonardssh.vscord
 
-          ms-python.python
-          ms-python.debugpy
+            dart-code.dart-code
+            dart-code.flutter
 
-          jnoortheen.nix-ide
-          kamadorueda.alejandra
-        ];
+            ms-python.python
+            ms-python.debugpy
+
+            jnoortheen.nix-ide
+            kamadorueda.alejandra
+          ];
+        };
       };
     };
   };

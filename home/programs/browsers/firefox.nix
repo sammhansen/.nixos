@@ -1,13 +1,14 @@
 {
-  bifrost,
+  isServer,
+  config,
   lib,
   pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.browsers.firefox;
+  cfg = config.bifrost.programs.browsers.firefox;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-bin;

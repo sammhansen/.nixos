@@ -1,22 +1,28 @@
 {
+  config,
   lib,
-  bifrost,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  layout = bifrost.sysconf.keyboardlayout;
+
+  cfg = config.bifrost.windowManager.gnome;
+
+  layout = config.bifrost.device.keyLayout;
 in {
-  services = mkIf bifrost.sessions.gnome.enable {
-    xserver = {
-      enable = true;
-      videoDrivers = ["intel"];
-      xkb = {
-        layout = "${layout}";
-        variant = "";
-      };
-      desktopManager = {
-        gnome = {
-          enable = true;
+  config = mkIf (!isServer && cfg.enable) {
+    services = {
+      xserver = {
+        enable = true;
+        videoDrivers = ["intel"];
+        xkb = {
+          layout = "${layout}";
+          variant = "";
+        };
+        desktopManager = {
+          gnome = {
+            enable = true;
+          };
         };
       };
     };

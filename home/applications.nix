@@ -1,10 +1,18 @@
-{...}: let
-  config = ../.local/share/applications;
+{
+  lib,
+  isServer,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
+  entries = ../.local/share/applications;
 in {
-  xdg.dataFile = {
-    "applications" = {
-      recursive = true;
-      source = "${config}";
+  config = mkIf (!isServer) {
+    xdg.dataFile = {
+      "applications" = {
+        recursive = true;
+        source = "${entries}";
+      };
     };
   };
 }

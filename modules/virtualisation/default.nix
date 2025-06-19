@@ -1,22 +1,24 @@
 {
-  username,
-  bifrost,
+  config,
   lib,
   pkgs,
+  username,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.virtualisation;
+
+  cfg = config.bifrost.virtualisation.libvirt;
 in {
   imports = [
     ./docker.nix
     ./podman.nix
     ./ollama.nix
-    ./wine.nix
+    ./bottles.nix
     ./waydroid.nix
   ];
 
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     boot.extraModprobeConfig = "options kvm_intel nested=1";
 
     virtualisation = {

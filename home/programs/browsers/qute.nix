@@ -1,24 +1,25 @@
 {
-  bifrost,
+  isServer,
+  colors,
+  config,
   lib,
   pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.browsers.qute;
-  colors = import ../../../.local/state/matugen/colors.nix;
+  cfg = config.bifrost.programs.browsers.qute;
 
   palette = {
-    background = "${colors.background}";
-    background-alt = "${colors.background}";
+    background = "${colors.background.hex}";
+    background-alt = "${colors.background.hex}";
     background-attention = "#191724";
-    border = "#77adb1";
+    border = "${colors.primary.hex}";
     current-line = "#525566";
-    selection = "#525566";
-    foreground = "#c5c4d4";
-    foreground-alt = "#e0e0e0";
-    foreground-attention = "#ffffff";
-    comment = "#77adb1";
+    selection = "${colors.tertiary_container.hex}";
+    foreground = "${colors.on_background.hex}";
+    foreground-alt = "${colors.on_surface.hex}";
+    foreground-attention = "${colors.error.hex}";
+    comment = "${colors.outline.hex}";
     cyan = "#94cdd1";
     green = "#77adb1";
     pink = "#cdb6dd";
@@ -27,7 +28,7 @@
     yellow = "#77adb1";
   };
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     programs.qutebrowser = {
       enable = true;
       keyBindings = {

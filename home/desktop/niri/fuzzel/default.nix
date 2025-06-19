@@ -1,49 +1,58 @@
 {
-  bifrost,
+  isServer,
+  isNiri,
+  colors,
+  config,
   lib,
   ...
 }: let
-  colors = import ../../../../.local/state/matugen/colors.nix;
-  terminal = bifrost.terminals.default;
+  inherit (lib.modules) mkIf;
+
+  cfg = config.bifrost;
+  terminal = cfg.programs.terminal.default;
+  font = cfg.LGBTheme.font.main.name;
+
   rgbafy = hex: "${lib.strings.removePrefix "#" hex}ff";
 in {
   imports = [
     ./emoji.nix
     ./powermenu.nix
   ];
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        font = "${bifrost.themes.font.name}";
-        prompt = "";
-        placeholder = "";
-        icons-enabled = "no";
-        terminal = "${terminal} -e";
-        layer = "overlay";
-      };
+  config = mkIf (!isServer && isNiri) {
+    programs.fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          font = "${font}";
+          prompt = "";
+          placeholder = "";
+          icons-enabled = "no";
+          terminal = "${terminal} -e";
+          layer = "overlay";
+        };
 
-      colors = {
-        background = rgbafy colors.background;
-        text = rgbafy colors.outline;
-        selection = rgbafy colors.primary_container;
-        selection-text = rgbafy colors.outline;
-        selection-match = rgbafy colors.on_primary_container;
-        match = rgbafy colors.on_primary_container;
-        prompt = rgbafy colors.outline;
-        placeholder = rgbafy colors.outline;
-        input = rgbafy colors.primary;
-        counter = rgbafy colors.secondary;
-        border = rgbafy colors.surface_container;
-      };
+        colors = {
+          background = rgbafy colors.background.hex;
+          text = rgbafy colors.outline.hex;
+          selection = rgbafy colors.primary_container.hex;
+          selection-text = rgbafy colors.outline.hex;
+          selection-match = rgbafy colors.on_primary_container.hex;
+          match = rgbafy colors.on_primary_container.hex;
+          prompt = rgbafy colors.outline.hex;
+          placeholder = rgbafy colors.outline.hex;
+          input = rgbafy colors.primary.hex;
+          counter = rgbafy colors.secondary.hex;
+          border = rgbafy colors.surface_container.hex;
+        };
 
-      border = {
-        width = 1;
-        radius = 3;
-      };
+        border = {
+          width = 1;
+          radius = 3;
+        };
 
-      dmenu = {
-        exit-immediately-if-empty = "yes";
+        dmenu = {
+          exit-immediately-if-empty = "yes";
+        };
       };
     };
   };

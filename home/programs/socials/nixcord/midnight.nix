@@ -1,5 +1,13 @@
-let
-  colors = import ../../../../.local/state/matugen/colors.nix;
+{
+  config,
+  lib,
+  isServer,
+  colors,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
+  cfg = config.bifrost.programs.socials.nixcord;
 
   theme = ''
     /**
@@ -98,29 +106,29 @@ let
       --colors: on; /* off: discord default colors, on: midnight custom colors */
 
       /* text colors */
-      --text-0: ${colors.surface}; /* text on colored elements */
-      --text-1: ${colors.on_surface}; /* other normally white text */
-      --text-2: ${colors.on_surface}; /* headings and important text */
-      --text-3: ${colors.on_surface_variant}; /* normal text */
-      --text-4: ${colors.on_surface_variant}; /* icon buttons and channels */
-      --text-5: ${colors.outline}; /* muted channels/chats and timestamps */
+      --text-0: ${colors.surface.hex}; /* text on colored elements */
+      --text-1: ${colors.on_surface.hex}; /* other normally white text */
+      --text-2: ${colors.on_surface.hex}; /* headings and important text */
+      --text-3: ${colors.on_surface_variant.hex}; /* normal text */
+      --text-4: ${colors.on_surface_variant.hex}; /* icon buttons and channels */
+      --text-5: ${colors.outline.hex}; /* muted channels/chats and timestamps */
 
       /* background and dark colors */
-      --bg-1: ${colors.primary}; /* dark buttons when clicked */
-      --bg-2: ${colors.surface_container_high}; /* dark buttons */
-      --bg-3: ${colors.surface_container_low}; /* spacing, secondary elements */
-      --bg-4: ${colors.background}; /* main background color */
-      --hover: ${colors.surface_bright}; /* channels and buttons when hovered */
-      --active: ${colors.surface_bright}; /* channels and buttons when clicked or selected */
-      --active-2: ${colors.surface_bright}; /* extra state for transparent buttons */
-      --message-hover: ${colors.surface_bright}; /* messages when hovered */
+      --bg-1: ${colors.primary.hex}; /* dark buttons when clicked */
+      --bg-2: ${colors.surface_container_high.hex}; /* dark buttons */
+      --bg-3: ${colors.surface_container_low.hex}; /* spacing, secondary elements */
+      --bg-4: ${colors.background.hex}; /* main background color */
+      --hover: ${colors.surface_bright.hex}; /* channels and buttons when hovered */
+      --active: ${colors.surface_bright.hex}; /* channels and buttons when clicked or selected */
+      --active-2: ${colors.surface_bright.hex}; /* extra state for transparent buttons */
+      --message-hover: ${colors.surface_bright.hex}; /* messages when hovered */
 
       /* accent colors */
-      --accent-1: ${colors.tertiary}; /* links and other accent text */
-      --accent-2: ${colors.primary}; /* small accent elements */
-      --accent-3: ${colors.primary_container}; /* accent buttons */
-      --accent-4: ${colors.surface_bright}; /* accent buttons when hovered */
-      --accent-5: ${colors.primary_fixed_dim}; /* accent buttons when clicked */
+      --accent-1: ${colors.tertiary.hex}; /* links and other accent text */
+      --accent-2: ${colors.primary.hex}; /* small accent elements */
+      --accent-3: ${colors.primary_container.hex}; /* accent buttons */
+      --accent-4: ${colors.surface_bright.hex}; /* accent buttons when hovered */
+      --accent-5: ${colors.primary_fixed_dim.hex}; /* accent buttons when clicked */
       --accent-new: var(
         --accent-2
       ); /* stuff that's normally red like mute/deafen buttons */
@@ -146,11 +154,11 @@ let
       ); /* background of messages that reply to you when hovered */
 
       /* status indicator colors */
-      --online: ${colors.inverse_primary};
-      --dnd: ${colors.error};
-      --idle: ${colors.tertiary_container};
-      --streaming: ${colors.on_primary};
-      --offline: ${colors.outline};
+      --online: ${colors.inverse_primary.hex};
+      --dnd: ${colors.error.hex};
+      --idle: ${colors.tertiary_container.hex};
+      --streaming: ${colors.on_primary.hex};
+      --offline: ${colors.outline.hex};
 
       /* border colors */
       --border-light: var(--hover); /* general light border color */
@@ -196,5 +204,7 @@ let
     }
   '';
 in {
-  xdg.configFile."vesktop/themes/midnight.css".text = theme;
+  config = mkIf (!isServer && cfg.enable) {
+    xdg.configFile."vesktop/themes/midnight.css".text = theme;
+  };
 }

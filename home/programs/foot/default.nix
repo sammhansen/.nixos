@@ -1,20 +1,21 @@
 {
-  bifrost,
+  config,
   lib,
+  isServer,
+  isNiri,
+  colors,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.terminals.foot;
+  cfg = config.bifrost.programs.terminals.foot;
   font = {
-    name = bifrost.themes.font.name;
-    size = builtins.toString bifrost.themes.font.name;
+    name = config.bifrost.LGBTheme.font.mono-space.name;
+    size = builtins.toString config.bifrost.LGBTheme.font.size;
   };
-
-  colors = import ../../../.local/state/matugen/colors.nix;
 
   stripHash = hex: builtins.substring 1 (builtins.stringLength hex) hex;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && isNiri && cfg.enable) {
     programs.foot = {
       enable = true;
       settings = {
@@ -45,24 +46,24 @@ in {
 
         colors = {
           alpha = 0.7;
-          background = stripHash colors.background;
-          foreground = stripHash colors.on_surface;
-          regular0 = stripHash colors.surface;
-          regular1 = stripHash colors.error;
-          regular2 = stripHash colors.primary;
-          regular3 = stripHash colors.tertiary;
-          regular4 = stripHash colors.on_primary_container;
-          regular5 = stripHash colors.on_secondary_container;
-          regular6 = stripHash colors.secondary;
-          regular7 = stripHash colors.on_surface;
-          bright0 = stripHash colors.surface_bright;
-          bright1 = stripHash colors.error;
-          bright2 = stripHash colors.primary;
-          bright3 = stripHash colors.tertiary;
-          bright4 = stripHash colors.on_primary_container;
-          bright5 = stripHash colors.on_secondary_container;
-          bright6 = stripHash colors.secondary;
-          bright7 = stripHash colors.on_surface;
+          background = stripHash colors.background.hex;
+          foreground = stripHash colors.on_surface.hex;
+          regular0 = stripHash colors.surface.hex;
+          regular1 = stripHash colors.error.hex;
+          regular2 = stripHash colors.primary.hex;
+          regular3 = stripHash colors.tertiary.hex;
+          regular4 = stripHash colors.on_primary_container.hex;
+          regular5 = stripHash colors.on_secondary_container.hex;
+          regular6 = stripHash colors.secondary.hex;
+          regular7 = stripHash colors.on_surface.hex;
+          bright0 = stripHash colors.surface_bright.hex;
+          bright1 = stripHash colors.error.hex;
+          bright2 = stripHash colors.primary.hex;
+          bright3 = stripHash colors.tertiary.hex;
+          bright4 = stripHash colors.on_primary_container.hex;
+          bright5 = stripHash colors.on_secondary_container.hex;
+          bright6 = stripHash colors.secondary.hex;
+          bright7 = stripHash colors.on_surface.hex;
           # dim0 = "45475A";
           # dim1 = "F38BA8";
           # dim2 = "A6E3A1";
@@ -71,8 +72,8 @@ in {
           # dim5 = "F5C2E7";
           # dim6 = "94E2D5";
           # dim7 = "BAC2DE";
-          selection-foreground = stripHash colors.primary;
-          selection-background = stripHash colors.on_primary;
+          selection-foreground = stripHash colors.primary.hex;
+          selection-background = stripHash colors.on_primary.hex;
         };
 
         key-bindings = {

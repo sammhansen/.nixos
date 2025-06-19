@@ -44,13 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      type = "github";
-      owner = "sammhansen";
-      repo = "zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     minegrub-theme = {
       type = "github";
       owner = "Lxtharia";
@@ -76,20 +69,32 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    inherit (import ./bifrost.nix) bifrost;
 
-    system = bifrost.sysconf.system;
-    host = bifrost.sysconf.host;
-    username = bifrost.userconf.username;
+    # inherit ((import ./default.nix {inherit pkgs;})) bifrost;
+    inherit (import ./default.nix) bifrost;
+    inherit (import ./.colors.nix) colors;
+
+    cfg = bifrost;
+
+    system = cfg.device.system;
+    hostname = cfg.device.hostname;
+    username = cfg.user.username;
+
+    isServer = cfg.device.isServer;
+    isIntel = cfg.device.isIntel;
+    isLaptop = cfg.device.isLaptop;
+    isNiri = cfg.windowManager.niri.enable;
   in {
     nixosConfigurations = {
-      "${host}" = nixpkgs.lib.nixosSystem {
+      "${hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs username bifrost host system;
+          inherit inputs outputs username colors hostname system isLaptop isServer isIntel isNiri;
         };
 
         modules = [
           ./hosts
+          ./options
+          ./.
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -98,11 +103,12 @@
               users."${username}" = {
                 imports = [
                   ./home
+                  ./options
                 ];
               };
               backupFileExtension = "backup";
               extraSpecialArgs = {
-                inherit inputs outputs username bifrost host system;
+                inherit inputs outputs username colors hostname system isLaptop isServer isIntel isNiri;
               };
               sharedModules = [
                 nixcord.homeModules.nixcord

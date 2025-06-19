@@ -1,11 +1,12 @@
 {
-  bifrost,
+  config,
   lib,
-  pkgs,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.services.easyeffects;
+
+  cfg = config.bifrost.services.easyeffects;
 
   output = ./output;
   input = ./input;
@@ -36,7 +37,7 @@
     }
   '';
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     xdg.configFile = {
       "easyeffects/input" = {
         recursive = true;

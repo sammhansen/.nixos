@@ -1,10 +1,20 @@
-{pkgs, ...}: let
-  config = ''
+{
+  isServer,
+  isNiri,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
+  walDir = config.bifrost.device.walDir;
+  settings = ''
     [Settings]
     language = en
-    folder = ~/Pictures/wallpapers
+    folder = ${walDir}
     monitors = All
-    wallpaper = ~/Pictures/
+    wallpaper = ${walDir}
     show_path_in_tooltip = True
     backend = swww
     fill = fill
@@ -21,9 +31,11 @@
     use_xdg_state = False
   '';
 in {
-  home.packages = with pkgs; [
-    waypaper
-  ];
+  config = mkIf (!isServer && isNiri) {
+    home.packages = with pkgs; [
+      waypaper
+    ];
 
-  home.file.".config/waypaper/config.ini".text = config;
+    xdg.configFile."waypaper/config.ini".text = settings;
+  };
 }

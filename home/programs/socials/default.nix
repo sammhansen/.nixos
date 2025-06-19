@@ -1,6 +1,7 @@
 {
   imports = [
     ./newsboat.nix
+    ./thunderbird
 
     ./nixcord
     ./zoom

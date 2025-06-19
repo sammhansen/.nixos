@@ -1,18 +1,26 @@
-{pkgs, ...}: {
-  programs.gh = {
-    enable = true;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
 
-    extensions = builtins.attrValues {
-      inherit
-        (pkgs)
+  cfg = config.bifrost.programs.git;
+in {
+  config = mkIf cfg.enable {
+    programs.gh = {
+      enable = true;
+
+      extensions = with pkgs; [
         gh-copilot
         gh-eco
-        ;
-    };
+      ];
 
-    settings = {
-      git_protocol = "ssh";
-      prompt = "enabled";
+      settings = {
+        git_protocol = "ssh";
+        prompt = "enabled";
+      };
     };
   };
 }

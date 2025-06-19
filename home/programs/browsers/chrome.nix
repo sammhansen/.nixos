@@ -1,15 +1,16 @@
 {
-  bifrost,
+  isServer,
+  isNiri,
+  config,
   lib,
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-  inherit (lib.lists) concatLists;
-  inherit (lib.strings) enableFeature;
-  cfg = bifrost.browsers.chrome;
+  inherit (lib) optionals mkIf concatLists enableFeature;
+
+  cfg = config.bifrost.programs.browsers.chrome;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     programs.chromium = {
       enable = true;
       extensions = [
@@ -29,24 +30,22 @@ in {
       ];
 
       package = pkgs.google-chrome.override {
-        commandLineArgs = concatLists [
-          [
-            "--force-dark-mode"
-            "--gtk-version=4"
-          ]
+        commandLineArgs =
+          (concatLists [
+            [
+              "--force-dark-mode"
+              "--gtk-version=4"
 
-          [
+              "--no-default-browser-check"
+
+              (enableFeature false "speech-api")
+              (enableFeature false "speech-synthesis-api")
+            ]
+          ])
+          ++ (optionals isNiri [
             "--ozone-platform=wayland"
             "--enable-features=UseOzonePlatform"
-          ]
-
-          [
-            "--no-default-browser-check"
-
-            (enableFeature false "speech-api")
-            (enableFeature false "speech-synthesis-api")
-          ]
-        ];
+          ]);
       };
     };
   };

@@ -1,16 +1,26 @@
-{pkgs, ...}: {
-  services.wlsunset = {
-    enable = true;
-    gamma = 0.8;
-    temperature = {
-      day = 6500;
-      night = 3000;
+{
+  lib,
+  pkgs,
+  isServer,
+  isNiri,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+in {
+  config = mkIf (!isServer && isNiri) {
+    services.wlsunset = {
+      enable = true;
+      gamma = 0.8;
+      temperature = {
+        day = 6500;
+        night = 3000;
+      };
+      sunrise = "06:30";
+      sunset = "19:00";
+      systemdTarget = "graphical-session.target";
     };
-    sunrise = "06:30";
-    sunset = "19:00";
-    systemdTarget = "graphical-session.target";
+    home.packages = with pkgs; [
+      wlsunset
+    ];
   };
-  home.packages = with pkgs; [
-    wlsunset
-  ];
 }

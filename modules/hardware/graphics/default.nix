@@ -1,12 +1,12 @@
 {
-  bifrost,
   lib,
   pkgs,
+  isIntel,
   ...
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf bifrost.hardware.intel.enable {
+  config = mkIf isIntel {
     services.xserver.videoDrivers = ["intel"];
     hardware.cpu.intel.updateMicrocode = true;
     hardware.enableRedistributableFirmware = true;

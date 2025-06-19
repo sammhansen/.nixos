@@ -1,5 +1,17 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    telegram-desktop
-  ];
+{
+  config,
+  lib,
+  isServer,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
+  cfg = config.bifrost.programs.socials.telegram;
+  package = cfg.package;
+in {
+  config = mkIf (!isServer && cfg.enable) {
+    home.packages = [
+      package
+    ];
+  };
 }

@@ -1,11 +1,11 @@
 {
-  bifrost,
+  isServer,
+  isNiri,
   pkgs,
   lib,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.niri;
 in {
   imports = [
     ./notifications.nix
@@ -13,7 +13,7 @@ in {
     ./scripts
   ];
 
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && isNiri) {
     services.swaync = {
       enable = true;
       settings = {

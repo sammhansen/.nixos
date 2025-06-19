@@ -1,4 +1,11 @@
-let
+{
+  isServer,
+  isNiri,
+  lib,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
   script = ''
     #!/usr/bin/env bash
 
@@ -11,8 +18,10 @@ let
     echo "$hex" | wl-copy
   '';
 in {
-  xdg.configFile."swaync/scripts/colorpicker.sh" = {
-    executable = true;
-    text = script;
+  config = mkIf (!isServer && isNiri) {
+    xdg.configFile."swaync/scripts/colorpicker.sh" = {
+      text = script;
+      executable = true;
+    };
   };
 }

@@ -1,27 +1,28 @@
 {
+  isServer,
+  isNiri,
+  colors,
   bifrost,
   lib,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.niri;
-  colors = import ../../../../.local/state/matugen/colors.nix;
   style = ''
-    @define-color bg                          ${colors.background};
-    @define-color on-bg                       ${colors.on_background};
-    @define-color selected                    ${colors.primary};
-    @define-color bg-primary                  ${colors.primary_container};
-    @define-color on-bg-primary               ${colors.on_primary_container};
-    @define-color bg-secondary                ${colors.secondary_container};
-    @define-color on-bg-secondary             ${colors.on_secondary_container};
-    @define-color bg-surface                  ${colors.surface_container};
-    @define-color on-bg-surface               ${colors.on_surface}; /* fallback; see note below */
-    @define-color bg-surface-highest          ${colors.surface_container_highest};
-    @define-color on-bg-surface-highest       ${colors.on_surface}; /* fallback again */
-    @define-color tertiary                    ${colors.tertiary};
-    @define-color on-bg-tertiary              ${colors.on_tertiary_container};
-    @define-color hover                       alpha(${colors.primary}, .4);
-    @define-color urgent                      ${colors.error_container};
+    @define-color bg                          ${colors.background.hex};
+    @define-color on-bg                       ${colors.on_background.hex};
+    @define-color selected                    ${colors.primary.hex};
+    @define-color bg-primary                  ${colors.primary_container.hex};
+    @define-color on-bg-primary               ${colors.on_primary_container.hex};
+    @define-color bg-secondary                ${colors.secondary_container.hex};
+    @define-color on-bg-secondary             ${colors.on_secondary_container.hex};
+    @define-color bg-surface                  ${colors.surface_container.hex};
+    @define-color on-bg-surface               ${colors.on_surface.hex};
+    @define-color bg-surface-highest          ${colors.surface_container_highest.hex};
+    @define-color on-bg-surface-highest       ${colors.on_surface.hex};
+    @define-color tertiary                    ${colors.tertiary.hex};
+    @define-color on-bg-tertiary              ${colors.on_tertiary_container.hex};
+    @define-color hover                       alpha(${colors.primary.hex}, .4);
+    @define-color urgent                      ${colors.error_container.hex};
 
     * {
       color: @text;
@@ -309,7 +310,7 @@
     }
   '';
 in {
-  config = mkIf cfg.enable {
-    home.file.".config/swaync/control-center.css".text = style;
+  config = mkIf (!isServer && isNiri) {
+    xdg.configFile."swaync/control-center.css".text = style;
   };
 }

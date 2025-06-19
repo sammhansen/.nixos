@@ -1,11 +1,13 @@
 {
-  bifrost,
+  config,
   lib,
   pkgs,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.sessions.dm;
+
+  cfg = config.bifrost.displayManager.default;
   theme = pkgs.fetchFromGitHub {
     owner = "sammhansen";
     repo = "nix-sddm";
@@ -13,7 +15,7 @@
     sha256 = "01zbv98l5qcksifp13jccfinlrb3fch6n5dmbaafgi4s7d1ali9z";
   };
 in {
-  config = mkIf (cfg == "sddm") {
+  config = mkIf (!isServer && cfg == "sddm") {
     services = {
       displayManager = {
         sessionPackages = [

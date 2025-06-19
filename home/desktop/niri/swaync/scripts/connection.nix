@@ -1,15 +1,20 @@
 {
   username,
-  bifrost,
+  isServer,
+  isNiri,
+  config,
+  lib,
   pkgs,
   ...
 }: let
-  dotsdir = bifrost.userconf.dotsdir;
+  inherit (lib.modules) mkIf;
+  flakeDir = config.bifrost.device.flakeDir;
+
   script = ''
     LOCK_FILE="/tmp/connection.lock"
     ADDR="8.8.8.8"
-    NOTIF_SOUND="/home/${username}/${dotsdir}/.local/share/assets/sounds/alert.mp3"
-    NOTIF_IMG="/home/${username}/${dotsdir}/.local/share/assets/icons/globe.png"
+    NOTIF_SOUND="/home/${username}/${flakeDir}/.local/share/assets/sounds/alert.mp3"
+    NOTIF_IMG="/home/${username}/${flakeDir}/.local/share/assets/icons/globe.png"
 
     if [ -f "$LOCK_FILE" ]; then
       exit 1
@@ -26,8 +31,10 @@
     rm -f "$LOCK_FILE"
   '';
 in {
-  xdg.configFile."swaync/scripts/connection.sh" = {
-    text = script;
-    executable = true;
+  config = mkIf (!isServer && isNiri) {
+    xdg.configFile."swaync/scripts/connection.sh" = {
+      text = script;
+      executable = true;
+    };
   };
 }

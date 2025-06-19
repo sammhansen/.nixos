@@ -1,16 +1,20 @@
 {
-  bifrost,
+  isServer,
+  config,
+  lib,
   pkgs,
   ...
 }: let
-  dotsdir = bifrost.userconf.dotsdir;
-  templates = ./templates;
-  config = ''
-    [config.wallpaper]
-    command = "${pkgs.swaybg}/bin/swaybg"
-    arguments = ["-i", "{image}", "-m" "fill"]
-    set = true
+  inherit (lib.modules) mkIf;
 
+  flakeDir = config.bifrost.device.flakeDir;
+  templates = ./templates;
+
+  settings = ''
+    [config.wallpaper]
+    command = "${pkgs.swww}/bin/swww"
+    arguments = ["img", "--transition-type", "center"]
+    set = true
 
     [templates.nvim]
     input_path = '~/.config/matugen/templates/nvim.lua'
@@ -18,22 +22,20 @@
 
     [templates.colors]
     input_path = '~/.config/matugen/templates/colors.nix'
-    output_path = '~/${dotsdir}/.local/state/matugen/colors.nix'
-
-    [templates.clrs]
-    input_path = '~/.config/matugen/templates/clrs.nix'
-    output_path = '~/${dotsdir}/.clrs.nix'
+    output_path = '${flakeDir}/.colors.nix'
   '';
 in {
-  home.packages = with pkgs; [
-    matugen
-  ];
+  config = mkIf (!isServer) {
+    home.packages = with pkgs; [
+      matugen
+    ];
 
-  xdg.configFile = {
-    "matugen/config.toml".text = config;
-    "matugen/templates" = {
-      recursive = true;
-      source = "${templates}";
+    xdg.configFile = {
+      "matugen/config.toml".text = settings;
+      "matugen/templates" = {
+        recursive = true;
+        source = "${templates}";
+      };
     };
   };
 }

@@ -1,25 +1,26 @@
 {
-  bifrost,
+  isServer,
+  isNiri,
+  colors,
+  config,
   lib,
   ...
 }: let
   inherit (lib.modules) mkIf;
+
+  cfg = config.bifrost;
+
   inbuilt = {
-    name = bifrost.monitors.inbuilt.name;
+    name = cfg.monitors.inbuilt.name;
     position = {
-      x = "${bifrost.monitors.inbuilt.position.x}";
-      y = "${bifrost.monitors.inbuilt.position.y}";
+      x = "${cfg.monitors.inbuilt.position.x}";
+      y = "${cfg.monitors.inbuilt.position.y}";
     };
   };
-  external = bifrost.monitors.external.name;
-  browser = bifrost.browsers.default;
-  wallpaper = bifrost.themes.wallpaper;
+  external = cfg.monitors.external.name;
+  browser = cfg.browsers.default;
 
-  cfg = bifrost.sessions.niri;
-
-  colors = import ./../../../.local/state/matugen/colors.nix;
-
-  config = ''
+  settings = ''
     input {
         keyboard {
             xkb {
@@ -83,9 +84,9 @@
 
         border {
             width 1
-            active-color "${colors.primary}"
-            inactive-color "${colors.surface_container}"
-            urgent-color "${colors.error}"
+            active-color "${colors.primary.hex}"
+            inactive-color "${colors.surface_container.hex}"
+            urgent-color "${colors.error.hex}"
         }
         shadow {
             softness 30
@@ -101,16 +102,17 @@
         }
     }
 
-    // spawn-at-startup "swaync"
-    // spawn-at-startup "waybar"
     spawn-at-startup "powermode-indicator"
-    // spawn-at-startup "xwayland-satellite" ":1"
-    // spawn-at-startup "vesktop"
-    // spawn-at-startup "swaybg" "-i" "${wallpaper}" "-m" "fill"
+    spawn-at-startup "vesktop"
+    spawn-at-startup "zapzap"
+
+    hotkey-overlay {
+      skip-at-startup
+    }
 
     overview {
       zoom 0.6
-      backdrop-color "${colors.surface_container_lowest}"
+      backdrop-color "${colors.surface_container_lowest.hex}"
       workspace-shadow {
         off
       }
@@ -120,12 +122,6 @@
       match namespace="^swww-daemon$"
       place-within-backdrop true
     }
-
-    layer-rule {
-      match namespace="^wallpaper$"
-      place-within-backdrop true
-    }
-
 
     gestures {
       hot-corners {
@@ -253,7 +249,7 @@
         Alt+E { spawn "thunar"; }
         Alt+A { spawn "fuzzel"; }
         Alt+Period { spawn "~/.config/fuzzel/scripts/emoji"; }
-        Alt+V { spawn "bash" "-c" "pkill fuzzel || cliphist list | cut -f2- | fuzzel  --match-mode fzf --dmenu | cliphist decode | wl-copy"; }
+        Alt+V { spawn "bash" "-c" "pkill fuzzel || cliphist list | fuzzel  --match-mode fzf --dmenu | cliphist decode | wl-copy"; }
         Alt+S { spawn "~/.config/fuzzel/scripts/powermenu.sh"; }
         Alt+P { spawn "swaync-client" "--toggle-panel"; }
 
@@ -427,7 +423,7 @@
     }
   '';
 in {
-  config = mkIf cfg.enable {
-    xdg.configFile."niri/config.kdl".text = config;
+  config = mkIf (!isServer && isNiri) {
+    xdg.configFile."niri/config.kdl".text = settings;
   };
 }
