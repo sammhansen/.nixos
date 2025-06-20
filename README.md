@@ -11,8 +11,10 @@
 > - Lenovo ThinkPad T460s
 > - Nvidia?? we dont do that here
 
-![image](https://github.com/user-attachments/assets/848c1be4-9504-4de8-9d74-55d8a69fb2b2)
-![image](https://github.com/user-attachments/assets/9fce2274-45d3-446c-a89e-52dfb27d2f9e)
-![image](https://github.com/user-attachments/assets/2839331b-ed3a-4cae-b8b2-b71fb7f82113)
+![image](https://github.com/user-attachments/assets/5ab088db-26f1-40a1-b44e-d3eb2d55a9be)
+
+![image](https://github.com/user-attachments/assets/e9bfc711-cf21-473c-99f7-bd3665ce9fcb)
+
+![image](https://github.com/user-attachments/assets/99d08f1f-05dd-46a9-8941-65b0bb91aa90)
 
 
