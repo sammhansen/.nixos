@@ -1,13 +1,15 @@
 {
-  bifrost,
   lib,
   pkgs,
+  bifrost,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
+
   cfg = bifrost.virtualisation.bottles;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     environment.systemPackages = with pkgs; [
       bottles
     ];

@@ -31,7 +31,7 @@ return {
 			-- 	.. "⠿⠛⠛⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣯⣟⠷⢷⣿⡿⠋⠀⠀⠀⠀⣵⡀⢠⡿⠋⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
 			-- 	.. "  ⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⢿⣿⣿⠂⠀⠀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣿⣿⣿⣿⣍⠛⠿⣿⣿⣿⣿⣿",
 
-			header = "welcome to meowvim",
+			header = "welcome to bifrostvim",
 			content_hooks = {
 				starter.gen_hook.adding_bullet("> "),
 				starter.gen_hook.aligning("center", "top"),

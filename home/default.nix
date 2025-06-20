@@ -1,4 +1,4 @@
-{bifrost, ...}: {
+{username, ...}: {
   imports = [
     ./env.nix
     ./xdg.nix
@@ -12,8 +12,8 @@
 
   programs.home-manager.enable = true;
   home = {
-    username = bifrost.userconf.username;
-    homeDirectory = "/home/${bifrost.userconf.username}";
+    username = username;
+    homeDirectory = "/home/${username}";
     stateVersion = "24.11";
   };
 }

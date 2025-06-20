@@ -1,0 +1,6 @@
+{
+  imports = [
+    ./chess
+    ./steam
+  ];
+}

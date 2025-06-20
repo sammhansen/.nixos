@@ -1,13 +1,35 @@
 {
+  lib,
+  bifrost,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
+  cfg = bifrost.programs.git;
+in {
   imports = [
-    ./git.nix
-    ./aliases.nix
-    ./git-ignore.nix
-    ./delta.nix
-    ./gh-dash.nix
-    ./lazygit.nix
     ./gh.nix
-    ./jujutsu.nix
-    ./extra.nix
+    ./lazygit.nix
+    ./gh-dash.nix
   ];
+
+  config = mkIf cfg.enable {
+    programs.git = {
+      enable = true;
+      userName = "${cfg.userName}";
+      userEmail = "${cfg.userEmail}";
+      delta = {
+        enable = true;
+        options = {
+          navigate = true;
+          side-by-side = true;
+          line-numbers = true;
+        };
+      };
+
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
+  };
 }

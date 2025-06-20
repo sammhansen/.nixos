@@ -1,6 +1,12 @@
 {
   imports = [
-    ./discord
+    ./newsboat.nix
+    ./thunderbird
+
+    ./nixcord
     ./zoom
+    ./telegram
+    ./element
+    ./whatsapp
   ];
 }

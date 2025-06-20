@@ -1,13 +1,14 @@
 {
-  bifrost,
   lib,
   pkgs,
+  bifrost,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = bifrost.browsers.tor-browser;
+  cfg = bifrost.programs.browsers.tor-browser;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (!isServer && cfg.enable) {
     home.packages = with pkgs; [
       tor-browser
     ];

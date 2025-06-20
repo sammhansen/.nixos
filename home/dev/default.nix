@@ -1,7 +1,7 @@
-{...}: {
+{
   imports = [
-    ./android-studio.nix
-    ./langs
-    ./pkgs.nix
+    # ./android-studio.nix
+    # ./langs
+    # ./pkgs.nix
   ];
 }

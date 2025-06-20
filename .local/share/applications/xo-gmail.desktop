@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Gmail
-Exec=chromium --app=https://gmail.com
+Exec=brave --app=https://gmail.com
 Icon=/home/tamara/.local/share/applications/icons/gmail.png
 

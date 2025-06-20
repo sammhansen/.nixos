@@ -1,44 +1,47 @@
-{pkgs, ...}: {
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode;
+{
+  lib,
+  pkgs,
+  bifrost,
+  isServer,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
 
-    mutableExtensionsDir = true;
-    profiles = {
-      default = {
-        extensions = with pkgs.vscode-extensions; [
-          catppuccin.catppuccin-vsc
-          catppuccin.catppuccin-vsc-icons
+  cfg = bifrost.programs.editors.vscode;
+in {
+  config = mkIf (!isServer && cfg.enable) {
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscode;
 
-          # GIT
-          github.copilot
-          github.copilot-chat
-          github.vscode-pull-request-github
-          github.vscode-github-actions
-          eamodio.gitlens
+      mutableExtensionsDir = true;
+      profiles = {
+        default = {
+          extensions = with pkgs.vscode-extensions; [
+            github.copilot
+            github.copilot-chat
+            github.vscode-pull-request-github
+            github.vscode-github-actions
+            eamodio.gitlens
 
-          # UTILITIES
-          ms-vscode-remote.remote-ssh
-          esbenp.prettier-vscode
-          ms-vscode.live-server
-          vscodevim.vim # yes i hate myself
-          wakatime.vscode-wakatime
-          formulahendry.code-runner
-          leonardssh.vscord
+            ms-vscode-remote.remote-ssh
+            esbenp.prettier-vscode
+            ms-vscode.live-server
+            vscodevim.vim
+            wakatime.vscode-wakatime
+            formulahendry.code-runner
+            leonardssh.vscord
 
-          # flutter
-          dart-code.dart-code
-          dart-code.flutter
+            dart-code.dart-code
+            dart-code.flutter
 
-          #python
-          ms-python.python
-          ms-python.debugpy
+            ms-python.python
+            ms-python.debugpy
 
-          # LANGUAGES BASED EXTENSIONS
-          ## NIX
-          jnoortheen.nix-ide
-          kamadorueda.alejandra
-        ];
+            jnoortheen.nix-ide
+            kamadorueda.alejandra
+          ];
+        };
       };
     };
   };

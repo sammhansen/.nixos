@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Flaticon
-Exec=chromium --app=https://www.flaticon.com
+Exec=brave --app=https://www.flaticon.com
 Icon=/home/tamara/.local/share/applications/icons/flaticon.png
 

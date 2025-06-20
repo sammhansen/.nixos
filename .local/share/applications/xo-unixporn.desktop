@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=unixporn
-Exec=chromium --app=https://www.reddit.com/r/unixporn
+Exec=brave --app=https://www.reddit.com/r/unixporn
 Icon=/home/tamara/.local/share/applications/icons/unixporn.png
 

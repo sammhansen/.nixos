@@ -1,9 +1,17 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    zoom-us
-  ];
-  xdg.configFile = {
-    "zoomus.conf".text = ''
+{
+  lib,
+  pkgs,
+  bifrost,
+  isServer,
+  isWayland,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
+  cfg = bifrost.programs.socials.zoom;
+
+  configuration =
+    ''
       [General]
       GeoLocale=system
       SensitiveInfoMaskOn=true
@@ -27,7 +35,6 @@
       enableScreenSaveGuard=true
       enableStartMeetingWithRoomSystem=false
       enableTestMode=false
-      enableWaylandShare=true
       enableWebviewDevTools=false
       enablegpucomputeutilization=false
       flashChatTime=0
@@ -52,7 +59,6 @@
       upcoming_meeting_header_image=
       useSystemTheme=false
       userEmailAddress="samhansen.dev@gmail.com"
-      xwayland=true
 
       [AS]
       showframewindow=true
@@ -66,6 +72,16 @@
 
       [zoom_new_im]
       is_landscape_mode=true
-    '';
+    ''
+    + (mkIf isWayland ''
+      enableWaylandShare=true
+      xwayland=true
+    '');
+in {
+  config = mkIf (!isServer && cfg.enable) {
+    home.packages = with pkgs; [
+      zoom-us
+    ];
+    xdg.configFile."zoomus.conf".text = configuration;
   };
 }

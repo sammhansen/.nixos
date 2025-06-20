@@ -1,9 +1,14 @@
 {
   inputs,
+  lib,
   pkgs,
+  bifrost,
+  colors,
+  isServer,
   ...
 }: let
-  colors = import ../../../../.local/state/matugen/colors.nix;
+  inherit (lib.modules) mkIf;
+  cfg = bifrost.programs.media.spotify;
 
   stripHash = hex: builtins.substring 1 (builtins.stringLength hex) hex;
 
@@ -13,35 +18,32 @@ in {
     inputs.spicetify-nix.homeManagerModules.spicetify
   ];
 
-  programs.spicetify = {
-    enable = true;
-    enabledExtensions = with spicePkgs.extensions; [
-      adblock
-      hidePodcasts
-      shuffle
-      trashbin
-      popupLyrics
-    ];
-
-    theme = spicePkgs.themes.dribbblish;
-    colorScheme = "custom";
-    customColorScheme = {
-      "text" = stripHash colors.on_surface; # Text
-      "subtext" = stripHash colors.on_surface_variant; # Subtext1
-      "sidebar-text" = stripHash colors.on_surface; # Text
-      "main" = stripHash colors.background; # Base
-      "sidebar" = stripHash colors.surface_container; # Mantle
-      "player" = stripHash colors.surface; # Base
-      "card" = stripHash colors.surface; # Base
-      "shadow" = stripHash colors.shadow; # Mantle
-      "selected-row" = stripHash colors.secondary; # Overlay2
-      "button" = stripHash colors.outline; # Overlay1
-      "button-active" = stripHash colors.primary; # Overlay2
-      "button-disabled" = stripHash colors.outline_variant; # Overlay0
-      "tab-active" = stripHash colors.surface_container_high; # Surface0
-      "notification" = stripHash colors.surface_container_high; # Surface0
-      "notification-error" = stripHash colors.error; # Red
-      "misc" = stripHash colors.surface_variant; # Surface1
+  config = mkIf (!isServer && cfg.enable) {
+    programs.spicetify = {
+      enable = true;
+      enabledExtensions = with spicePkgs.extensions; [
+        adblock
+        shuffle
+      ];
+      theme = spicePkgs.themes.ziro;
+      colorScheme = "custom";
+      customColorScheme = {
+        "text" = stripHash colors.on_surface.hex;
+        "subtext" = stripHash colors.on_surface_variant.hex;
+        "main" = stripHash colors.background.hex;
+        "sidebar" = stripHash colors.surface_container.hex;
+        "player" = stripHash colors.primary.hex;
+        "card" = stripHash colors.shadow.hex;
+        "shadow" = stripHash colors.shadow.hex;
+        "selected-row" = stripHash colors.surface_container.hex;
+        "button" = stripHash colors.primary.hex;
+        "button-active" = stripHash colors.primary.hex;
+        "button-disabled" = stripHash colors.outline_variant.hex;
+        "tab-active" = stripHash colors.surface_container_high.hex;
+        "notification" = stripHash colors.surface_container_high.hex;
+        "notification-error" = stripHash colors.error.hex;
+        "misc" = stripHash colors.surface_variant.hex;
+      };
     };
   };
 }

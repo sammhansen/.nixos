@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=9anime
-Exec=chromium --app=https://9animetv.to/home
+Exec=brave --app=https://9animetv.to/home
 Icon=/home/tamara/.local/share/applications/icons/9anime.png
 

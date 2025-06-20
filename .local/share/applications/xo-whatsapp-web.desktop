@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=WhatsApp
-Exec=chromium --app=https://web.whatsapp.com
+Exec=brave --app=https://web.whatsapp.com
 Icon=/home/tamara/.local/share/applications/icons/whatsapp.png
 

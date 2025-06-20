@@ -1,19 +1,26 @@
-{pkgs, ...}: {
-  programs.gh = {
-    enable = true;
+{
+  lib,
+  pkgs,
+  bifrost,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
 
-    extensions = builtins.attrValues {
-      inherit
-        (pkgs)
-        # gh-cal # github activity stats in the CLI (not working, maybe we can fix it?)
-        gh-copilot # copilot in the CLI
-        gh-eco # explore the ecosystem
-        ;
-    };
+  cfg = bifrost.programs.git;
+in {
+  config = mkIf cfg.enable {
+    programs.gh = {
+      enable = true;
 
-    settings = {
-      git_protocol = "ssh";
-      prompt = "enabled";
+      extensions = with pkgs; [
+        gh-copilot
+        gh-eco
+      ];
+
+      settings = {
+        git_protocol = "ssh";
+        prompt = "enabled";
+      };
     };
   };
 }

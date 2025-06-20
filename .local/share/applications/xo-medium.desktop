@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Medium
-Exec=chromium --app=https://medium.com
+Exec=brave --app=https://medium.com
 Icon=/home/tamara/.local/share/applications/icons/medium.png
 

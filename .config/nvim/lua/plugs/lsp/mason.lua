@@ -9,6 +9,7 @@ return {
 				ensure_installed = {
 					"prettier",
 					"stylua",
+					"csharpier",
 					"markdownlint",
 					"isort",
 					"black",
@@ -46,6 +47,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"rust_analyzer",
+					"omnisharp",
 					"pyright",
 					"bashls",
 					"ts_ls",

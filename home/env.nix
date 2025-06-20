@@ -1,11 +1,34 @@
-{...}: {
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    TERMINAL = "foot";
-    XTERM = "foot";
-    NIXPKGS_ALLOW_UNFREE = "1";
-    NIXPKGS_ALLOW_INSECURE = "1";
-    NIXOS_OZONE_WL = "1"; # for electron apps to use wayland
-  };
+{
+  lib,
+  isServer,
+  isWayland,
+  ...
+}: let
+  inherit (lib) mkIf mkMerge;
+in {
+  config = mkMerge [
+    (
+      mkIf isWayland {
+        home.sessionVariables = {
+          NIXOS_OZONE_WL = 1;
+        };
+      }
+    )
+
+    (mkIf (!isServer) {
+      home.sessionVariables = {
+        TERMINAL = "foot";
+        XTERM = "foot";
+      };
+    })
+
+    {
+      home.sessionVariables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+        NIXPKGS_ALLOW_UNFREE = "1";
+        NIXPKGS_ALLOW_INSECURE = "1";
+      };
+    }
+  ];
 }

@@ -1,9 +1,12 @@
-{
+{inputs, ...}: {
   imports = [
     ./mpv
+    ./amberol
     ./youtube-music
     ./spotify
-    ./senpwai
     ./zathura
+  ];
+  home.packages = [
+    inputs.senpwai.packages.x86_64-linux.default
   ];
 }

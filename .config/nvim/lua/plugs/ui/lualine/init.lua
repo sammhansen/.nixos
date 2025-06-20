@@ -1,4 +1,4 @@
-local meow = require("plugs.ui.lualine.theme")
+local bifrost = require("plugs.ui.lualine.theme")
 
 return {
 	"nvim-lualine/lualine.nvim",
@@ -9,7 +9,7 @@ return {
 	           require("lualine").setup({
 		options = {
 			icons_enabled = true,
-			theme = meow,
+			theme = bifrost,
 			component_separators = "",
 			section_separators = "",
 			disabled_filetypes = {

@@ -1,11 +1,10 @@
 {
   imports = [
-    ./chromium.nix
+    ./brave.nix
     ./chrome.nix
     ./firefox.nix
-    ./zen.nix
     ./tor-browser.nix
     ./qute.nix
-    ./floorp
+    ./floorp.nix
   ];
 }

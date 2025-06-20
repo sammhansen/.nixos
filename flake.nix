@@ -1,112 +1,114 @@
 {
-  description = "Hansen's Nix Setup";
+  description = "May the cats be with you.SO MOTE IT BE";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-unstable";
+    };
 
     spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
+      type = "github";
+      owner = "Gerg-L";
+      repo = "spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
+    nixcord = {
+      type = "github";
+      owner = "kaylorben";
+      repo = "nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    burpsuitepro = {
+      type = "github";
+      owner = "xiv3r";
+      repo = "Burpsuite-Professional";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    senpwai = {
       type = "github";
       owner = "sammhansen";
-      repo = "zen-browser-flake";
+      repo = "senpwai-flake-check";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+    sops-nix = {
+      type = "github";
+      owner = "Mic92";
+      repo = "sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    #NUR
-    flake-utils.url = "github:numtide/flake-utils";
-    nur = {
-      url = "github:nix-community/NUR";
+    minegrub-theme = {
+      type = "github";
+      owner = "Lxtharia";
+      repo = "minegrub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = {
+    self,
     nixpkgs,
-    nixpkgs-stable,
     home-manager,
-    nur,
+    sops-nix,
+    nixcord,
     ...
   } @ inputs: let
-    inherit (import ./bifrost.nix) bifrost;
-    system = bifrost.sysconf.system;
-    host = bifrost.sysconf.host;
-    username = bifrost.userconf.username;
+    inherit (self) outputs;
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
+    inherit (import ./.) bifrost;
+    inherit (import ./.colors.nix) colors;
 
-    pkgs-stable = import nixpkgs-stable {
-      inherit system;
-      nixpkgs.config = {
-        allowUnfree = true;
-        allowBroken = true;
-      };
-    };
+    cfg = bifrost;
+
+    system = cfg.device.system;
+    hostname = cfg.device.hostname;
+    username = cfg.user.username;
+
+    isServer = cfg.device.isServer;
+    isIntel = cfg.device.isIntel;
+    isLaptop = cfg.device.isLaptop;
+    isWayland = cfg.windowManager.niri.enable;
   in {
     nixosConfigurations = {
-      "${host}" = nixpkgs.lib.nixosSystem {
+      "${hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit system;
-          inherit inputs;
-          inherit username;
-          inherit host;
-          inherit bifrost;
+          inherit inputs outputs bifrost username colors hostname system isLaptop isServer isIntel isWayland;
         };
 
         modules = [
           ./hosts
-
-          {
-            nixpkgs.config = {
-              allowUnfree = true;
-              # allowBroken = true;
-            };
-          }
-          nur.modules.nixos.default
-          nur.legacyPackages."${system}".repos.iopq.modules.xraya
-
-          inputs.distro-grub-themes.nixosModules.${system}.default
-
-          # Make pkgs-stable available as a special argument for modules
-          {
-            _module.args.pkgs-stable = pkgs-stable;
-          }
-
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              # useGlobalPkgs = true;
-              useUserPackages = true;
+              useGlobalPkgs = true;
               users."${username}" = {
                 imports = [
                   ./home
                 ];
               };
               backupFileExtension = "backup";
-
               extraSpecialArgs = {
-                inherit pkgs;
-                inherit system;
-                inherit inputs;
-                inherit username;
-                inherit bifrost;
+                inherit inputs outputs bifrost username colors hostname system isLaptop isServer isIntel isWayland;
               };
+              sharedModules = [
+                nixcord.homeModules.nixcord
+              ];
             };
           }
         ];

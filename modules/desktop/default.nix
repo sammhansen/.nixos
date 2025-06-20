@@ -1,7 +1,10 @@
 {
   imports = [
-    ./hyprland
+    ./fonts.nix
+
     ./gnome
-    ./default
+    ./niri
+
+    ./sddm
   ];
 }

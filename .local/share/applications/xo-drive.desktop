@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Drive
-Exec=chromium --app=https://drive.google.com/drive/home
+Exec=brave --app=https://drive.google.com/drive/home
 Icon=/home/tamara/.local/share/applications/icons/google-drive.png
 

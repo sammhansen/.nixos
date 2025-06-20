@@ -1,12 +1,10 @@
 {
   bifrost,
-  lib,
+  username,
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-  username = "${bifrost.userconf.username}";
-  name = "${bifrost.userconf.name}";
+  name = "${bifrost.user.name}";
 in {
   users = {
     users."${username}" = {
@@ -25,34 +23,23 @@ in {
         "docker"
         "wireshark"
         "dialout"
-        "fingerprint"
         "plugdev"
-        "ydotool" #require for hints
       ];
     };
 
-    # create groups that arent created
     groups = {
       scanner = {};
-      libvirtd = {};
       wireshark = {};
       dialout = {};
-      fingerprint = {};
       plugdev = {};
-      ydotool = {};
     };
 
-    defaultUserShell = pkgs.bash;
+    defaultUserShell = pkgs.zsh;
   };
 
   environment.shells = with pkgs; [
     bash
     fish
     zsh
-    nushell
   ];
-
-  programs.fish = mkIf bifrost.shells.fish.enable {
-    enable = true;
-  };
 }

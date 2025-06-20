@@ -1,7 +1,7 @@
 {
-  bifrost,
   lib,
   pkgs,
+  bifrost,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -11,7 +11,6 @@ in {
     services.ollama = {
       enable = true;
       package = pkgs.ollama;
-      # acceleration = "cuda";
     };
   };
 }
