@@ -10,7 +10,7 @@
   cfg = bifrost.virtualisation.podman;
 in {
   config = mkMerge [
-    (mkIf (!isServer && cfg.enable) {
+    (mkIf (!isServer && cfg.gui) {
       environment.systemPackages = with pkgs; [
         podman-desktop
       ];

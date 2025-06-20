@@ -124,8 +124,11 @@
       libvirt.enable = false;
       bottles.enable = false;
       distrobox.enable = true;
-      docker.enable = true;
-      podman.enable = false;
+      docker.enable = false;
+      podman = {
+        enable = true;
+        gui = false;
+      };
       ollama.enable = false;
       waydroid.enable = false;
     };
