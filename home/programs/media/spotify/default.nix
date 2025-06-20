@@ -1,14 +1,14 @@
 {
   inputs,
-  config,
   lib,
   pkgs,
-  isServer,
+  bifrost,
   colors,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.bifrost.programs.media.spotify;
+  cfg = bifrost.programs.media.spotify;
 
   stripHash = hex: builtins.substring 1 (builtins.stringLength hex) hex;
 
@@ -25,31 +25,25 @@ in {
         adblock
         shuffle
       ];
-
-      # theme = spicePkgs.themes.orchis;
-      # colorScheme = "custom";
-      # customColorScheme = {
-      #   "text" = stripHash colors.on_surface.hex;
-      #   "subtext" = stripHash colors.on_surface_variant.hex;
-      #   "nav-active-text" = stripHash colors.surface.hex;
-      #   "main" = stripHash colors.background.hex;
-      #   "sidebar" = stripHash colors.surface_container.hex;
-      #   "player" = stripHash colors.primary.hex;
-      #   "card" = stripHash colors.surface.hex;
-      #   "shadow" = stripHash colors.shadow.hex;
-      #   "main-secondary" = stripHash colors.secondary.hex;
-      #   "button" = stripHash colors.primary.hex;
-      #   "button-secondary" = stripHash colors.secondary.hex;
-      #   "button-active" = stripHash colors.primary.hex;
-      #   "button-disabled" = stripHash colors.outline_variant.hex;
-      #   "nav-active" = stripHash colors.surface_container_high.hex;
-      #   "play-button" = stripHash colors.primary_container.hex;
-      #   "tab-active" = stripHash colors.surface_container_high.hex;
-      #   "notification" = stripHash colors.surface_container_high.hex;
-      #   "notification-error" = stripHash colors.error.hex;
-      #   "playback-bar" = stripHash colors.primary_container.hex;
-      #   "misc" = stripHash colors.surface_variant.hex;
-      # };
+      theme = spicePkgs.themes.ziro;
+      colorScheme = "custom";
+      customColorScheme = {
+        "text" = stripHash colors.on_surface.hex;
+        "subtext" = stripHash colors.on_surface_variant.hex;
+        "main" = stripHash colors.background.hex;
+        "sidebar" = stripHash colors.surface_container.hex;
+        "player" = stripHash colors.primary.hex;
+        "card" = stripHash colors.shadow.hex;
+        "shadow" = stripHash colors.shadow.hex;
+        "selected-row" = stripHash colors.surface_container.hex;
+        "button" = stripHash colors.primary.hex;
+        "button-active" = stripHash colors.primary.hex;
+        "button-disabled" = stripHash colors.outline_variant.hex;
+        "tab-active" = stripHash colors.surface_container_high.hex;
+        "notification" = stripHash colors.surface_container_high.hex;
+        "notification-error" = stripHash colors.error.hex;
+        "misc" = stripHash colors.surface_variant.hex;
+      };
     };
   };
 }

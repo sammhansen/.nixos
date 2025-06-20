@@ -1,9 +1,8 @@
 {
-  isServer,
-  isNiri,
-  colors,
-  bifrost,
   lib,
+  isServer,
+  isWayland,
+  colors,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -310,7 +309,7 @@
     }
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     xdg.configFile."swaync/control-center.css".text = style;
   };
 }

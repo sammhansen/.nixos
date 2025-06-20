@@ -1,15 +1,15 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
-  isNiri,
+  isWayland,
   isIntel,
   ...
 }: let
-  inherit (lib.modules) optionals mkIf;
+  inherit (lib) optionals mkIf;
 
-  cfg = config.bifrost.programs.obs;
+  cfg = bifrost.programs.obs;
   plugins = pkgs.obs-studio-plugins;
 in {
   config = mkIf (!isServer && cfg.enable) {
@@ -19,7 +19,7 @@ in {
         [
           plugins.obs-gstreamer
         ]
-        ++ (optionals isNiri [
+        ++ (optionals isWayland [
           plugins.wlrobs
         ])
         ++ (optionals isIntel [

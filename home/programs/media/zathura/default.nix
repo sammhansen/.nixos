@@ -1,12 +1,12 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.media.zathura;
+  cfg = bifrost.programs.media.zathura;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.zathura = {

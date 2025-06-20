@@ -1,10 +1,10 @@
 {
   bifrost,
+  username,
   pkgs,
   ...
 }: let
-  username = "${bifrost.userconf.username}";
-  name = "${bifrost.userconf.name}";
+  name = "${bifrost.user.name}";
 in {
   users = {
     users."${username}" = {

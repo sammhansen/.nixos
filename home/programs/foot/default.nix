@@ -1,21 +1,21 @@
 {
-  config,
   lib,
-  isServer,
-  isNiri,
+  bifrost,
   colors,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.bifrost.programs.terminals.foot;
+  cfg = bifrost.programs.terminals.foot;
   font = {
-    name = config.bifrost.LGBTheme.font.mono-space.name;
-    size = builtins.toString config.bifrost.LGBTheme.font.size;
+    name = bifrost.LGBTheme.font.mono-space.name;
+    size = builtins.toString bifrost.LGBTheme.font.size;
   };
 
   stripHash = hex: builtins.substring 1 (builtins.stringLength hex) hex;
 in {
-  config = mkIf (!isServer && isNiri && cfg.enable) {
+  config = mkIf (!isServer && isWayland && cfg.enable) {
     programs.foot = {
       enable = true;
       settings = {

@@ -1,8 +1,8 @@
 {
-  isServer,
-  isNiri,
-  colors,
   lib,
+  colors,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -163,7 +163,7 @@
     }
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     xdg.configFile."swaync/notifications.css".text = style;
   };
 }

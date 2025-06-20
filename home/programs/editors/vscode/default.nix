@@ -1,13 +1,13 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.editors.vscode;
+  cfg = bifrost.programs.editors.vscode;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.vscode = {

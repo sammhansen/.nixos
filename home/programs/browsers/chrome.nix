@@ -1,14 +1,14 @@
 {
-  isServer,
-  isNiri,
-  config,
   lib,
   pkgs,
+  bifrost,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib) optionals mkIf concatLists enableFeature;
 
-  cfg = config.bifrost.programs.browsers.chrome;
+  cfg = bifrost.programs.browsers.chrome;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.chromium = {
@@ -42,7 +42,7 @@ in {
               (enableFeature false "speech-synthesis-api")
             ]
           ])
-          ++ (optionals isNiri [
+          ++ (optionals isWayland [
             "--ozone-platform=wayland"
             "--enable-features=UseOzonePlatform"
           ]);

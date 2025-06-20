@@ -1,19 +1,20 @@
 {
-  isServer,
-  isNiri,
-  config,
   lib,
+  bifrost,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost;
+  cfg = bifrost;
+
   lock-wallpaper = cfg.LGBTheme.lockscreen;
-  font-primary = cfg.LGBTheme.main.name;
-  font-sans-serif = cfg.LGBTheme.sans-serif.name;
+  font-primary = cfg.LGBTheme.font.main.name;
+  font-sans-serif = cfg.LGBTheme.font.sans-serif.name;
   monitor = "";
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     programs.hyprlock = {
       enable = true;
       settings = {

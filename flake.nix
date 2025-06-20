@@ -70,8 +70,7 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    # inherit ((import ./default.nix {inherit pkgs;})) bifrost;
-    inherit (import ./default.nix) bifrost;
+    inherit (import ./.) bifrost;
     inherit (import ./.colors.nix) colors;
 
     cfg = bifrost;
@@ -83,18 +82,16 @@
     isServer = cfg.device.isServer;
     isIntel = cfg.device.isIntel;
     isLaptop = cfg.device.isLaptop;
-    isNiri = cfg.windowManager.niri.enable;
+    isWayland = cfg.windowManager.niri.enable;
   in {
     nixosConfigurations = {
       "${hostname}" = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs username colors hostname system isLaptop isServer isIntel isNiri;
+          inherit inputs outputs bifrost username colors hostname system isLaptop isServer isIntel isWayland;
         };
 
         modules = [
           ./hosts
-          ./options
-          ./.
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
@@ -103,12 +100,11 @@
               users."${username}" = {
                 imports = [
                   ./home
-                  ./options
                 ];
               };
               backupFileExtension = "backup";
               extraSpecialArgs = {
-                inherit inputs outputs username colors hostname system isLaptop isServer isIntel isNiri;
+                inherit inputs outputs bifrost username colors hostname system isLaptop isServer isIntel isWayland;
               };
               sharedModules = [
                 nixcord.homeModules.nixcord

@@ -1,14 +1,14 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
-  isNiri,
+  isWayland,
   ...
 }: let
   inherit (lib) mkMerge mkIf;
 
-  cfg = config.bifrost.programs.media;
+  cfg = bifrost.programs.media.mpv;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.mpv = {
@@ -25,7 +25,7 @@ in {
           ytdl-format = "bestvideo+bestaudio";
         }
 
-        (mkIf isNiri {
+        (mkIf isWayland {
           gpu-context = "wayland";
         })
       ];

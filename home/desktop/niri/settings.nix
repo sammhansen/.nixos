@@ -1,24 +1,25 @@
 {
-  isServer,
-  isNiri,
-  colors,
-  config,
   lib,
+  bifrost,
+  colors,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost;
+  cfg = bifrost;
+  toString = builtins.toString;
 
   inbuilt = {
     name = cfg.monitors.inbuilt.name;
     position = {
-      x = "${cfg.monitors.inbuilt.position.x}";
-      y = "${cfg.monitors.inbuilt.position.y}";
+      x = toString cfg.monitors.inbuilt.position.x;
+      y = toString cfg.monitors.inbuilt.position.y;
     };
   };
   external = cfg.monitors.external.name;
-  browser = cfg.browsers.default;
+  browser = cfg.programs.browsers.default;
 
   settings = ''
     input {
@@ -423,7 +424,7 @@
     }
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     xdg.configFile."niri/config.kdl".text = settings;
   };
 }

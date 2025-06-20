@@ -5,6 +5,7 @@
     ./programs
     ./services
     ./network
+    ./developer
     ./virtualisation
   ];
 }

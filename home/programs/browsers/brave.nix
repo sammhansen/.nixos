@@ -1,14 +1,14 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
-  isNiri,
+  isWayland,
   ...
 }: let
   inherit (lib) mkIf optionals concatLists enableFeature;
 
-  cfg = config.bifrost.programs.browsers.brave;
+  cfg = bifrost.programs.browsers.brave;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.brave = {
@@ -49,7 +49,7 @@ in {
               (enableFeature false "brave-ai-chat")
             ]
           ])
-          ++ (optionals isNiri [
+          ++ (optionals isWayland [
             "--ozone-platform=wayland"
             "--enable-features=UseOzonePlatform"
           ]);

@@ -1,8 +1,7 @@
 {
-  isServer,
-  isNiri,
   lib,
   pkgs,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -12,7 +11,7 @@ in {
     ./gtk.nix
     ./qt.nix
   ];
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer) {
     home.pointerCursor = {
       name = "Bibata-Modern-Ice";
       package = pkgs.bibata-cursors;

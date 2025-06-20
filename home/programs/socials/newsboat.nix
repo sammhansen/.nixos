@@ -1,12 +1,12 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.socials.newsboat;
+  cfg = bifrost.programs.socials.newsboat;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.newsboat = {

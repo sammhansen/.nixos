@@ -1,11 +1,11 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.bifrost.programs.editors.onlyoffice;
+  cfg = bifrost.programs.editors.onlyoffice;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.onlyoffice = {

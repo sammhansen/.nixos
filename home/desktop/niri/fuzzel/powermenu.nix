@@ -1,7 +1,7 @@
 {
-  isServer,
-  isNiri,
   lib,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -37,7 +37,7 @@
     esac
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     xdg.configFile."fuzzel/scripts/powermenu.sh" = {
       text = script;
       executable = true;

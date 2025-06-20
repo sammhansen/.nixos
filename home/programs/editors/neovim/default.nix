@@ -1,13 +1,13 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
   configuration = ../../../../.config/nvim;
-  cfg = config.bifrost.programs.editors.neovim;
+  cfg = bifrost.programs.editors.neovim;
 in {
   config = mkIf (cfg.enable) {
     programs.neovim = {

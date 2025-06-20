@@ -1,12 +1,12 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.socials.thunderbird;
+  cfg = bifrost.programs.socials.thunderbird;
   name = cfg.user.name;
   email = cfg.programs.git.userEmail;
 in {

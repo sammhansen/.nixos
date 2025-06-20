@@ -1,22 +1,24 @@
 {
-  config,
   lib,
-  isNiri,
+  bifrost,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.monitors;
+  cfg = bifrost.monitors;
+  toString = builtins.toString;
+
   inbuilt = {
     name = cfg.inbuilt.name;
     position = {
-      x = "${cfg.inbuilt.position.x}";
-      y = "${cfg.inbuilt.position.y}";
+      x = toString cfg.inbuilt.position.x;
+      y = toString cfg.inbuilt.position.y;
     };
   };
   external = cfg.external.name;
 in {
-  config = mkIf isNiri {
+  config = mkIf isWayland {
     services.kanshi = {
       enable = true;
       systemdTarget = "graphical-session.target";

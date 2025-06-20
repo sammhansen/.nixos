@@ -1,13 +1,13 @@
 {
-  isServer,
-  isNiri,
-  config,
+  bifrost,
   lib,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  flakeDir = config.bifrost.device.flakeDir;
+  flakeDir = bifrost.device.flakeDir;
 
   script = ''
     FLAKE_DIR="${flakeDir}"
@@ -59,7 +59,7 @@
     fi
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     xdg.configFile."waybar/scripts/batt-warn.sh" = {
       text = script;
       executable = true;

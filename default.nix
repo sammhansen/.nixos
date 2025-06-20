@@ -52,19 +52,18 @@
       };
       socials = {
         nixcord.enable = true;
-        whatapp = {
+        whatsapp = {
           enable = true;
-          # package = pkgs.zapzap;
-          # spawn = "${pkgs.zapzap}/bin/zapzap";
+          package = "zapzap";
         };
         zoom.enable = false;
         matrix = {
           enable = true;
-          # package = pkgs.element-desktop;
+          package = "element";
         };
         telegram = {
           enable = true;
-          # package = pkgs.ayugram-desktop;
+          package = "ayugram";
         };
         thunderbird.enable = false;
         newsboat.enable = true;
@@ -75,17 +74,18 @@
     services = {
       easyeffects = {
         enable = true;
+        fixed-quantum = false;
       };
     };
     displayManager = {
       default = "sddm"; #ly
     };
     windowManager = {
-      gnome.enable = true;
+      gnome.enable = false;
       niri.enable = true;
     };
     LGBTheme = {
-      lockscreen = "/home/${user.name}/Pictures/wallpapers/nature-girl.jpg";
+      lockscreen = "/home/${user.username}/Pictures/wallpapers/nature-girl.jpg";
       font = {
         size = 11;
         main = {
@@ -121,17 +121,25 @@
     };
     virtualisation = {
       enable = true;
-      libvirt.enable = true;
+      libvirt.enable = false;
       bottles.enable = false;
       distrobox.enable = true;
       docker.enable = true;
       podman.enable = false;
       ollama.enable = false;
+      waydroid.enable = false;
+    };
+    dev = {
+      #sometimes I just find myself without internet so I have this because nix-shells tend to download stuff everytime am activating them.This is not the recommended way
+      rust.enable = false;
+      dotnet.enable = false;
+      npm.enable = false;
+      python.enable = false;
     };
     device = {
       system = "x86_64-linux";
       hostname = "he" + "ll";
-      flakeDir = "/home/${user.name}/.nixos";
+      flakeDir = "/home/${user.username}/.nixos";
       walDir = "/home/${user.name}/Pictures/wallpapers";
       keyLayout = "us";
       dualBoot = true;

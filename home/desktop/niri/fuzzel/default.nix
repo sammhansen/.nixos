@@ -1,15 +1,15 @@
 {
-  isServer,
-  isNiri,
-  colors,
-  config,
   lib,
+  bifrost,
+  isServer,
+  isWayland,
+  colors,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost;
-  terminal = cfg.programs.terminal.default;
+  cfg = bifrost;
+  terminal = cfg.programs.terminals.default;
   font = cfg.LGBTheme.font.main.name;
 
   rgbafy = hex: "${lib.strings.removePrefix "#" hex}ff";
@@ -18,7 +18,7 @@ in {
     ./emoji.nix
     ./powermenu.nix
   ];
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     programs.fuzzel = {
       enable = true;
       settings = {

@@ -1,13 +1,13 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.editors.zed;
+  cfg = bifrost.programs.editors.zed;
 in {
   config = mkIf (!isServer && cfg.enable) {
     programs.zed-editor = {

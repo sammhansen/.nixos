@@ -1,13 +1,13 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.qbittorrent;
+  cfg = bifrost.programs.qbittorrent;
 in {
   config = mkIf (!isServer && cfg.enable) {
     nixpkgs.config.permittedInsecurePackages = [

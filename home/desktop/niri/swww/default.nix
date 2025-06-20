@@ -1,8 +1,8 @@
 {
-  isServer,
-  isNiri,
   lib,
   pkgs,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -12,7 +12,7 @@ in {
     ./waytrogen.nix
   ];
 
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     services.swww = {
       enable = true;
     };

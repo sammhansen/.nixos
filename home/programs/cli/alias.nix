@@ -1,10 +1,10 @@
 {
-  config,
+  bifrost,
   username,
   ...
 }: let
   nixprofile_path = "/nix/var/nix/profiles/system";
-  flakeDir = config.bifrost.device.flakeDir;
+  flakeDir = bifrost.device.flakeDir;
   kali-hostname = "kali";
 in {
   home.shellAliases = {

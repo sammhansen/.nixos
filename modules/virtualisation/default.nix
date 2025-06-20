@@ -1,14 +1,14 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   username,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.virtualisation.libvirt;
+  cfg = bifrost.virtualisation.libvirt;
 in {
   imports = [
     ./docker.nix

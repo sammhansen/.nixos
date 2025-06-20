@@ -1,11 +1,11 @@
 {
-  bifrost,
   lib,
+  isLaptop,
   ...
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf bifrost.hardware.islaptop {
+  config = mkIf isLaptop {
     services.libinput = {
       enable = true;
 

@@ -1,16 +1,16 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge;
 
-  cfg = config.bifrost.virtualisation.podman;
+  cfg = bifrost.virtualisation.podman;
 in {
   config = mkMerge [
-    (mkIf (!isServer) {
+    (mkIf (!isServer && cfg.enable) {
       environment.systemPackages = with pkgs; [
         podman-desktop
       ];

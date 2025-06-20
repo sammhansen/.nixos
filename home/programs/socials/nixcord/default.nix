@@ -1,12 +1,12 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.socials.nixcord;
+  cfg = bifrost.programs.socials.nixcord;
 in {
   imports = [
     ./midnight.nix

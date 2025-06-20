@@ -2,12 +2,12 @@
   lib,
   pkgs,
   isServer,
-  isNiri,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     systemd = {
       user.services.xwayland-satellite = {
         description = "xwayland-satellite";

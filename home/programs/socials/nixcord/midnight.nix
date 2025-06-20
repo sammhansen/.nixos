@@ -1,13 +1,13 @@
 {
-  config,
   lib,
-  isServer,
+  bifrost,
   colors,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.socials.nixcord;
+  cfg = bifrost.programs.socials.nixcord;
 
   theme = ''
     /**

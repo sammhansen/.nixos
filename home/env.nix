@@ -1,14 +1,14 @@
 {
   lib,
   isServer,
-  isNiri,
+  isWayland,
   ...
 }: let
   inherit (lib) mkIf mkMerge;
 in {
   config = mkMerge [
     (
-      mkIf isNiri {
+      mkIf isWayland {
         home.sessionVariables = {
           NIXOS_OZONE_WL = 1;
         };

@@ -1,12 +1,12 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.media.amberol;
+  cfg = bifrost.programs.media.amberol;
 in {
   config = mkIf (!isServer && cfg.enable) {
     services.amberol = {

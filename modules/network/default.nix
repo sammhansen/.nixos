@@ -1,6 +1,6 @@
 {
   pkgs,
-  host,
+  hostname,
   options,
   ...
 }: {
@@ -19,7 +19,7 @@
       plugins = with pkgs; [networkmanager-openvpn];
     };
 
-    hostName = "${host}";
+    hostName = "${hostname}";
 
     timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
   };

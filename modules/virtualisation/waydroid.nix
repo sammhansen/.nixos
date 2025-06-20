@@ -1,12 +1,12 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.virtualisation.waydroid;
+  cfg = bifrost.virtualisation.waydroid;
 in {
   config = mkIf (!isServer && cfg.enable) {
     virtualisation = {

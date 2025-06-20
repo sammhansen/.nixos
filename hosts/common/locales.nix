@@ -1,11 +1,11 @@
 {bifrost, ...}: let
-  timezone = "${bifrost.sysconf.timezone}";
-  locale = "${bifrost.sysconf.locale}";
-  hardwareclock = bifrost.sysconf.hardwareclock;
+  timezone = "${bifrost.user.timezone}";
+  locale = "${bifrost.user.locale}";
+  hardwareClock = bifrost.device.dualBoot;
 in {
   time = {
     timeZone = "${timezone}";
-    hardwareClockInLocalTime = hardwareclock;
+    hardwareClockInLocalTime = hardwareClock;
   };
   i18n = {
     defaultLocale = "${locale}";

@@ -1,17 +1,17 @@
 {
-  config,
   lib,
+  pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.socials.whatsapp;
-  package = cfg.package;
+  cfg = bifrost.programs.socials.whatsapp;
 in {
   config = mkIf (!isServer && cfg.enable) {
-    home.packages = [
-      package
+    home.packages = with pkgs; [
+      zapzap
     ];
   };
 }

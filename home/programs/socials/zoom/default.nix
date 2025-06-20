@@ -1,14 +1,14 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
-  isNiri,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.socials.zoom;
+  cfg = bifrost.programs.socials.zoom;
 
   configuration =
     ''
@@ -73,7 +73,7 @@
       [zoom_new_im]
       is_landscape_mode=true
     ''
-    + (mkIf isNiri ''
+    + (mkIf isWayland ''
       enableWaylandShare=true
       xwayland=true
     '');

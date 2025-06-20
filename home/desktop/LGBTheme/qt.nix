@@ -1,8 +1,8 @@
 {
-  isServer,
-  colors,
   lib,
   pkgs,
+  isServer,
+  colors,
   ...
 }: let
   inherit (lib.modules) mkIf;

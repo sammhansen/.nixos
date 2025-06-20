@@ -1,12 +1,12 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.services.easyeffects;
+  cfg = bifrost.services.easyeffects;
 
   output = ./output;
   input = ./input;

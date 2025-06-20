@@ -1,11 +1,11 @@
 {
-  config,
   lib,
+  bifrost,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.programs.git;
+  cfg = bifrost.programs.git;
 in {
   config = mkIf cfg.enable {
     programs.lazygit = {

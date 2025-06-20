@@ -8,6 +8,7 @@
 in {
   imports = [
     ./cli
+    ./distrobox
     ./git
     ./editors
     ./browsers

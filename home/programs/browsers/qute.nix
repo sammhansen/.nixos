@@ -1,13 +1,13 @@
 {
-  isServer,
-  colors,
-  config,
   lib,
   pkgs,
+  bifrost,
+  colors,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.bifrost.programs.browsers.qute;
+  cfg = bifrost.programs.browsers.qute;
 
   palette = {
     background = "${colors.background.hex}";

@@ -1,13 +1,13 @@
 {
   lib,
   pkgs,
-  isNiri,
+  isWayland,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     security = {
       polkit.enable = true;
     };

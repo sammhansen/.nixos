@@ -1,13 +1,13 @@
 {
-  isServer,
-  config,
   lib,
   pkgs,
+  bifrost,
+  isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  flakeDir = config.bifrost.device.flakeDir;
+  flakeDir = bifrost.device.flakeDir;
   templates = ./templates;
 
   settings = ''

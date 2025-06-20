@@ -1,15 +1,19 @@
 {
-  isServer,
-  isNiri,
-  username,
-  colors,
   lib,
   pkgs,
+  username,
+  colors,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (!isServer && isNiri) {
+  imports = [
+    ./scripts/default.nix
+  ];
+
+  config = mkIf (!isServer && isWayland) {
     programs.waybar = {
       enable = true;
       package = pkgs.waybar;
@@ -177,6 +181,8 @@ in {
         @define-color error ${colors.error.hex};
         @define-color error_container ${colors.error_container.hex};
         @define-color on_error_container ${colors.on_error_container.hex};
+        @define-color surface_variant ${colors.surface_variant.hex};
+        @define-color on_surface_variant ${colors.on_surface_variant.hex};
 
         * {
           font-family: "SpaceMono Nerd Font";
@@ -228,6 +234,14 @@ in {
         #workspaces button {
           color: @primary;
           font-size: 13px;
+          padding: 0px;
+          margin: 2px 7px 2px 7px;
+          border-radius: 20px;
+        }
+
+        #workspaces button:not(.active):hover {
+          color: @on_surface_variant;
+          background-color: @surface_variant;
         }
 
         #workspaces button.empty {
@@ -237,38 +251,20 @@ in {
         #workspaces button.active {
           color: @on_primary_container;
           background-color: @primary_container;
-          border-radius: 20px;
-          padding: 0px;
-          margin: 2px 7px 2px 7px;
-        }
-
-        #workspaces button.special {
-          color: @on_secondary_container;
-          background-color: @secondary_container;
-          border-radius: 20px;
-          padding: 0px;
-          margin: 2px 7px 2px 7px;
-
         }
 
         #workspaces button.visible {
           color: @on_primary_container;
           background-color: @primary_container;
-          border-radius: 20px;
-          padding: 0px;
-          margin: 2px 7px 2px 7px;
         }
 
         #workspaces button.urgent {
           color: @on_error_container;
           background-color: @error_container;
-          border-radius: 20px;
-          padding: 0px;
-          margin: 2px 7px 2px 7px;
         }
 
         #temperature.critical {
-          background-color: @error_container;
+          background-color: @error;
         }
 
         #custom-swaync,
@@ -276,35 +272,34 @@ in {
         #idle_inhibitor
         {
           color: @outline_variant;
-          padding-top: 1px;
-          padding-bottom: 1px;
         }
 
         #custom-swaync,
         #custom-swaync.dnd-none,
         #custom-swaync.dnd-inhibited-none
         {
-          font-size: 13px;
+          font-size: 11px;
           color: @outline_variant;
         }
 
         #custom-swaync.notification {
-          color: @primary_fixed;
+          color: @on_background;
         }
 
         #custom-swaync.inhibited-notification,
         #custom-swaync.dnd-notification,
         #custom-swaync.dnd-inhibited-notification {
-          color: @tertiary;
+          color: @on_background;
         }
 
         #bluetooth {
           font-size: 14px;
-          color: @outline_variant;
+          color: @surface2;
+          padding: 1px 0px 0px 0px;
         }
 
         #bluetooth.connected {
-          color: @primary_fixed;
+          color: @on_background;
         }
 
         #idle_inhibitor {
@@ -314,7 +309,7 @@ in {
         }
 
         #idle_inhibitor.activated {
-          color: @primary_fixed;
+          color: @on_background;
         }
 
         @keyframes blink {

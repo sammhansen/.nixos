@@ -2,6 +2,7 @@
   imports = [
     ./pentest
     ./qbittorent
+    ./firefox
     ./thunar
     ./games
   ];

@@ -1,11 +1,11 @@
 {
-  config,
   lib,
+  bifrost,
   username,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.bifrost.virtualisation.distrobox;
+  cfg = bifrost.virtualisation.distrobox;
 in {
   config = mkIf cfg.enable {
     programs.distrobox = {

@@ -1,9 +1,9 @@
 {
-  config,
   inputs,
+  bifrost,
   ...
 }: let
-  cfg = config.bifrost.device.dualBoot;
+  cfg = bifrost.device.dualBoot;
 in {
   imports = [
     inputs.minegrub-theme.nixosModules.default

@@ -1,13 +1,13 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.games.chess;
+  cfg = bifrost.programs.games.chess;
 in {
   config = mkIf (!isServer && cfg.enable) {
     environment.systemPackages = with pkgs; [

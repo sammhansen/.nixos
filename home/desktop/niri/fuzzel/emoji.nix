@@ -1,8 +1,7 @@
 {
-  isServer,
-  isNiri,
-  config,
   lib,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -527,8 +526,8 @@
     🐺 wolf animal nature wild
     🦊 fox animal nature face
     🦝 raccoon animal nature
-    🐱 cat face animal meow nature pet kitten
-    🐈 cat animal meow pet cats
+    🐱 cat face animal bifrost nature pet kitten
+    🐈 cat animal bifrost pet cats
     🦁 lion animal nature
     🐯 tiger face animal cat danger wild nature roar
     🐅 tiger animal nature roar
@@ -1883,7 +1882,7 @@
     🟰 heavy equals sign math
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     home.file.".config/fuzzel/scripts/emoji" = {
       text = script;
       executable = true;

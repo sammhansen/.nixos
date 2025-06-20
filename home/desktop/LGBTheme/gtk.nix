@@ -1,15 +1,16 @@
 {
-  isServer,
-  username,
-  colors,
   config,
   lib,
   pkgs,
+  bifrost,
+  username,
+  isServer,
+  colors,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost;
+  cfg = bifrost;
 
   bookmarks = [
     "file:///home/${username}/Developer"

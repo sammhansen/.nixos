@@ -1,8 +1,8 @@
 {
-  isServer,
-  isNiri,
   pkgs,
   lib,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -13,7 +13,7 @@ in {
     ./scripts
   ];
 
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     services.swaync = {
       enable = true;
       settings = {

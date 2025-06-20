@@ -1,13 +1,13 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.displayManager.default;
+  cfg = bifrost.displayManager.default;
   theme = pkgs.fetchFromGitHub {
     owner = "sammhansen";
     repo = "nix-sddm";

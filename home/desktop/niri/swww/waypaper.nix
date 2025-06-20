@@ -1,14 +1,14 @@
 {
-  isServer,
-  isNiri,
-  config,
   lib,
   pkgs,
+  bifrost,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  walDir = config.bifrost.device.walDir;
+  walDir = bifrost.device.walDir;
   settings = ''
     [Settings]
     language = en
@@ -31,7 +31,7 @@
     use_xdg_state = False
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     home.packages = with pkgs; [
       waypaper
     ];

@@ -1,13 +1,13 @@
 {
-  config,
   lib,
   pkgs,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost.windowManager.niri;
+  cfg = bifrost.windowManager.niri;
 in {
   imports = [
     ./polkit

@@ -1,10 +1,10 @@
 {
-  isServer,
-  isNiri,
-  username,
-  colors,
   lib,
   pkgs,
+  username,
+  colors,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -51,7 +51,7 @@
     }
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     services.swayosd = {
       enable = true;
       topMargin = 0.9;

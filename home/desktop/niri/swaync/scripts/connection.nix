@@ -1,20 +1,19 @@
 {
-  username,
-  isServer,
-  isNiri,
-  config,
   lib,
   pkgs,
+  bifrost,
+  isServer,
+  isWayland,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  flakeDir = config.bifrost.device.flakeDir;
+  flakeDir = bifrost.device.flakeDir;
 
   script = ''
     LOCK_FILE="/tmp/connection.lock"
     ADDR="8.8.8.8"
-    NOTIF_SOUND="/home/${username}/${flakeDir}/.local/share/assets/sounds/alert.mp3"
-    NOTIF_IMG="/home/${username}/${flakeDir}/.local/share/assets/icons/globe.png"
+    NOTIF_SOUND="${flakeDir}/.local/share/assets/sounds/alert.mp3"
+    NOTIF_IMG="${flakeDir}/.local/share/assets/icons/globe.png"
 
     if [ -f "$LOCK_FILE" ]; then
       exit 1
@@ -31,7 +30,7 @@
     rm -f "$LOCK_FILE"
   '';
 in {
-  config = mkIf (!isServer && isNiri) {
+  config = mkIf (!isServer && isWayland) {
     xdg.configFile."swaync/scripts/connection.sh" = {
       text = script;
       executable = true;

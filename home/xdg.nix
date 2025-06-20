@@ -1,14 +1,14 @@
 {
-  config,
   lib,
+  bifrost,
   isServer,
   ...
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.bifrost;
+  cfg = bifrost;
 
-  browser = "${cfg.programs.browser.xdg}";
+  browser = "${cfg.programs.browsers.xdg}";
 in {
   config = mkIf (!isServer) {
     xdg = {
